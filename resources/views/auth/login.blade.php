@@ -1,11 +1,10 @@
 @extends('layouts.app')
-<h1 >Tela de Login</h1>
 @section('content')
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default" id="painel-app">
-                <div class="panel-heading" id="topo">Entrar</div>
+                <div class="panel-heading" id="topo"><h1 class="titulo" id="tituloform">Realize o Login</h1></div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                         {{ csrf_field() }}
@@ -37,17 +36,16 @@
                                 @endif
                             </div>
                         </div>
-                         <div class="form-group">
-                     <label for="seletor" class="col-md-4 control-label">Tipo de Login</label>
+                        <div class="form-group">
+                    <label for="seletor" class="col-md-4 control-label">Tipo de Login</label>
 <div class="col-md-6">
-                     <select id="tipo" name="tipo" class="select-box-customizado btn-success show-tick" data-style="btn-info" style="background-color:black !important;">
-   <option>Paciente</option>
-  <option>Administrador</option>
-  <option>Médico</option>
-  <option>Funcionário em geral</option>
-</select>
-</div>
-</div>
+                    <select id="tipo" name="tipo" class="select-box-customizado btn-success show-tick" data-style="btn-info" style="background-color:black !important;">
+        <option>Paciente</option>
+        <option>Administrador</option>
+        <option>Médico</option>
+        </select>
+        </div>
+        </div>
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
