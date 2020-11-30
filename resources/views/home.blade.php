@@ -1,23 +1,205 @@
 @extends('layouts.app')
-
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+<!DOCTYPE html>
+<html lang="pt-br" id="fundo">  
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Administrativo</title>
+     
+        <style>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+#fundo{
+    color: white;
+     width: 100%;
+    height: 100%;
+   /*opacity: 0.5;*/
+    background-image: url("assets/human_resource.jpg"); 
+    font-family: 'Nunito';
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-size: 100% 100% 
 
-                    {{ __('You are logged in!') }}
+}
+table, th, td {
+    background-color: white;
+            color: white;
+            border: 1px solid black;
+            border-collapse: collapse;
+            table-layout: auto; width: 100%; /* table-layout: auto; serve p/ AJUSTAR campos na tabela*/ 
+            margin: auto;
+            text-align: center;
+            font-weight: bold;
+            opacity: 1;
+            }
+       
+            td{
+                color: black;
+                font-size: 15px;
+                font-family: times;
+                margin: auto;
+                white-space: nowrap;
+             }
+
+            th{
+                background-color: #295872;;
+                color: white;
+                white-space: nowrap;
+             }
+        </style>
+
+	</head>
+	<body role="" class="bcolor" id="bodycor">
+ 
+    <!-- Fixed navbar -->
+	<body role="" class="bcolor" id="bodycor">
+    
+            <ul class="breadcrumb" id="tituloMenu">
+                <li class="breadcrumb-item"><a href="home">Administração</a></li>
+                <li class="breadcrumb-item"><a href="homePacientes">Pacientes</a></li>
+                <li class="breadcrumb-item"><a href="homeMedicos">Médicos</a></li>
+                <li class="breadcrumb-item"><a href="#">Outros</li>
+            
+            <!--/BARRA DE PESQUISA-->  
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
+                <button class="btn btn-outline-success my-2 my-sm-0" id="botao" type="submit">Pesquisar</button>
+            </form>
+                 </ul>   
+            </div><!--/.nav-collapse -->
+      
+            <div class="">
+            @if (Route::has('login'))
+                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+                    @auth
+                        <a href="{{ url('/home') }}"  class="a" id="corLR">Administração</a>
+                    @else
+                        <a href="{{ route('homePacientes') }}" class="a" id="corLR">Pacientes</a>
+
+                        @if (Route::has('medicos'))
+                            <a href="{{ route('homeMedicos') }}" class="a" id="corLR">Médicos</a>
+                        @endif
+                    @endauth
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
+            @endif
+
+
+	<div class="col-md-8 col-md-offset-2" >
+	
+			<h1 class="panel-heading" id="tituloMenu">Painel de Administração</h1>
+      
+        
+		<div class="row">
+			<div class="col-md-12">
+				<table class="table">
+					<thead>
+                    	<tr>
+                            <th>Inscrição</th>
+                            <th>Imagem</th>
+							<th>Nome</th>
+							<th>E-mail</th>
+							<th>Nivel de acesso</th>
+							<th>Cadastrado</th>
+							<th>Ações</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+                            <td>1</td>
+
+                            <td>
+           
+                         <div class="col-md-1 col-md-offset-1">
+                            <img id="avatarperfil" class="img" src="/assets/avatar/1478020898.png"  alt="" />
+                         </div>
+                            
+							<td>Alexssandro Ferreira da Silva</td>
+							<td>alex@gmail.com</td>
+							<td>Administrador</td>
+							<td>10/10/1980 10:15:20</td>
+							<td>
+								<button type="button" class="btn btn-xs btn-primary">Visualizar</button>
+								<button type="button" class="btn btn-xs btn-warning">Editar</button>
+								<button type="button" class="btn btn-xs btn-danger">Apagar</button> 
+							</td>
+						</tr>              
+                    </tbody>
+                    
+                    <tbody>
+						<tr>
+                            <td>2</td>
+
+                            <td>
+           
+                         <div class="col-md-1 col-md-offset-1">
+                            <img id="avatarperfil" class="img" src="/assets/avatar/avatarhomem.jpg"  alt="" />
+                         </div>
+                            
+							<td>João Pedro</td>
+							<td>joao@gmail.com</td>
+							<td>Paciente</td>
+							<td>10/10/1980 10:15:20</td>
+							<td>
+								<button type="button" class="btn btn-xs btn-primary">Visualizar</button>
+								<button type="button" class="btn btn-xs btn-warning">Editar</button>
+								<button type="button" class="btn btn-xs btn-danger">Apagar</button> 
+							</td>
+						</tr>              
+					</tbody>
+
+
+                    <tbody>
+						<tr>
+                            <td>3</td>
+
+                            <td>
+           
+                         <div class="col-md-1 col-md-offset-1">
+                            <img id="avatarperfil" class="img" src="/assets/avatar/avatarmulher.jpg"  alt="" />
+                         </div>
+                            
+							<td>Aline Costa</td>
+							<td>aline@gmail.com</td>
+							<td>Paciente</td>
+							<td>10/10/1980 10:15:20</td>
+							<td>
+								<button type="button" class="btn btn-xs btn-primary">Visualizar</button>
+								<button type="button" class="btn btn-xs btn-warning">Editar</button>
+								<button type="button" class="btn btn-xs btn-danger">Apagar</button> 
+							</td>
+						</tr>              
+					</tbody>
+
+                    <tbody>
+						<tr>
+                            <td>4</td>
+
+                            <td>
+           
+                         <div class="col-md-1 col-md-offset-1">
+                            <img id="avatarperfil" class="img" src="/assets/avatar/medico.jpg"  alt="" />
+                         </div>
+                            
+							<td>Renan Pereira</td>
+							<td>aline@gmail.com</td>
+							<td>Médico</td>
+							<td>10/10/1980 10:15:20</td>
+							<td>
+								<button type="button" class="btn btn-xs btn-primary">Visualizar</button>
+								<button type="button" class="btn btn-xs btn-warning">Editar</button>
+								<button type="button" class="btn btn-xs btn-danger">Apagar</button> 
+							</td>
+						</tr>              
+                    </tbody>
+                    
+				</table>
+			</div>
+		</div>
+	</div>
+
+           
+</html>
+
 @endsection
