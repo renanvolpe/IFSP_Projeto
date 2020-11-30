@@ -84,7 +84,7 @@
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth
-                        <a href="{{ url('/home') }}"  class="a" id="corLR">Acesso Restritos</a>
+                        <a href="{{ url('/home') }}"  class="a" id="corLR">Conta Logada</a>
                     @else
                         <a href="{{ route('login') }}" class="a" id="corLR">Login</a>
 

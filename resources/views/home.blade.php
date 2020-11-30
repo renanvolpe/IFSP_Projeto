@@ -14,8 +14,8 @@
     color: white;
      width: 100%;
     height: 100%;
-   /*opacity: 0.5;*/
-    background-image: url("assets/human_resource.jpg"); 
+   /*opacity: 0.5;
+    background-image: url("assets/human_resource.jpg"); */
     font-family: 'Nunito';
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -48,27 +48,62 @@ table, th, td {
                 color: white;
                 white-space: nowrap;
              }
+
+
+
+
+             .topnav {
+  overflow: hidden;
+  background-color: #333;
+  text-align: center;
+        white-space: nowrap;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  text-align: center;
+ white-space: nowrap;
+  
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.topnav-right {
+  float: right;
+}
         </style>
 
 	</head>
 	<body role="" class="bcolor" id="bodycor">
- 
+          
     <!-- Fixed navbar -->
-	<body role="" class="bcolor" id="bodycor">
-    
-            <ul class="breadcrumb" id="tituloMenu">
-                <li class="breadcrumb-item"><a href="home">Administração</a></li>
-                <li class="breadcrumb-item"><a href="homePacientes">Pacientes</a></li>
-                <li class="breadcrumb-item"><a href="homeMedicos">Médicos</a></li>
-                <li class="breadcrumb-item"><a href="#">Outros</li>
-            
-            <!--/BARRA DE PESQUISA-->  
-            <form class="form-inline my-2 my-lg-0">
+            <div class="topnav">
+                <a class="active" href="home">Home</a>
+                <a href="#administracao">Administração</a>
+                <a href="#pacientes">Pacientes</a>
+           
+                <a href="#medicos">Médicos</a>
+                <a href="#about">About</a>
+                <form class="form-inline my-2 my-lg-0" aling=left>
                 <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
                 <button class="btn btn-outline-success my-2 my-sm-0" id="botao" type="submit">Pesquisar</button>
             </form>
-                 </ul>   
-            </div><!--/.nav-collapse -->
+            </div>
+          
+           </div><!--/.nav-collapse -->
       
             <div class="">
             @if (Route::has('login'))
@@ -87,11 +122,8 @@ table, th, td {
 
 
 	<div class="col-md-8 col-md-offset-2" >
-	
-			<h1 class="panel-heading" id="tituloMenu">Painel de Administração</h1>
-      
-        
-		<div class="row">
+			<div class="row">
+            <h1 class="panel-heading" id="tituloMenu">Painel de Administração</h1>
 			<div class="col-md-12">
 				<table class="table">
 					<thead>
