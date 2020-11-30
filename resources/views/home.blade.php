@@ -67,7 +67,7 @@ table, th, td {
   text-decoration: none;
   font-size: 17px;
   text-align: center;
- white-space: nowrap;
+        white-space: nowrap;
   
 }
 
@@ -88,10 +88,10 @@ table, th, td {
 
 	</head>
 	<body role="" class="bcolor" id="bodycor">
-          
+ 
     <!-- Fixed navbar -->
             <div class="topnav">
-                <a class="active" href="home">Home</a>
+                <a class="active" href="#home">Home</a>
                 <a href="#administracao">Administração</a>
                 <a href="#pacientes">Pacientes</a>
            
@@ -103,6 +103,8 @@ table, th, td {
             </form>
             </div>
           
+
+
            </div><!--/.nav-collapse -->
       
             <div class="">
@@ -122,8 +124,11 @@ table, th, td {
 
 
 	<div class="col-md-8 col-md-offset-2" >
-			<div class="row">
-            <h1 class="panel-heading" id="tituloMenu">Painel de Administração</h1>
+	
+			<h1 class="panel-heading" id="tituloMenu">Painel de Administração</h1>
+      
+        
+		<div class="row">
 			<div class="col-md-12">
 				<table class="table">
 					<thead>

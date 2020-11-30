@@ -24,7 +24,7 @@
             background-color:transparent;
             width: 100%;
             height: 100%;
-            background-image: url("assets/home.jpg");
+            /*background-image: url("assets/home.jpg");*/
             font-family: 'Nunito';
             background-repeat: no-repeat;
             background-attachment: fixed;
@@ -33,9 +33,9 @@
            }
 
            #corLR{
-             background-color: white; /*#67a8cd ;*/
-            /*background-color:transparent;*/
-            color: #295872;
+           /*  background-color: white; /*#67a8cd ;*/
+            background-color:transparent;            
+            color: white;
             font-size: 32px;
             text-align: center;
             font-weight: bolder;
@@ -61,24 +61,64 @@
             text-align: center;
              }
                     
+
+
+             
+ .topnav {
+  overflow: hidden;
+  background-color: #333;
+  text-align: center;
+  white-space: nowrap;
+  position: fixed;
+  width: 100%;      
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  text-align: center;
+ white-space: nowrap;
+  
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.topnav-right {
+  float: right;
+}
           </style>
 
 
     </head>
-    <body>
-        
-   
-                <div class="container" id="cor" >
-                <h1 class="panel-heading" id="sbv">Aqui, você é sempre bem atendido!</h1>
-                    <figure>  <ul class="breadcrumb" id="cor" > 
-                      <img id="profile-img" class="imglogowelcome" src="/assets/clinica.jpg" />
-                        <li class="breadcrumb-item" ><a href="#">Inicio</a></li>
-                        <li class="breadcrumb-item" ><a href="#">Sintomas</a></li>
-                        <li class="breadcrumb-item "><a href="#">Curriculum</a></li>
-                        <li class="breadcrumb-item" ><a href="#">Contato</li>
-            
-                    </ul></figure>
-                </div>
+    <body role="" class="bcolor" id="bodycor">
+      
+            <!-- Fixed navbar -->
+    <div class="topnav" id="tituloMenu">
+                <a class="active" href="home">Home</a>
+                <a href="#administracao">Sintomas</a>
+                <a href="#pacientes">Curriculum</a>
+           
+                <a href="#medicos">Contato</a>
+                <a href="#about">About</a>
+                <form class="form-inline my-2 my-lg-0" aling=left>
+                <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
+                <button class="btn btn-outline-success my-2 my-sm-0" id="botao" type="submit">Pesquisar</button>
+            </form>
+            </div>
+          
+           </div><!--/.nav-collapse -->
 
             <div class="">
             @if (Route::has('login'))
