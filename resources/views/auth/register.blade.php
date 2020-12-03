@@ -10,8 +10,8 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default" id="painel-app">
-                
-            <div class="panel-heading" id="topo"><h3 class="titulo" id="tituloform"> Realize o seu pré-cadastro</h1></div>
+
+            <div class="panel-heading" id="topo"><h3 class="titulo" id="tituloform"> Realize o seu cadastro</h1></div>
                 <div class="panel-body">
                     <form class="form-horizontal" id="formletra" role="form" method="POST" action="{{ url('register') }}">
                         {{ csrf_field() }}
@@ -27,6 +27,22 @@
                                         <strong>{{ $errors->first('name') }}</strong>
                                     </span>
                                 @endif
+
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                            <label for="name" class="col-md-4 control-label">Sobrenome</label>
+
+                            <div class="col-md-6">
+                                <input id="name" type="text" class="form-control" name="sobrenome" placeholder="Digite seu sobrenome" value="{{ old('sobrenome') }}" required autofocus>
+
+                                @if ($errors->has('sobrenome'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('sobrenome') }}</strong>
+                                    </span>
+                                @endif
+
                             </div>
                         </div>
 
@@ -72,9 +88,10 @@
                             </div>
                         </div>
 
+                        <!--/
                         <div class="form-group">
                     <label for="seletor" class="col-md-4 control-label">Tipo de Login</label>
-<div class="col-md-6">
+                <div class="col-md-6">
                     <select id="tipo" name="tipo" class="select-box-customizado btn-success show-tick" data-style="btn-info" style="background-color:black !important;">
         <option>Paciente</option>
         <option>Administrador</option>
@@ -82,7 +99,7 @@
         </select>
         </div>
         </div>
-
+-->
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary"id="botao" >
@@ -92,7 +109,7 @@
                             </div>
                              </div>
                     </form>
-                      
+
                 </div>
             </div>
         </div>

@@ -7,13 +7,13 @@
 
     <div class="row">
         <div class="col-md-8 col-md-offset-5">
-          <img id="imglogin" class="img" src="/assets/avatar/1478020898.png" />
+          <img id="imglogin" class="img" src="/assets/logo.png" />
 </div>
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default" id="painel-app">
                 <div class="panel-heading" id="topo"><h3 class="titulo" id="tituloform">Entre com sua conta</h3></div>
                 <div class="panel-body">
-                    <form class="form-horizontal" id="formletra" role="form" method="POST" action="{{ url('/login') }}">
+                    <form class="form-horizontal" id="formletra" id="row" role="form" method="POST" action="{{ url('/login') }}">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
