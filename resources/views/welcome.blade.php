@@ -43,10 +43,21 @@
             font-size: 22px;font-family: "Sofia";
             }
 
-           #cor {
-            /*background-color: #67a8cd ; /* #67a8cd ;*/
+           #corLogado {
+            /*background-color: white; /* #67a8cd ;*/
             background-color:transparent;
-            color:#295872 ;
+            color: yellow;
+            font-size: 32px;
+            text-align: center;
+            font-weight: bolder;
+            font-family: "Sofia";
+            font-size: 22px;font-family: "Sofia";
+            }
+
+            #corSair {
+            /*background-color: #67a8cd ; /* #67a8cd ;*/
+            /*background-color:transparent;*/
+            color: red ;
             font-size: 32px;
             text-align: center;
             font-weight: bolder;
@@ -121,20 +132,37 @@
            </div><!--/.nav-collapse -->
 
             <div class="">
+            <ul>
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth
-                        <a href="{{ url('/home') }}"  class="a" id="corLR">Conta Logada</a>
-                    @else
+                        <h6 class="a" id="corLogado"> Conta logada: <a href="{{ url('/home') }}"  class="a" id="corLR" >{{ Auth::user()->name }}
+
+
+                     <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();" class="a" id="corSair"> {{ __('Sair') }}
+                     </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                    </h6>
+                </a>
+            </ul>
+                    </div>
+
+
+                <ul>
+                        @else
                         <a href="{{ route('login') }}" class="a" id="corLR">Login</a>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="a" id="corLR">Register</a>
+                            <a href="{{ route('register') }}" class="a" id="corLogado">Cadastre-se</a>
                         @endif
                     @endauth
                 </div>
             @endif
-
+</ul>
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
                 <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
                     <svg viewBox="0 0 651 192" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-16 w-auto text-gray-700 sm:h-20">
