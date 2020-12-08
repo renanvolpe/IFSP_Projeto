@@ -20,6 +20,7 @@
    background-color:transparent;
   }
 
+  
   #imglogowelcome {
     /*border:1px solid;*/
     background-position: center;
@@ -31,21 +32,28 @@
 
   }
 
-#imglogin {
-        /*border:1px solid;*/
-        background-position: center;
-        text-align: center;
-        width:280px;
-        height:180px;
+  #imglogin {
+    /*border:1px solid;*/
+    background-position: center;
+    text-align: justify;
+    width:280px;
+    height:180px;
 
-      }
+  }
+  #imgcadastro {
+    /*border:1px solid;*/
+    background-position: right;
+    text-align: right;
+    width:90px;
+    height:300px;
+  }
 
 #avatarperfil{
     border:1px solid;
     background-position: center;
     text-align: center;
-    width:60px;
-    height:60px;
+    width:80px;
+    height:80px;
 
 }
 
@@ -68,8 +76,8 @@
 }
 
 #tituloform{
-        color: rgb(247, 247, 247)
-        font-size: 19px;
+        /*color: rgb(247, 247, 247);*/
+        font-size: 29px;
         text-align: center;
         white-space: nowrap;
 
@@ -89,9 +97,19 @@
 
 #botao{
     background-color: #4292bf;
+    width: 60px;
+    height: 40px;
+    font-size: 15px;
     color: white;
+
     }
 
+#limpar{
+        width: 60px;
+        height: 40px;
+        font-size: 15px;
+        
+    }
 #datahorario {
         color: black;
         font-size: 19px;

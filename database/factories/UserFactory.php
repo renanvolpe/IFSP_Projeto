@@ -60,6 +60,8 @@ class UserFactory extends Factory
         ];*/
 
     return [
+
+        'id' => $this->faker->id,
         'name' => $this->faker->name,
         'sobrenome' => $this->faker->sobrenome,
         'dd1' => $this->faker->dd1,

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
-<body class="bcolor" id="bodycor">
+<body class="bcolor" id="bodycor" id="bodylogin">
 
 <div class="container" >
 
@@ -11,9 +11,10 @@
 </div>
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default" id="painel-app">
-                <div class="panel-heading" id="topo"><h3 class="titulo" id="tituloform">Entre com sua conta</h3></div>
-                <div class="panel-body">
-                    <form class="form-horizontal" id="formletra" id="row" role="form" method="POST" action="{{ url('/login') }}">
+               <!-- <div class="panel-heading" id="topo"><h3 class="titulo" id="tituloform">Entre com sua conta</h3></div>-->
+               <div class="panel-heading" id="formletra">
+               <div class="panel-body">
+                    <form class="form-horizontal" id="" id="row" role="form" method="POST" action="{{ url('/login') }}">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
@@ -44,28 +45,31 @@
                             </div>
                         </div>
 
-
+           
                         <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
+                             <!--<div class="col-md-6 col-md-offset-4">
                                 <div class="checkbox">
                                     <label>
                                         <input type="checkbox" name="remember"> Manter-se conectado
                                     </label>
                                 </div>
-                            </div>
+                            </div>-->
                         </div>
 
                         <div class="form-group">
-                            <div class="col-md-8 col-md-offset-4">
+                            <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary" id="botao">
                                     Login
                                 </button>
-                                <INPUT type="reset"  name="b2" value="Limpar" type="button" class="col-md-offset-1 btn btn-xs btn-danger">
+                                
+                                <INPUT type="reset"  name="b2" value="Limpar" id="limpar" type="button" class="col-md-offset-1 btn btn-xs btn-danger">
                                 <a class="btn btn-link" href="{{ url('/passwords/reset') }}  style="background-color:white">
-                                    Problemas para se conectar?
+                                Esqueceu a senha?
+
                                 </a>
                             </div>
                         </div>
+                       
                     </form>
 
                  </div>
