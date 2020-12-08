@@ -18,9 +18,9 @@
                 <div class="panel-body">
                    
             <h1 class="titulo" id="tituloform"> Dados Pessoais: </h1>
-                     
+            
                         <hr>
-             <img id="avatarperfil" class="img" src="/assets/avatar/avatarhomem.jpg" />
+             <img id="avatarperfil" class="img" src="{{ URL::to('/assets/avatar/avatarhomem.jpg') }}" />
                                    <!-- Inicio Linha com duas labels  NOME, SOBRENOME -->
             <div class="col-md-12>
                 <form class="form-horizontal" id="formletra" role="form" method="POST" action="{{ url('register') }}">
