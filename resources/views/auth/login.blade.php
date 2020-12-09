@@ -6,11 +6,11 @@
 <div class="container" >
 
     <div class="row">
-        <div class="col-md-8 col-md-offset-5">
-          <img id="imglogin" class="img" src="/assets/logo.png" />
-</div>
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default" id="painel-app">
+        <div class="col-md-12 col-md-offset-5">
+        <img id="imglogin" class="img" src="{{ URL::to('/assets/logo.png') }}" />
+        </div>
+      
+            <div class="col-md-8 col-md-offset-2" id="painel-app">
                <!-- <div class="panel-heading" id="topo"><h3 class="titulo" id="tituloform">Entre com sua conta</h3></div>-->
                <div class="panel-heading" id="formletra">
                <div class="panel-body">
