@@ -21,6 +21,10 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
+Route::get('/cadastro', [App\Http\Controllers\TesteController::class, 'registro']);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+/*Route::get('/greeting', function () {
+    return 'Hello World';
+});
+*/
