@@ -578,8 +578,33 @@
 </head>
 
 <body role="" class="bcolor" id="bodycor">
-
-    <!-- Fixed navbar -->
+    
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#Home">Home</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#apresentacao">Apresentacao</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#sintomas">Sintomas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#especialidades">Especialidades</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#contatos">Contato</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+    <!-- Fixed navbar 
+    
     <div class="topnav" id="tituloMenu">
         <a class="active" href="#home">Home</a>
         <a href="#apresentacao">Apresentação</a>
@@ -648,13 +673,8 @@
         <div class="flex items-center">
                <div class="text-black-50">    
         <h2> Quem sou?</h2>
-            <p>Por Dr. Aurélio de Souza Lemes</p>
-            <p> Gostaria de agradecer sua visita ao site do meu consultório. Aqui, você encontrará informações sobre o meu trabalho como urologista e meus locais de atendimento, além de poder agendar consultas de forma on-line e atendimento por Tele-orientação. Sinta-se à vontade para navegar pelo conteúdo.
-
-                Durante 11 anos longe de Goiânia, busquei me aperfeiçoar na minha área através de cursos de Videolaparoscopia, Endourologia e iniciação científica. Visando um aperfeiçoamento constante, participo de congressos nacionais e internacionais com frequência.
-
-                Hoje, de volta a Goiânia há 4 anos, sinto-me preparado para atender a população goiana da melhor forma possível. Acredito que o médico deve estar sempre ao lado do paciente, mantendo uma relação de proximidade, objetiva e resolutiva.
-            </p>
+            <p>Por Dr. Nome completo</p>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.   </p>
             </div>
             </div>
         <br><br>
@@ -665,35 +685,35 @@
                 <h2 class="ml-4 text-lg leading-7 font-semibold text-gray-900 dark:text-white">
                     Sintomas - Quando procurar um Urologista?
             </a></h2> <br>
-            <p>Por Dr. Aurélio de Souza Lemes</p>
+            <h4>Por Dr. Nome completo</h4>
 
             <ul>
-                <div class="col-md-12">
-                    <div class="col-md-8">
-                        <li>Consulta de rotina</li>
-                        <li>Sintomas de pedra nos rins</li>
-                        <li>Incontinência urinária</li>
+                <div >
+                    <div class="col-md-6">
+                        <li>Tópico 1</li>
+                        <li>Tópico 2</li>
+                        <li>Tópico 3</li>
                     </div>
-                    <div class="col-md-4">
-                        <li>Cirurgia videolaparoscopia</li>
-                        <li> Aumento da próstata</li>
+                    <div class="col-md-6">
+                        <li>Tópico 4</li>
+                        <li>Tópico 5</li>
+                        <li>Tópico 5</li>
                     </div>
+                </div>
             </ul><br>
 
-            <p>A urologia é a especialidade médica que cuida do trato urinário do homem, da mulher e de todo o sistema reprodutor masculino no que envolve testículo, epidídimos, ducto deferente, vesículas seminais, próstata e pênis.
+            <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
 
-                Além disso, o urologista se preocupa com os cuidados dos seguintes órgãos: rins, ureteres, bexiga, urina, uretra e todos os órgãos do sistema reprodutor masculino. Conheça os principais problemas e incômodos que motivam a vinda dos pacientes ao nosso consultório.
-            </p>
+            The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
+           </p>
             <br>
             <div class="text-black-50">
-                <h2 class="ml-4 text-lg leading-7 font-semibold text-gray-900 dark:text-white">
-                    VOCÊ SABIA?</h2> <br>
-                <p>Por Dr. Aurélio de Souza Lemes</p>
+                <h2 class=" text-center ">  VOCÊ SABIA?</h2> <br>
+                    <h4>Por Dr. Nome completo</h4>
 
-                <p> 1 a cada 6 homens vai apresentar câncer de próstata após os 80 anos;
-                    Normalmente, o câncer de próstata não tem sintomas. Quando eles surgem, é sinal de que o caso pode estar avançado;
-                    Em 2016, foram diagnosticados 65 mil novos casos de câncer de próstata no Brasil. Trata-se do 2º tipo de câncer mais comum em homens, ficando atrás somente do câncer de pele do tipo não melanoma;
-                    Se descoberta no início, a doença tem 90% de chance de cura.
+                <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+
+The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
                 </p>
             </div>
             <br><br>
@@ -702,20 +722,17 @@
 
  <a name="especialidades"> </a> <!-- referencia para buscar na pagina o conteudo selecionado no MENU -->
         <div class="text-black-50">
-            <h2 class="ml-4 text-lg leading-7 font-semibold text-gray-900 dark:text-white">
-        NOSSAS ESPECIALIDADES 
+            <h2 class=" text-center">
+        Nossas especialidades:
             </h2> <br>
-            <p>Por Dr. Aurélio de Souza Lemes</p>
+            <h4>Por Dr. Nome completo</h4>
 
             <div class="row">
                 <div class="col-md-3">
                     <img src="/assets/especialidade.png" style="width:80%">
                 </div>
                 <div class="col-md-8">
-                    <p> 1 a cada 6 homens vai apresentar câncer de próstata após os 80 anos;
-                        Normalmente, o câncer de próstata não tem sintomas. Quando eles surgem, é sinal de que o caso pode estar avançado;
-                        Em 2016, foram diagnosticados 65 mil novos casos de câncer de próstata no Brasil. Trata-se do 2º tipo de câncer mais comum em homens, ficando atrás somente do câncer de pele do tipo não melanoma;
-                        Se descoberta no início, a doença tem 90% de chance de cura.
+                    <p> Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
                     </p>
 
                 </div>
@@ -726,9 +743,7 @@
             <div class="row">
 
                 <div class="col-md-9">
-                    <p> UROLOGIA ONCÓLICA: A urologia oncológica atua no sentido de combater tumores, sendo
-                        voltada para o diagnóstico e o tratamento de tumores malignos do sistema genito-urinário.
-                        Câncer de próstata, bexiga e rim incluem a gama de patologias tratadas
+                    <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,
                     </p>
                 </div>
                 <div class="col-md-3">
@@ -742,32 +757,32 @@
 
                     <div class="col-md-4">
                         <img src="/assets/cancerprostota.png" style="width:50%">
-                        <p>CANCER DE PROSTATA</p>
+                        <h5>Tratamento 1</h5>
                     </div>
 
                     <div class="col-md-4">
                         <img src="/assets/cancerbexiga.jpg" style="width:50%">
-                        <p></p>CANCER DE BEXIGA</p>
+                        <h5>Tratamento 2</h5>
                     </div>
 
                     <div class="col-md-4">
                         <img src="/assets/cancerrim.png" style="width:30%">
-                        <p></p>CANCER DE RIM</p>
+                        <h5>Tratamento 3</h5>
                     </div>
 
                     <div class="col-md-4">
                         <img src="/assets/ejaculacaoprecoce.png" style="width:30%">
-                        <p></p>EJACULAÇÃO PRECOCE</p>
+                        <h5>Tratamento 4</h5>
                     </div>
 
                     <div class="col-md-4">
                         <img src="/assets/pedrarim.png" style="width:50%">
-                        <p></p>PEDRA NOS RINS</p>
+                        <h5>Tratamento 5</h5>
                     </div>
 
                     <div class="col-md-4">
                         <img src="/assets/fimose.png" style="width:30%">
-                        <p></p>FIMOSE</p>
+                        <h5>Tratamento 6</h5>
                     </div>
 
                 </div>
@@ -777,8 +792,7 @@
                 <!-- COMEÇA FORMULARIO CONTATO -->
                 <div class="container">
                     <div style="text-align:center">
-                        <h2 class="ml-4 text-lg leading-7 font-semibold text-gray-900 dark:text-white">
-                          <br>  Contatos</h2>
+                        <h2 class=" text-center"> Contatos:</h2>
                         <p>Visite-nos ou deixe seu recado:</p>
                     </div>
 

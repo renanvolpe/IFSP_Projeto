@@ -20,7 +20,7 @@
             <div class="linha">
                 <div class="col-3">
 
-            <div>Imagem Perfil</div>
+            
 
              <img id="imgcadastro" class="img" src="{{ URL::to('/assets/avatar/avatarhomem.jpg') }}" />
                                    <!-- Inicio Linha com duas labels  NOME, SOBRENOME -->
