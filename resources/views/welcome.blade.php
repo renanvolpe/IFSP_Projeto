@@ -579,7 +579,7 @@
 
 <body role="" class="bcolor" id="bodycor">
     
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
   <div class="container-fluid">
     <a class="navbar-brand" href="#Home">Home</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -599,7 +599,42 @@
         <li class="nav-item">
           <a class="nav-link" href="#contatos">Contato</a>
         </li>
+       
       </ul>
+
+      <ul>
+            @if (Route::has('login'))
+            
+                @auth
+                <h6 class="a" id="corLogado"> Conta logada: <a href="{{ url('/home') }}" class="a" id="corLR">{{ Auth::user()->name }}
+
+
+                        <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();" class="a" id="corSair"> {{ __('Sair') }}
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                </h6>
+                </a>
+        </ul>
+    
+
+
+    <ul>
+        @else
+        <a href="{{ route('login') }}" class="a" id="corLR">Login</a>
+
+        @if (Route::has('register'))
+        <a href="{{ route('register') }}" class="a" id="corLogado">Cadastre-se</a>
+        @endif
+        @endauth
+        </div>
+        @endif
+    </ul>
+      </div>
+      
     </div>
   </div>
 </nav>
@@ -621,50 +656,21 @@
    
     <!--/.nav-collapse -->
 <div class="container">
-    <div class="">
-        <ul>
-            @if (Route::has('login'))
-            <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                @auth
-                <h6 class="a" id="corLogado"> Conta logada: <a href="{{ url('/home') }}" class="a" id="corLR">{{ Auth::user()->name }}
-
-
-                        <a href="{{ route('logout') }}" onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();" class="a" id="corSair"> {{ __('Sair') }}
-                        </a>
-
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
-                </h6>
-                </a>
-        </ul>
-    </div>
-
-
-    <ul>
-        @else
-        <a href="{{ route('login') }}" class="a" id="corLR">Login</a>
-
-        @if (Route::has('register'))
-        <a href="{{ route('register') }}" class="a" id="corLogado">Cadastre-se</a>
-        @endif
-        @endauth
-        </div>
-        @endif
-    </ul>
-    <br><br>
+    
+        
+    
     <div class="container">
-        <div class="row">
-        <div class="p-4 border-t border-gray-200 dark:border-gray-700 md:border-l">
-            <div class="flex items-center">
-               <div class="text-black-50">
-            <h2 class="ml-4 text-lg leading-7 font-semibold text-gray-900 dark:text-white">
-                SEJA BEM VINDO a </h2>
-                <br><br><br>
-                </div>
-                 <h2 id="sbv">Clinical Vip !!!</h2>
-            </div>
+        
+        
+            
+               <div class="text-center">
+               <h2>
+                SEJA BEM-VINDO </h2>
+               </div>
+           
+                
+                
+           
         </div>
         <br><br>
          <br>
@@ -682,8 +688,8 @@
 <a name="sintomas"> <!-- referencia para buscar na pagina o conteudo selecionado no MENU -->
         <div class="text-black-50">
             
-                <h2 class="ml-4 text-lg leading-7 font-semibold text-gray-900 dark:text-white">
-                    Sintomas - Quando procurar um Urologista?
+                <h2 class="text-center">
+                    Sintomas - Quando procurar (Especialização)?
             </a></h2> <br>
             <h4>Por Dr. Nome completo</h4>
 
