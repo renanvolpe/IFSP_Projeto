@@ -14,7 +14,7 @@ use App\Http\Controllers\Controller; //fazer import do controller para o jeito n
 |
 */
 //Route::get('/', ['uses'=> 'App\Http\Controllers\Controller@homepage']); //jeito antigo
-Route::get('/', [Controller::class, 'homepage']); // jeito novo
+Route::get('/', [Controller::class, 'homepage']); // jeito novoo
 
 Route::get('/cadastro', [Controller::class, 'cadastrar']); // jeito novo
 Route::get('/login', [Controller::class, 'fazerLogin']); // jeito novo
