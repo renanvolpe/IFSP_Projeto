@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Controller; //fazer import do controller para o jeito novo
 
 /*
 |--------------------------------------------------------------------------
@@ -12,19 +13,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+//Route::get('/', ['uses'=> 'App\Http\Controllers\Controller@homepage']); //jeito antigo
+Route::get('/', [Controller::class, 'homepage']); // jeito novo
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/cadastro', [Controller::class, 'cadastrar']); // jeito novo
+Route::get('/login', [Controller::class, 'fazerLogin']); // jeito novo
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::get('/cadastro', [App\Http\Controllers\TesteController::class, 'registro']);
-
-
-/*Route::get('/greeting', function () {
-    return 'Hello World';
-});
-*/
