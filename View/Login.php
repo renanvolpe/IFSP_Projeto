@@ -1,18 +1,28 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
-
-    <title>Login</title>
 <?php
+//Página incial
+include '../ConexaoBanco.php';
 include '../ChamarBoostrap.php';
 
+
 ?>
+
+<!DOCTYPE html>
+<html>
+<head>
+
+
+ 
+
+  <title>Clinica médica</title>
+</head>
 <body>
+
+<head>
+
+<body>
+<?php
+	include 'nav.php';
+?>
 
 <!-- login HTML -->
 <div class="container">

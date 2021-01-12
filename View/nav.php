@@ -1,6 +1,5 @@
 <?php
 //Página incial
-include '../ConexaoBanco.php';
 
 
 ?>
@@ -11,7 +10,7 @@ include '../ConexaoBanco.php';
 
 
  <?php
-	include '../ChamarBoostrap.php';
+	
  ?>
 
 
@@ -32,14 +31,27 @@ include '../ConexaoBanco.php';
 	        <li class="nav-item">
 	          <a class="nav-link" href="#sintomas">Sintomas</a>
 	        </li>
-	        <li class="nav-item">
-	          <a class="nav-link" href="#especialidades">Especialidades</a>
+			<li class="nav-item">
+	          <a class="nav-link" href="#sabia">Você Sabia?</a>
+	        </li>
+			<li class="nav-item">
+	          <a class="nav-link" href="#especialidades">especialidades</a>
+	        </li>
+			<li class="nav-item">
+	          <a class="nav-link" href="#tratamento">tratamento</a>
 	        </li>
 	        <li class="nav-item">
 	          <a class="nav-link" href="#contatos">Contato</a>
 	        </li>
-       
+			
      	 </ul>
+		  <ul class="navbar-nav ml-auto">
+
+		  <li class="nav-item ml-auto">
+				<button class="btn btn-outline-info navbar-brand"> SUA CONSULTA AQUI </button>
+		  </li>
+		  </ul>
+		 
 	    </div>
   </div>
 </nav>

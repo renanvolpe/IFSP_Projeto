@@ -1,6 +1,7 @@
 <?php
 //Página incial
 include '../ConexaoBanco.php';
+include '../ChamarBoostrap.php';
 
 
 ?>
@@ -10,9 +11,7 @@ include '../ConexaoBanco.php';
 <head>
 
 
- <?php
-	include '../ChamarBoostrap.php';
- ?>
+ 
 
 
   <title>Clinica médica</title>
