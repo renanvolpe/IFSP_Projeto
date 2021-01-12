@@ -29,7 +29,7 @@ include '../ChamarBoostrap.php';
 	          <a class="nav-link active" href="#paciente">Pacientes</a>
 	        </li>
 	        <li class="nav-item">
-	          <a class="nav-link active" aria-current="page" href="#calendario">Calendário</a>
+	          <a class="nav-link active" aria-current="page" href="calendario.php">Calendário</a>
 	        </li>
 	        <li class="nav-item">
 	          <a class="nav-link active" href="#agenda">Agenda</a>
