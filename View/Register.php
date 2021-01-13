@@ -16,15 +16,8 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 			header('location:'.$_SERVER['PHP_SELF'].'?msg=senha');
 			exit;
 		}else{
-			
-			$userCount	=	$db->getQueryCount('login','idLogin');
-			$data	=	array(
-							'login'=>$login,
-							'senha'=>$senha,
-							'privilegio'=>$privilegio,
-						);
-			$insert	=	$db->insert('login',$data);
-
+			//O login estava aqui
+										
 			//depois de cadastrar login, iremos cadastrar endereço...
 			if($rua==""){ //se o campo rua estiver vazio...
 				header('location:'.$_SERVER['PHP_SELF'].'?msg=rua'); //irá exibir isso no final da URL
@@ -45,18 +38,113 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 				header('location:'.$_SERVER['PHP_SELF'].'?msg=cep');
 				exit;
 			}else{
+				//O endereço estava aqui
 				
-				$userCount	=	$db->getQueryCount('endereco','idEndereco');
-				$data	=	array(
-								'rua'=>$rua,
-								'bairro'=>$bairro,
-								'complemento'=>$complemento,
-								'cidade'=>$cidade,
-								'estado'=>$estado,
-								'numero'=>$numero,
-								'cep'=>$cep,
-							);
-				$insert	=	$db->insert('endereco',$data);
+				//depois de cadastrar endereço, iremos cadastrar telefone...
+				if($tel1==''){//se o campo telefone principal estiver vazio...
+					header('location:'.$_SERVER['PHP_SELF'].'?msg=telP'); //irá exibir isso no final da URL
+					exit;
+				}
+				elseif($tel2==''){
+					header('location:'.$_SERVER['PHP_SELF'].'?msg=telS'); 
+					exit;
+				}
+				elseif($cel1==''){
+					header('location:'.$_SERVER['PHP_SELF'].'?msg=celP');
+					exit;
+				}
+				elseif($cel2==''){
+					header('location:'.$_SERVER['PHP_SELF'].'?msg=celS');
+					exit;
+				}else{
+					//O telefone estava aqui
+					
+
+					//depois de cadastrar telefone, iremos cadastrar pessoa...
+					if($cpf==''){//se o campo cpf estiver vazio...
+						header('location:'.$_SERVER['PHP_SELF'].'?msg=cpf'); //irá exibir isso no final da URL
+						exit;
+					}
+					elseif($nome==''){
+						header('location:'.$_SERVER['PHP_SELF'].'?msg=nome'); 
+						exit;
+					}else{
+						//A pessoa estava aqui
+						
+
+						//depois de cadastrar pessoa, iremos cadastrar paciente...
+						if($tipoSanguineo==''){//se o campo tipo sanguineo estiver vazio...
+							header('location:'.$_SERVER['PHP_SELF'].'?msg=ts'); //irá exibir isso no final da URL
+							exit;
+						}
+						elseif($sexo==''){
+							header('location:'.$_SERVER['PHP_SELF'].'?msg=sexo'); 
+							exit;
+						}elseif($dataNascimento==''){
+							header('location:'.$_SERVER['PHP_SELF'].'?msg=dn'); 
+							exit;
+						}else{
+							//Depois de confirmar todos os dados os mesmos serão inseridos no banco
+
+							//inserindo login
+							$userCount	=	$db->getQueryCount('login','idLogin');
+							$data	=	array(
+											'login'=>$login,
+											'senha'=>$senha,
+											'privilegio'=>$privilegio,
+										);
+							$insert	=	$db->insert('login',$data);
+							$login_IdLogin = $db->lastInsertId(); //retorna o ultimo id inserido em login
+
+							//inserindo o endereço
+							$userCount	=	$db->getQueryCount('endereco','idEndereco');
+							$data	=	array(
+											'rua'=>$rua,
+											'bairro'=>$bairro,
+											'complemento'=>$complemento,
+											'cidade'=>$cidade,
+											'estado'=>$estado,
+											'numero'=>$numero,
+											'cep'=>$cep,
+										);
+							$insert	=	$db->insert('endereco',$data);
+							$endereco_IdEndereco = $db->lastInsertId(); //retorna o ultimo id inserido em endereço
+
+							//inserindo o telefone
+							$userCount	=	$db->getQueryCount('telefone','idTelefone');
+							$data	=	array(
+											'tel1'=>$tel1,
+											'tel2'=>$tel2,
+											'cel1'=>$cel1,
+											'cel2'=>$cel2,
+										);
+							$insert	=	$db->insert('telefone',$data);
+							$telefone_IdTelefone = $db->lastInsertId(); //retorna o ultimo id inserido em telefone
+
+							//inserindo a pessoa
+							$userCount	=	$db->getQueryCount('pessoa','idPessoa');
+							$data	=	array(
+											'cpf'=>$cpf,
+											'nome'=>$nome,
+											'endereco_IdEndereco'=>$endereco_IdEndereco,
+											'telefone_IdTelefone'=>$telefone_IdTelefone,
+											'login_IdLogin'=>$login_IdLogin,
+										);
+							$insert	=	$db->insert('pessoa',$data);
+							$pessoa_IdPessoa = $db->lastInsertId(); //retorna o ultimo id inserido em pessoa
+
+							//inserindo o paciente
+							$userCount	=	$db->getQueryCount('paciente','idPaciente');
+							$data	=	array(
+											'tipoSanguineo'=>$tipoSanguineo,
+											'sexo'=>$sexo,
+											'dataNascimento'=>$dataNascimento,
+											'pessoa_IdPessoa'=>$pessoa_IdPessoa,
+										);
+							$insert	=	$db->insert('paciente',$data);
+					}
+					}
+				}
 			}	
 
 
@@ -132,15 +220,15 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 					<div class="row form-group"  >
 							<div class="col-md-9 "  >
 							<div class="form-group">
-							<label for="NomeCompleto">Nome Completo:</label>
-							<input type="text" class="form-control" id="NomeCompleto"  placeholder="Nome Completo" name="NomeCompleto" autofocus>
+							<label for="nome">Nome Completo:</label>
+							<input type="text" class="form-control" id="nome"  placeholder="Nome Completo" name="nome" autofocus>
 							
 							</div>
 							</div>
 							<div class="col-md-3 control-label">
 								<div class="form-group">
-									<label for="tipoSangue">Tipo Sanguíneo:</label>
-									<select class="form-control" id="tipoSangue">
+									<label for="tipoSanguineo">Tipo Sanguíneo:</label>
+									<select class="form-control" id="tipoSanguineo" name='tipoSanguineo'>
 										<option value="Na" selected>Não sei</option>
 										<option value="A+">A+</option>
 										<option value="A-">A-</option>
@@ -154,34 +242,34 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 								</div>
 							</div>
 
-							<div class="col-md-2">
+							<div class="col-md-3">
 								<div class="form-floating">
-								<label for="ddd1">DDD:</label>
-								<input type="text" class="form-control" id="ddd1" placeholder="(__)" value="" name="ddd1">
+								<label for="tel1">Telefone Principal:</label>
+								<input type="text" class="form-control" id="tel1" placeholder="xxxx-xxxx" value="" name="tel1">
 								
 								</div>
 							</div>
 
-							<div class="col-md-4">
+							<div class="col-md-3">
 								<div class="form-floating">
-								<label for="telefonePrincipal">Telefone Principal:</label>
-								<input type="text" class="form-control" id="telefonePrincipal" placeholder="xxxx-xxxx" value="" name="telefonePrincipal">
+								<label for="tel2">Telefone Segundario:</label>
+								<input type="text" class="form-control" id="tel2" placeholder="xxxx-xxxx" value="" name="tel2">
 								
 								</div>
 							</div>
 
-							<div class="col-md-2">
+							<div class="col-md-3">
 								<div class="form-floating">
-								<label for="ddd2">DDD:</label>
-								<input type="text" class="form-control" id="ddd2" placeholder="(__)" value="" name="ddd2">
+								<label for="cel1">Celular Principal:</label>
+								<input type="text" class="form-control" id="cel1" placeholder="xxxxx-xxxx" value="" name="cel1">
 								
 								</div>
 							</div>
 							
-							<div class="col-md-4">
+							<div class="col-md-3">
 								<div class="form-floating">
-								<label for="celular">Celular:</label>
-								<input type="text" class="form-control" id="celular" placeholder="xxxxx-xxxx" value="" name="celular">
+								<label for="cel2">Celular Segundario:</label>
+								<input type="text" class="form-control" id="cel2" placeholder="xxxxx-xxxx" value="" name="cel2">
 								
 								</div>
 							</div>
@@ -190,16 +278,16 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 
 							<div class="col-md-4">
 								<div class="form-floating">
-								<label for="CPF_Paciente">CPF:</label>
-								<input type="text" class="form-control" id="CPF_Paciente" placeholder="CPF" value="" name="CPF_Paciente">
+								<label for="cpf">CPF:</label>
+								<input type="text" class="form-control" id="cpf" placeholder="CPF" value="" name="cpf">
 								
 								</div>
 							</div>
 
 							<div class="col-md-4 ">
 								<div class="form-floating">
-								<label for="Nascimento">Data nascimento:</label>
-								<input type="date" class="form-control" id="Nascimento" placeholder="<?php echo "date"; ?>" value="" name="Nascimento">
+								<label for="dataNascimento">Data nascimento:</label>
+								<input type="date" class="form-control" id="dataNascimento" placeholder="<?php echo "date"; ?>" value="" name="dataNascimento">
 								
 								</div>
 							</div>
@@ -207,7 +295,7 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 							<div class="col-md-4 control-label">
 								<div class="form-group">
 									<label for="sexo">Sexo:</label>
-									<select class="form-control" id="sexo">
+									<select class="form-control" id="sexo" name='sexo'>
 										<option value="X" selected>Prefiro não dizer</option>
 										<option value="F">F</option>
 										<option value="M">M</option>
