@@ -24,6 +24,44 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 							'privilegio'=>$privilegio,
 						);
 			$insert	=	$db->insert('login',$data);
+
+			//depois de cadastrar login, iremos cadastrar endereço...
+			if($rua==""){ //se o campo rua estiver vazio...
+				header('location:'.$_SERVER['PHP_SELF'].'?msg=rua'); //irá exibir isso no final da URL
+				exit;
+			}elseif($bairro==""){
+				header('location:'.$_SERVER['PHP_SELF'].'?msg=bairro');
+				exit;
+			}elseif($cidade==""){
+				header('location:'.$_SERVER['PHP_SELF'].'?msg=cidade');
+				exit;
+			}elseif($estado==""){
+				header('location:'.$_SERVER['PHP_SELF'].'?msg=estado');
+				exit;
+			}elseif($numero==""){
+				header('location:'.$_SERVER['PHP_SELF'].'?msg=numero');
+				exit;
+			}elseif($cep==""){
+				header('location:'.$_SERVER['PHP_SELF'].'?msg=cep');
+				exit;
+			}else{
+				
+				$userCount	=	$db->getQueryCount('endereco','idEndereco');
+				$data	=	array(
+								'rua'=>$rua,
+								'bairro'=>$bairro,
+								'complemento'=>$complemento,
+								'cidade'=>$cidade,
+								'estado'=>$estado,
+								'numero'=>$numero,
+								'cep'=>$cep,
+							);
+				$insert	=	$db->insert('endereco',$data);
+			}	
+
+
+
+
 			if($insert){
 				header('location:Register.php?msg=ras'); //adicionado com sucesso
 				exit;
@@ -185,50 +223,50 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 
 							<div class="col-md-8">
 								<div class="form-group">
-								<label for="Rua">Rua:</label>
-								<input type="Text" class="form-control" id="Rua"  placeholder="Rua" name="Rua">
+								<label for="rua">Rua:</label>
+								<input type="Text" class="form-control" id="rua"  placeholder="Rua" name="rua">
 								</div>
 							</div>
 
 							<div class="col-md-2">
 							<div class="form-group">
-							<label for="Numero">Número:</label>
-							<input type="Text" class="form-control" id="Numero"  placeholder="Número" name="Numero">
+							<label for="numero">Número:</label>
+							<input type="Text" class="form-control" id="numero"  placeholder="Número" name="numero">
 								</div>
 							</div>
 
 							<div class="col-md-2">
 							<div class="form-group">
-							<label for="Estado">Estado:</label>
-							<input type="Text" class="form-control" id="Estado"  placeholder="Estado" name="Estado">
+							<label for="estado">Estado:</label>
+							<input type="Text" class="form-control" id="estado"  placeholder="Estado" name="estado">
 								</div>
 							</div>
 
 							<div class="col-md-4">
 							<div class="form-group">
-							<label for="Bairro">Bairro:</label>
-							<input type="Text" class="form-control" id="Bairro"  placeholder="Bairro" name="Bairro">
+							<label for="bairro">Bairro:</label>
+							<input type="Text" class="form-control" id="bairro"  placeholder="Bairro" name="bairro">
 								</div>
 							</div>
 
 							<div class="col-md-4">
 							<div class="form-group">
-							<label for="CEP">CEP:</label>
-							<input type="Text" class="form-control" id="CEP"  placeholder="CEP" name="CEP">
+							<label for="cep">CEP:</label>
+							<input type="Text" class="form-control" id="cep"  placeholder="CEP" name="cep">
 								</div>
 							</div>
 
 							<div class="col-md-4">
 							<div class="form-group">
-							<label for="Cidade">Cidade:</label>
-							<input type="Text" class="form-control" id="Cidade"  placeholder="Cidade" name="Cidade">
+							<label for="cidade">Cidade:</label>
+							<input type="Text" class="form-control" id="cidade"  placeholder="Cidade" name="cidade">
 								</div>
 							</div>
 							
 							<div class="col-md-12">
 							<div class="form-group">
-							<label for="Complemento">Complemento:</label>
-							<input type="Text" class="form-control" id="Complemento"  placeholder="Complemento" name="Complemento">
+							<label for="complemento">Complemento:</label>
+							<input type="Text" class="form-control" id="complemento"  placeholder="Complemento" name="complemento">
 								</div>
 							</div>
 							
