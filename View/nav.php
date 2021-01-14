@@ -10,7 +10,7 @@
 
 
  <?php
-	
+
  ?>
 
 
@@ -43,7 +43,7 @@
 	        <li class="nav-item">
 	          <a class="nav-link" href="#contatos">Contato</a>
 	        </li>
-			
+
      	 </ul>
 		  <ul class="navbar-nav ml-auto">
 
@@ -51,7 +51,7 @@
 				<a href="View/Login.php" class="btn btn-outline-info navbar-brand" > SUA CONSULTA AQUI </a> 
 		  </li>
 		  </ul>
-		 
+
 	    </div>
   </div>
 </nav>

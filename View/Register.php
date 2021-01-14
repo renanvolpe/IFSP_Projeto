@@ -17,7 +17,7 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 			exit;
 		}else{
 			//O login estava aqui
-										
+
 			//depois de cadastrar login, iremos cadastrar endereço...
 			if($rua==""){ //se o campo rua estiver vazio...
 				header('location:'.$_SERVER['PHP_SELF'].'?msg=rua'); //irá exibir isso no final da URL
@@ -39,14 +39,14 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 				exit;
 			}else{
 				//O endereço estava aqui
-				
+
 				//depois de cadastrar endereço, iremos cadastrar telefone...
 				if($tel1==''){//se o campo telefone principal estiver vazio...
 					header('location:'.$_SERVER['PHP_SELF'].'?msg=telP'); //irá exibir isso no final da URL
 					exit;
 				}
 				elseif($tel2==''){
-					header('location:'.$_SERVER['PHP_SELF'].'?msg=telS'); 
+					header('location:'.$_SERVER['PHP_SELF'].'?msg=telS');
 					exit;
 				}
 				elseif($cel1==''){
@@ -58,7 +58,7 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 					exit;
 				}else{
 					//O telefone estava aqui
-					
+
 
 					//depois de cadastrar telefone, iremos cadastrar pessoa...
 					if($cpf==''){//se o campo cpf estiver vazio...
@@ -66,11 +66,11 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 						exit;
 					}
 					elseif($nome==''){
-						header('location:'.$_SERVER['PHP_SELF'].'?msg=nome'); 
+						header('location:'.$_SERVER['PHP_SELF'].'?msg=nome');
 						exit;
 					}else{
 						//A pessoa estava aqui
-						
+
 
 						//depois de cadastrar pessoa, iremos cadastrar paciente...
 						if($tipoSanguineo==''){//se o campo tipo sanguineo estiver vazio...
@@ -78,10 +78,10 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 							exit;
 						}
 						elseif($sexo==''){
-							header('location:'.$_SERVER['PHP_SELF'].'?msg=sexo'); 
+							header('location:'.$_SERVER['PHP_SELF'].'?msg=sexo');
 							exit;
 						}elseif($dataNascimento==''){
-							header('location:'.$_SERVER['PHP_SELF'].'?msg=dn'); 
+							header('location:'.$_SERVER['PHP_SELF'].'?msg=dn');
 							exit;
 						}else{
 							//Depois de confirmar todos os dados os mesmos serão inseridos no banco
@@ -146,7 +146,7 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 					}
 					}
 				}
-			}	
+			}
 
 
 
@@ -169,7 +169,7 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Clinica médica</title>
+  <title>Registro Usuário</title>
 </head>
 <body>
 <nav class="navbar  navbar-expand-lg navbar-dark bg-primary">
@@ -195,8 +195,8 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 
 
 <div class="container">
-	
-	
+
+
 		<div class="jumbotorn bg-primary" style=" margin-top:40px;  border-radius: 10px;">
 		<?php
 
@@ -233,8 +233,8 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 		      </div>
 
 		      <div class="bg-light" style="margin:2px; padding:10px 10px" >
-			  
-					<h3>Dados Pessoais:</h3>  
+
+					<h3>Dados Pessoais:</h3>
 					<hr>
 
 					<form method="post">
@@ -243,7 +243,7 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 							<div class="form-group">
 							<label for="nome">Nome Completo:</label>
 							<input type="text" class="form-control" id="nome"  placeholder="Nome Completo" name="nome" autofocus>
-							
+
 							</div>
 							</div>
 							<div class="col-md-3 control-label">
@@ -267,7 +267,7 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 								<div class="form-floating">
 								<label for="tel1">Telefone Principal:</label>
 								<input type="text" class="form-control" id="tel1" placeholder="xxxx-xxxx" value="" name="tel1">
-								
+
 								</div>
 							</div>
 
@@ -275,7 +275,7 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 								<div class="form-floating">
 								<label for="tel2">Telefone Segundario:</label>
 								<input type="text" class="form-control" id="tel2" placeholder="xxxx-xxxx" value="" name="tel2">
-								
+
 								</div>
 							</div>
 
@@ -283,25 +283,25 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 								<div class="form-floating">
 								<label for="cel1">Celular Principal:</label>
 								<input type="text" class="form-control" id="cel1" placeholder="xxxxx-xxxx" value="" name="cel1">
-								
+
 								</div>
 							</div>
-							
+
 							<div class="col-md-3">
 								<div class="form-floating">
 								<label for="cel2">Celular Segundario:</label>
 								<input type="text" class="form-control" id="cel2" placeholder="xxxxx-xxxx" value="" name="cel2">
-								
+
 								</div>
 							</div>
 
-							
+
 
 							<div class="col-md-4">
 								<div class="form-floating">
 								<label for="cpf">CPF:</label>
 								<input type="text" class="form-control" id="cpf" placeholder="CPF" value="" name="cpf">
-								
+
 								</div>
 							</div>
 
@@ -309,7 +309,7 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 								<div class="form-floating">
 								<label for="dataNascimento">Data nascimento:</label>
 								<input type="date" class="form-control" id="dataNascimento" placeholder="<?php echo "date"; ?>" value="" name="dataNascimento">
-								
+
 								</div>
 							</div>
 
@@ -325,7 +325,7 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 							</div>
 					</div>
 
-					
+
 					<h3> Endereço: </h3>
 							<hr>
 							<div class="row form-group">
@@ -371,14 +371,14 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 							<input type="Text" class="form-control" id="cidade"  placeholder="Cidade" name="cidade">
 								</div>
 							</div>
-							
+
 							<div class="col-md-12">
 							<div class="form-group">
 							<label for="complemento">Complemento:</label>
 							<input type="Text" class="form-control" id="complemento"  placeholder="Complemento" name="complemento">
 								</div>
 							</div>
-							
+
 							</div>
 
 							<h3> Dados de Email: </h3>
@@ -411,7 +411,7 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 							<input type="password" class="form-control" id="confSenha" name="confSenha" placeholder="Confirmar Senha"  >
 								</div>
 							</div>
-							
+
 
 
 							</div>
@@ -420,29 +420,29 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 							<button type="submit" name="submit" value="submit" id="submit" class="btn btn-primary btn-lg btn-block"> Enviar cadastro </button>
 							</div>
 					</form>
-					
 
-							
-						
-						
 
-						
+
+
+
+
+
 					</div>
-					
 
-   			
+
+
 
 		</div>
-		
-			
+
+
 		<div class="">
-				
+
 		</div>
-		
+
 </div>
 
-	
-	
+
+
 
 
 </body>

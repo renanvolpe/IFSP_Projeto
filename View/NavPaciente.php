@@ -1,7 +1,5 @@
 <?php
-
 include '../ChamarBoostrap.php';
-
 ?>
 
 <!DOCTYPE html>
@@ -10,16 +8,16 @@ include '../ChamarBoostrap.php';
 
 
  <?php
-	
+
  ?>
 
 
-  <title>Clinica médica</title>
+  <title>Área Paciente</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light" style="border-bottom: 1px solid black">
+<nav class="navbar  navbar-expand-lg navbar-dark bg-primary" style="border-bottom: 1px solid black">
   <div class="container-fluid">
-	    <a class="navbar-brand" href="#index.php">Home</a>
+	    <a class="navbar-brand" aria-current="page" href="ListarPaciente.php">Home</a>
 	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 	      <span class="navbar-toggler-icon"></span>
 	    </button>
@@ -37,10 +35,10 @@ include '../ChamarBoostrap.php';
 			<li class="nav-item">
 	          <a class="nav-link active" href="#noti">Sucesso</a>
 	        </li>
-			
-            
-			
-			
+
+
+
+
      	 </ul>
 		  <ul class="navbar-nav ml-auto">
 
@@ -48,7 +46,7 @@ include '../ChamarBoostrap.php';
 				<button class="btn btn-outline-secondary navbar-brand">Olá! Sr (Nome Paciente) </button>
 		  </li>
 		  </ul>
-		 
+
 	    </div>
   </div>
 </nav>

@@ -1,10 +1,9 @@
 <?php
 session_start();
-
-
-
 include '../conexao.php';
+include 'NavMedico.php';
 ?>
+
 
 <!DOCTYPE html>
 <html>
@@ -74,11 +73,11 @@ include '../conexao.php';
                                     <label class="col-sm-2 col-form-label">Color</label>
                                     <div class="col-sm-10">
                                         <select name="color" class="form-control" id="color">
-                                            <option value="">Selecione</option>			
+                                            <option value="">Selecione</option>
                                             <option style="color:#FFD700;" value="#FFD700">Amarelo</option>
                                             <option style="color:#0071c5;" value="#0071c5">Azul Turquesa</option>
                                             <option style="color:#FF4500;" value="#FF4500">Laranja</option>
-                                            <option style="color:#8B4513;" value="#8B4513">Marrom</option>	
+                                            <option style="color:#8B4513;" value="#8B4513">Marrom</option>
                                             <option style="color:#1C1C1C;" value="#1C1C1C">Preto</option>
                                             <option style="color:#436EEE;" value="#436EEE">Royal Blue</option>
                                             <option style="color:#A020F0;" value="#A020F0">Roxo</option>
@@ -104,10 +103,10 @@ include '../conexao.php';
                                 <div class="form-group row">
                                     <div class="col-sm-10">
                                         <button type="button" class="btn btn-primary btn-canc-edit">Cancelar</button>
-                                        <button type="submit" name="CadEvent" id="CadEvent" value="CadEvent" class="btn btn-warning">Salvar</button>                                    
+                                        <button type="submit" name="CadEvent" id="CadEvent" value="CadEvent" class="btn btn-warning">Salvar</button>
                                     </div>
                                 </div>
-                            </form>                            
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -136,11 +135,11 @@ include '../conexao.php';
                                 <label class="col-sm-2 col-form-label">Color</label>
                                 <div class="col-sm-10">
                                     <select name="color" class="form-control" id="color">
-                                        <option value="">Selecione</option>			
+                                        <option value="">Selecione</option>
                                         <option style="color:#FFD700;" value="#FFD700">Amarelo</option>
                                         <option style="color:#0071c5;" value="#0071c5">Azul Turquesa</option>
                                         <option style="color:#FF4500;" value="#FF4500">Laranja</option>
-                                        <option style="color:#8B4513;" value="#8B4513">Marrom</option>	
+                                        <option style="color:#8B4513;" value="#8B4513">Marrom</option>
                                         <option style="color:#1C1C1C;" value="#1C1C1C">Preto</option>
                                         <option style="color:#436EEE;" value="#436EEE">Royal Blue</option>
                                         <option style="color:#A020F0;" value="#A020F0">Roxo</option>
@@ -165,7 +164,7 @@ include '../conexao.php';
 
                             <div class="form-group row">
                                 <div class="col-sm-10">
-                                    <button type="submit" name="CadEvent" id="CadEvent" value="CadEvent" class="btn btn-success">Cadastrar</button>                                    
+                                    <button type="submit" name="CadEvent" id="CadEvent" value="CadEvent" class="btn btn-success">Cadastrar</button>
                                 </div>
                             </div>
                         </form>
