@@ -48,7 +48,7 @@
 		  <ul class="navbar-nav ml-auto">
 
 		  <li class="nav-item ml-auto">
-				<button class="btn btn-outline-info navbar-brand"> SUA CONSULTA AQUI </button>
+				<a href="View/Login.php" class="btn btn-outline-info navbar-brand" > SUA CONSULTA AQUI </a> 
 		  </li>
 		  </ul>
 		 

@@ -7,7 +7,7 @@ include_once ('../config.php');
 
 if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 	extract($_REQUEST);
-	if($privilegio==""){
+	
 		$privilegio="paciente";
 		if($login==""){ //se o campo login estiver vazio...
 			header('location:'.$_SERVER['PHP_SELF'].'?msg=login'); //irá exibir isso no final da URL
@@ -142,6 +142,7 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 											'pessoa_IdPessoa'=>$pessoa_IdPessoa,
 										);
 							$insert	=	$db->insert('paciente',$data);
+							
 					}
 					}
 				}
@@ -151,14 +152,16 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 
 
 			if($insert){
-				header('location:Register.php?msg=ras'); //adicionado com sucesso
+				 
+				echo "<script>alert('Login realizado com Sucesso!');location.href=\"Login.php\";</script>";
+				//header('location:Login.php'); //adicionado com sucesso
 				exit;
 			}else{
-				header('location:Register.php?msg=rna'); //deu ruim, boy
+				header('location:Register.php?msg=rna'); //deu ruim, boy, boy o caraio, me respeita
 				exit;
 			}
 		}
-	}
+	
 }
 
 ?>
@@ -169,10 +172,28 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
   <title>Clinica médica</title>
 </head>
 <body>
+<nav class="navbar  navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+	    <a class="navbar-brand" href="#Home">Home</a>
+	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+	      <span class="navbar-toggler-icon"></span>
+	    </button>
+	    
+			
+     	 </ul>
+		  <ul class="navbar-nav ml-auto">
 
-<?php
-	include 'nav.php';
-?>
+		  <li class="nav-item ml-auto">
+		  		
+				<a href="Login.php" class="btn btn-danger navbar-brand" > Fazer Login </a> 
+		  </li>
+		  </ul>
+		 
+	    </div>
+  </div>
+</nav>
+
+
 <div class="container">
 	
 	
