@@ -1,8 +1,9 @@
 <?php
 session_start();
 
-include 'NavMedico.php';
 
+
+include '../conexao.php';
 ?>
 
 <!DOCTYPE html>
