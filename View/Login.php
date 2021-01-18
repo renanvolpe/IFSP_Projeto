@@ -1,5 +1,5 @@
 <?php
-session_start(); 
+session_start();
 if( empty($_SESSION['clinica']) == false ){
 	header("location: calendario.php");
 }
@@ -7,16 +7,15 @@ if( empty($_SESSION['clinica']) == false ){
 //Página incial
 
 
-
 include '../ChamarBoostrap.php';
 include_once ('../config.php');
-        
+
 
 $condition    =    '';
 if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 	extract($_REQUEST);
-	
-	
+
+
 	if($login==""){ //se o campo login estiver vazio...
 		header('location:'.$_SERVER['PHP_SELF'].'?msg=login'); //irá exibir isso no final da URL
 		exit;
@@ -25,39 +24,63 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 		exit;
 	}
 	else{ // aqui vai se tudo tiver preenchido
-		
+
 		$condition .=    ' AND login LIKE "'.$_REQUEST['login'].'" ';
 		$condition .=    ' AND senha LIKE "'.$_REQUEST['senha'].'" ';
 
 		$userData    =    $db->getAllRecords('login','*',$condition,'ORDER BY idLogin');
 
-		
-		
+
+
 		if(count($userData)>0){
 		  $s    =    '';
 		  foreach($userData as $val){
+
 			$s++;
 		    }
 				//$_SESSION['idPaciente'] = $val['id'];
-				
+
 			$_SESSION['clinica'] =	$val['idLogin'];
+
+			$s++;}
+
+
+			$senhaBanco = $val['senha'];
+			$senhaSubmit = $_REQUEST['senha'];
+
+			if( $val['login'] == $_REQUEST['login']) {
+
+				if($senhaBanco == $senhaSubmit)
+					echo "<script>alert('Login realizado com Sucesso!');location.href=\"calendario.php\";</script>";
+				else
+					echo "<script>alert('Deu ruim na senha!');</script>";
+
+				exit;
+
 
 			$privilegio = $val['privilegio'];
 
 			if($privilegio=='paciente')
-				echo "<script>alert('Login realizado com Sucesso!');location.href=\"calendario.php\";</script>";					
+				echo "<script>alert('Login realizado com Sucesso!');location.href=\"calendario.php\";</script>";
 			elseif($privilegio=='medico')
 				echo "<script>alert('Login do medico realizado com Sucesso!');location.href=\"ListarPacienteMedico.php\";</script>";
 			else{
 				header('location:'.$_SERVER['PHP_SELF'].'?msg=dsd'); //privilegio nao encontrado
 				exit;
 			}
-		  }else{ 
+
+		  }else{
 			header('location:'.$_SERVER['PHP_SELF'].'?msg=rna'); //usuario incorreto
 			exit;
 		  }
 		}
-	}
+
+
+		  }else{
+			  exit;
+		  }
+
+
 
 ?>
 
@@ -66,7 +89,7 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 <head>
 
 
- 
+
 
   <title>Clinica médica</title>
 </head>
@@ -79,24 +102,25 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 <!-- login HTML -->
 <nav class="navbar  navbar-expand-lg navbar-dark bg-primary">
   <div class="container-fluid">
-	    <a class="navbar-brand" href="#Home">Home</a>
+	    <a class="navbar-brand" href="../index.php">Home</a>
 	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 	      <span class="navbar-toggler-icon"></span>
 	    </button>
-	    
-			
+
+
      	 </ul>
 		  <ul class="navbar-nav ml-auto">
 
 		  <li class="nav-item ml-auto">
-		  		
-				<a href="Register.php" class="btn btn-danger navbar-brand" > Cadastre-se </a> 
+
+				<a href="Register.php" class="btn btn-dark navbar-brand" > Cadastre-se </a>
 		  </li>
 		  </ul>
-		 
+
 	    </div>
   </div>
 </nav>
+
 
 <?php
 
@@ -119,17 +143,18 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 		}
 
 		?>
+
 <form method="POST">
 	<div class="container " style="margin-top:5%">
-		<div class="text-center">
+		<div class="text-center ">
 				<img class="rounded mx-auto d-block" src="https://seeklogo.com/images/C/caduceo-medico-logo-514CD7BD9E-seeklogo.com.png" alt="Card image cap">
 			</div>
 		<div class="row justify-content-md-center">
-		<div class="card text-center col-8 ">		
+		<div class="card text-center col-8 ">
 			<div class="card-body">
 			<h5 class="card-title"></h5>
 			<p class="card-text">
-				<div class="form-group row">
+				<div class="form-group row border rounded p-3 mb-2">
 					<label for="email" class="col-sm-3 col-form-label text-info text-right">Endereço de e-mail</label>
 					<div class="col">
 						<input type="email" class="form-control" id="email" name="login" placeholder="Insira seu e-mail" required>
@@ -145,21 +170,22 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 			</p>
 			<div class="row align-items-center">
 				<div class="col">
-					<button type="submit" name="submit" value="submit" id="submit" class="btn btn-primary">Login</button>  
+					<button type="submit" name="submit" value="submit" id="submit" class="btn btn-primary">Login</button>
 					&nbsp
 					<a href="#"> Esqueceu a senha?</a>
 					&nbsp
-					
-					
+
+
 				</div>
 			</div>
-			
+
 			</div>
 		</div>
 		</div>
-	</div> 
-</form>   
- 
+	</form></div>
+
 </body>
 
 </html>
+
+

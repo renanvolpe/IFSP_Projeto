@@ -17,9 +17,9 @@
   <title>Clinica médica</title>
 </head>
 <body>
-<nav class="navbar  navbar-expand-lg navbar-dark bg-primary">
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary border rounded p-2 mb-2">
   <div class="container-fluid">
-	    <a class="navbar-brand" href="#Home">Home</a>
+	    <a class="navbar-brand" href="index.php">Home</a>
 	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 	      <span class="navbar-toggler-icon"></span>
 	    </button>
@@ -35,20 +35,19 @@
 	          <a class="nav-link" href="#sabia">Você Sabia?</a>
 	        </li>
 			<li class="nav-item">
-	          <a class="nav-link" href="#especialidades">especialidades</a>
+	          <a class="nav-link" href="#especialidades">Especialidades</a>
 	        </li>
 			<li class="nav-item">
-	          <a class="nav-link" href="#tratamento">tratamento</a>
+	          <a class="nav-link" href="#tratamento">Tratamentos</a>
 	        </li>
-	        <li class="nav-item">
-	          <a class="nav-link" href="#contatos">Contato</a>
+            <li class="nav-item">
+	          <a class="nav-link" href="#contatos">Contatos</a>
 	        </li>
-
      	 </ul>
 		  <ul class="navbar-nav ml-auto">
 
 		  <li class="nav-item ml-auto">
-				<a href="View/Login.php" class="btn btn-outline-info navbar-brand" > SUA CONSULTA AQUI </a> 
+				<a href="View/Login.php" class="btn btn-outline-info navbar-brand bg-dark" > SUA CONSULTA AQUI </a>
 		  </li>
 		  </ul>
 

@@ -7,7 +7,7 @@ include_once ('../config.php');
 
 if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 	extract($_REQUEST);
-	
+
 		$privilegio="paciente";
 		if($login==""){ //se o campo login estiver vazio...
 			header('location:'.$_SERVER['PHP_SELF'].'?msg=login'); //irá exibir isso no final da URL
@@ -142,8 +142,10 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 											'pessoa_IdPessoa'=>$pessoa_IdPessoa,
 										);
 							$insert	=	$db->insert('paciente',$data);
-							
+
 						}
+
+					}
 					}
 				}
 			}
@@ -152,7 +154,7 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 
 
 			if($insert){
-				 
+
 				echo "<script>alert('Login realizado com Sucesso!');location.href=\"Login.php\";</script>";
 				//header('location:Login.php'); //adicionado com sucesso
 				exit;
@@ -161,8 +163,9 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 				exit;
 			}
 		}
-	
+
 }
+
 
 ?>
 
@@ -173,28 +176,28 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 </head>
 <body>
 <nav class="navbar  navbar-expand-lg navbar-dark bg-primary">
-  <div class="container-fluid">
-	    <a class="navbar-brand" href="#Home">Home</a>
+  <div class="container-fluid ">
+	    <a class="navbar-brand" href="../index.php">Home</a>
 	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 	      <span class="navbar-toggler-icon"></span>
 	    </button>
-	    
-			
+
+
      	 </ul>
 		  <ul class="navbar-nav ml-auto">
 
 		  <li class="nav-item ml-auto">
-		  		
-				<a href="Login.php" class="btn btn-danger navbar-brand" > Fazer Login </a> 
+
+				<a href="Login.php" class="btn btn-dark navbar-brand" > Fazer Login </a>
 		  </li>
 		  </ul>
-		 
+
 	    </div>
   </div>
 </nav>
 
 
-<div class="container">
+<div class="container border rounded p-3 mb-2">
 
 
 		<div class="jumbotorn bg-primary" style=" margin-top:40px;  border-radius: 10px;">
@@ -228,7 +231,7 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 
 		?>
 
-		      <div class="text-center">
+		      <div class="text-center ">
 		      	<h2 style="color: white; padding: 20px;"> Cadastro </h2>
 		      </div>
 
@@ -420,30 +423,12 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 							<button type="submit" name="submit" value="submit" id="submit" class="btn btn-primary btn-lg btn-block"> Enviar cadastro </button>
 							</div>
 					</form>
-
-
-
-
-
-
-
-					</div>
-
-
-
-
+				</div>
 		</div>
-
 
 		<div class="">
-
 		</div>
-
 </div>
-
-
-
-
 
 </body>
 </html>

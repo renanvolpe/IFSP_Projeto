@@ -2,7 +2,7 @@
     $servername = "localhost";
     $database = "clinicamedica";
     $username = "root";
-    $password = "";
+    $password = "root";
     // Create connection
 
 

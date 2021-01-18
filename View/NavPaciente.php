@@ -8,7 +8,7 @@ include_once ('../config.php');
 
  <?php
 	$idLogin = $_SESSION['clinica'];
-	
+
 		$condition = 'AND login_idLogin LIKE "'.$idLogin .'"';
 		$userData    =    $db->getAllRecords('pessoa','*',$condition,'');
 		if(count($userData)>0){
@@ -16,10 +16,10 @@ include_once ('../config.php');
 		  foreach($userData as $pessoa){
 			$s++;
 			}
-			
+
 			$NomePaciente = $pessoa['nome'];
 		}else{
-			
+
 		}
  ?>
 <!DOCTYPE html>
@@ -29,23 +29,25 @@ include_once ('../config.php');
   <title>Área Paciente</title>
 </head>
 <body>
-<nav class="navbar  navbar-expand-lg navbar-dark bg-primary" style="border-bottom: 1px solid black" role="tablist">
-  <div class="container-fluid">
-	    <a class="navbar-brand" aria-current="page" href="ListarPaciente.php">Home</a>
-	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-	      <span class="navbar-toggler-icon"></span>
-	    </button>
-	    <div class="collapse navbar-collapse " id="navbarNav">
+<nav class="navbar  navbar-expand-lg navbar-dark bg-primary" style="border-bottom: 1px solid black">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="ListarPaciente.php">Home</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse " id="navbarNav">
 	      <ul class="navbar-nav">
           <li class="nav-item">
-	          <a class="nav-link active" href="#paciente">Escolha um Horário</a>
+	          <a class="nav-link " href="#paciente">Escolha um Horário</a>
 	        </li>
-	       
 	        <li class="nav-item">
-	          <a class="nav-link active" href="#agenda">Confirmação</a>
+	          <a class="nav-link " aria-current="page" href="#calendario">Pré-cadastro</a>
+	        </li>
+	        <li class="nav-item">
+	          <a class="nav-link " href="#agenda">Confirmação</a>
 	        </li>
 			<li class="nav-item">
-	          <a class="nav-link active" href="#noti">Sucesso</a>
+	          <a class="nav-link " href="#noti">Sucesso</a>
 	        </li>
 
 

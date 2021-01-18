@@ -2,7 +2,7 @@
 include_once('include/Database.php');
 define('SS_DB_NAME', 'clinicamedica');
 define('SS_DB_USER', 'root');
-define('SS_DB_PASSWORD', '');
+define('SS_DB_PASSWORD', 'root');
 define('SS_DB_HOST', 'localhost');
 
 $dsn	= 	"mysql:dbname=".SS_DB_NAME.";host=".SS_DB_HOST."";

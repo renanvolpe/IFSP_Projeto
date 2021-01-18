@@ -8,7 +8,7 @@ include_once ('../config.php');
 
  <?php
 	$idLogin = $_SESSION['clinica'];
-	
+
 		$condition = 'AND login_idLogin LIKE "'.$idLogin .'"';
 		$userData    =    $db->getAllRecords('pessoa','*',$condition,'');
 		if(count($userData)>0){
@@ -16,10 +16,10 @@ include_once ('../config.php');
 		  foreach($userData as $pessoa){
 			$s++;
 			}
-			
+
 			$NomeMedico = $pessoa['nome'];
 		}else{
-			
+
 		}
  ?>
 
@@ -41,13 +41,26 @@ include_once ('../config.php');
             <div class="collapse navbar-collapse " id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="ListarPacienteMedico.php">Pacientes</a>
+                        <a class="nav-link " aria-current="page" href="ListarPacienteMedico.php">Pacientes</a>
                     </li>
                     <li class="nav-item">
+
                         <a class="nav-link "  href="calendarioMedico.php"> Calendário</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link " href="#avaliacao">Avaliações</a>
+
+                        <a class="nav-link " aria-current="page" href="calendario.php">Calendário</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " aria-current="page" href="#agenda">Agenda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " aria-current="page" href="#noti">Notificações</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " aria-current="page" href="#avaliacao">Avaliações</a>
+
                     </li>
 
 
