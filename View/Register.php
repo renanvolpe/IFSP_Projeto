@@ -143,7 +143,7 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 										);
 							$insert	=	$db->insert('paciente',$data);
 							
-					}
+						}
 					}
 				}
 			}

@@ -1,7 +1,6 @@
 <?php
 session_start();
 include '../conexao.php';
-include 'NavMedico.php';
 ?>
 
 
@@ -25,6 +24,8 @@ include 'NavMedico.php';
     </head>
     <body>
         <?php
+        include 'NavMedico.php';
+
         if (isset($_SESSION['msg'])) {
             echo $_SESSION['msg'];
             unset($_SESSION['msg']);

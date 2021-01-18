@@ -9,6 +9,7 @@ include '../ChamarBoostrap.php';
         <div class="header clearfix">
             <h3 class="text-muted">Sr. Médico, cadastre seus dados!</h3>
         </div>
+        <!-- inserir $privilegio="administrador"; para adicionar automaticamente no banco ao realizar cadastro-->
 
         <form action="index.php?pagina=incluir_medico.php" method="post">
             <div class="container border rounded border-dark p-3 mb-2 bg-white text-dark ">
@@ -89,7 +90,7 @@ include '../ChamarBoostrap.php';
                                     <td>95434725</td>
                                     <td>1981-09-12</td>
                                     <td><a href="javascript:void(null);" onclick="msgConfirmaDeleteMedico(1)" class="btn btn-danger" href="excluir_medico.php?id=1">Excluir</a></td>
-                                    <td><a aria-current="page" href="CadastrarMedico.php"" class=" btn btn-primary">Editar</a></td>
+                                    <td><a aria-current="page" href="CadastrarMedico.php" class=" btn btn-primary">Editar</a></td>
                                 </tr>
                             </tbody>
                         </table>

@@ -3,8 +3,7 @@
 
 include '../ChamarBoostrap.php';
 include_once ('../config.php');
-
-
+        
 
 $condition    =    '';
 if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
@@ -29,27 +28,19 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 		  foreach($userData as $val){
 			$s++;}
 
-			
-			$senhaBanco = $val['senha'];
-			$senhaSubmit = $_REQUEST['senha'];
-			
-			if( $val['login'] == $_REQUEST['login']) {
+			$privilegio = $val['privilegio'];
 
-				if($senhaBanco == $senhaSubmit)
-					echo "<script>alert('Login realizado com Sucesso!');location.href=\"calendario.php\";</script>";
-				else
-					echo "<script>alert('Deu ruim na senha!');</script>";
-				
-				exit;
-
-			//	echo "<script>alert('Login realizado com Sucesso!');location.href=\"calendario.php\";</script>";
-			} else{
-				echo "<script>alert('Deu ruim no Login!');</script>";
+			if($privilegio=='paciente')
+				echo "<script>alert('Login realizado com Sucesso!');location.href=\"calendario.php\";</script>";					
+			elseif($privilegio=='administrador')
+				echo "<script>alert('Login administrativo realizado com Sucesso!');location.href=\"listarpacientemedico.php\";</script>";
+			else{
+				header('location:'.$_SERVER['PHP_SELF'].'?msg=dsd'); //privilegio nao encontrado
 				exit;
 			}
-
 		  }else{ 
-			  exit;
+			header('location:'.$_SERVER['PHP_SELF'].'?msg=rna'); //usuario incorreto
+			exit;
 		  }
 	  
           
@@ -76,7 +67,6 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 
 <body>
 
-
 <!-- login HTML -->
 <nav class="navbar  navbar-expand-lg navbar-dark bg-primary">
   <div class="container-fluid">
@@ -99,8 +89,27 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
   </div>
 </nav>
 
-</nav>
+<?php
 
+		if(isset($_REQUEST['msg']) and $_REQUEST['msg']=="login"){
+
+			echo	'<div class="alert alert-danger"><i class="fa fa-exclamation-triangle"></i> Login é obrigatório!</div>';
+
+		}elseif(isset($_REQUEST['msg']) and $_REQUEST['msg']=="senha"){
+
+			echo	'<div class="alert alert-danger"><i class="fa fa-exclamation-triangle"></i> Senha é obrigatório!</div>';
+
+		}elseif(isset($_REQUEST['msg']) and $_REQUEST['msg']=="rna"){
+
+			echo	'<div class="alert alert-danger"><i class="fa fa-exclamation-triangle"></i> Usuário incorreto. <strong>Tente novamente!</strong></div>';
+
+		}elseif(isset($_REQUEST['msg']) and $_REQUEST['msg']=="dsd"){
+
+			echo	'<div class="alert alert-danger"><i class="fa fa-exclamation-triangle"></i> Usuário (privilégio) não encontrado! </div>';
+
+		}
+
+		?>
 <form method="POST">
 	<div class="container " style="margin-top:5%">
 		<div class="text-center">
@@ -114,13 +123,13 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 				<div class="form-group row">
 					<label for="email" class="col-sm-3 col-form-label text-info text-right">Endereço de e-mail</label>
 					<div class="col">
-						<input type="email" class="form-control" id="email" name="login" placeholder="Insira seu e-mail">
+						<input type="email" class="form-control" id="email" name="login" placeholder="Insira seu e-mail" required>
 					</div>
 				</div>
 				<div class="form-group row">
 					<label for="password" class="col-sm-3 col-form-label text-info text-right">Senha</label>
 					<div class="col">
-					<input type="password" class="form-control" id="password" name="senha" placeholder="Insira sua senha">
+					<input type="password" class="form-control" id="password" name="senha" placeholder="Insira sua senha" required>
 					</div>
 				</div>
 
@@ -143,4 +152,5 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 </form>   
  
 </body>
+
 </html>
