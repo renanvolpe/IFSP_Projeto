@@ -46,7 +46,7 @@ include '../conexao.php';
                         <div class="visevent">
                             <dl class="row">
                                 <dt class="col-sm-3">ID do evento</dt>
-                                <dd class="col-sm-9" id="id"></dd>
+                                <dd class="col-sm-9" id="idAgenda"></dd>
 
                                 <dt class="col-sm-3">Título do evento</dt>
                                 <dd class="col-sm-9" id="title"></dd>
@@ -63,7 +63,7 @@ include '../conexao.php';
                         <div class="formedit">
                             <span id="msg-edit"></span>
                             <form id="editevent" method="POST" enctype="multipart/form-data">
-                                <input type="hidden" name="id" id="id" >
+                                <input type="hidden" name="idAgenda" id="idAgenda" >
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Título</label>
                                     <div class="col-sm-10">

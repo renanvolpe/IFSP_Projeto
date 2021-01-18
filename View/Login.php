@@ -42,13 +42,8 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 			header('location:'.$_SERVER['PHP_SELF'].'?msg=rna'); //usuario incorreto
 			exit;
 		  }
-	  
-          
-        
-
-		
+		}
 	}
-}
 
 ?>
 

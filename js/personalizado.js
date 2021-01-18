@@ -14,11 +14,11 @@ document.addEventListener('DOMContentLoaded', function () {
             };
         },
         eventClick: function (info) {
-            $("#apagar_evento").attr("href", "../controller/proc_apagar_evento.php?id=" + info.event.id);
+            $("#apagar_evento").attr("href", "../controller/proc_apagar_evento.php?idAgenda=" + info.event.idAgenda);
             info.jsEvent.preventDefault(); // don't let the browser navigate
             console.log(info.event);
-            $('#visualizar #id').text(info.event.id);
-            $('#visualizar #id').val(info.event.id);
+            $('#visualizar #idAgenda').text(info.event.idAgenda);
+            $('#visualizar #idAgenda').val(info.event.idAgenda);
             $('#visualizar #title').text(info.event.title);
             $('#visualizar #title').val(info.event.title);
             $('#visualizar #start').text(info.event.start.toLocaleString());
