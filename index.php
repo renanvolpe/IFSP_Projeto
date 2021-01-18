@@ -2,7 +2,7 @@
 include 'ConexaoBanco.php';
 include 'ChamarBoostrap.php';
 
-include 'View/nav.php';
+include 'View/navHome.php';
 
 ?>
 

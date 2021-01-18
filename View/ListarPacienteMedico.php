@@ -58,7 +58,7 @@ include '../ChamarBoostrap.php';
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
-        <script type='text/javascript'> <!-- nao apagar, precisa para funcionar o botão IMPRIMIR -->
+        <script type='text/javascript'>// <!-- nao apagar, precisa para funcionar o botão IMPRIMIR -->
         ///<![CDATA[ /* inicio configuracao head para IMPRESSAO/PRINT da pagina */ ATENÇÃO: acrescentar antes de <h2> Listagem de Pacientes</h2>
         //-->faz referencia str=document.getElementById('main-content').innerHTML <----
         //depois da <div id="centralpacientes">
@@ -191,7 +191,7 @@ include '../ChamarBoostrap.php';
             <input onclick="javascript:void(printContent());" type="button" value="Imprimir" class="btn btn-info" />
             </form> <!-- nao apagar, precisa para funcionar o botão IMPRIMIR -->
         </div>
-        <script> <!-- nao apagar, precisa para funcionar a PESQUISA -->
+        <script>// <!-- nao apagar, precisa para funcionar a PESQUISA -->
         $(document).ready(function(){
         $("#myInput").on("keyup", function() {
             var value = $(this).val().toLowerCase();

@@ -7,6 +7,7 @@ include_once ('../config.php');
 
 
  <?php
+ /*
 	$idLogin = $_SESSION['clinica'];
 
 		$condition = 'AND login_idLogin LIKE "'.$idLogin .'"';
@@ -21,7 +22,8 @@ include_once ('../config.php');
 		}else{
 
 		}
- ?>
+		*/
+ ?> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,9 +43,6 @@ include_once ('../config.php');
 	          <a class="nav-link " href="#paciente">Escolha um Horário</a>
 	        </li>
 	        <li class="nav-item">
-	          <a class="nav-link " aria-current="page" href="#calendario">Pré-cadastro</a>
-	        </li>
-	        <li class="nav-item">
 	          <a class="nav-link " href="#agenda">Confirmação</a>
 	        </li>
 			<li class="nav-item">
@@ -57,7 +56,7 @@ include_once ('../config.php');
 		  <ul class="navbar-nav ml-auto">
 
 		  <li class="nav-item ml-auto">
-				<button class="btn btn-outline-secondary navbar-brand">Olá! Sr <?php echo $NomePaciente ;?> </button>
+				<button class="btn btn-outline-secondary navbar-brand">Olá! Sr <?php// echo $NomePaciente ;?> </button>
 		  </li>
 		  <li class="nav-item ml-auto">
 		  <a class="btn btn-danger navbar-brand" href="../controller/DesfazerLogin.php" > Sair </a>

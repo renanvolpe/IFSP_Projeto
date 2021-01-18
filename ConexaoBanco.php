@@ -2,7 +2,9 @@
     $servername = "localhost";
     $database = "clinicamedica";
     $username = "root";
-    $password = "root";
+    //$password = "";//ESSE AQUI E PARA GERAL FUNCINAR
+    //$password = "root";//ESSE AQUI E PARA ISSO É PARA FUNCIONAR NO PC DO ALEX
+    $password = "simsenha123";//ISSO É PARA FUNCIONAR NO PC DO MARCO
     // Create connection
 
 
