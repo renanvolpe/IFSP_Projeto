@@ -1,5 +1,12 @@
 <?php
+session_start(); 
+if( empty($_SESSION['clinica']) == false ){
+	header("location: calendario.php");
+}
+
 //Página incial
+
+
 
 include '../ChamarBoostrap.php';
 include_once ('../config.php');
@@ -18,15 +25,22 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 		exit;
 	}
 	else{ // aqui vai se tudo tiver preenchido
+		
 		$condition .=    ' AND login LIKE "'.$_REQUEST['login'].'" ';
 		$condition .=    ' AND senha LIKE "'.$_REQUEST['senha'].'" ';
 
 		$userData    =    $db->getAllRecords('login','*',$condition,'ORDER BY idLogin');
 
+		
+		
 		if(count($userData)>0){
 		  $s    =    '';
 		  foreach($userData as $val){
-			$s++;}
+			$s++;
+		    }
+				//$_SESSION['idPaciente'] = $val['id'];
+				
+			$_SESSION['clinica'] =	$val['idLogin'];
 
 			$privilegio = $val['privilegio'];
 

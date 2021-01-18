@@ -1,16 +1,30 @@
 <?php
+
 include '../ChamarBoostrap.php';
+include_once ('../config.php');
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
 
 
  <?php
-
+	$idLogin = $_SESSION['clinica'];
+	
+		$condition = 'AND login_idLogin LIKE "'.$idLogin .'"';
+		$userData    =    $db->getAllRecords('pessoa','*',$condition,'');
+		if(count($userData)>0){
+		  $s    =    '';
+		  foreach($userData as $pessoa){
+			$s++;
+			}
+			
+			$NomePaciente = $pessoa['nome'];
+		}else{
+			
+		}
  ?>
-
+<!DOCTYPE html>
+<html>
+<head>
 
   <title>Área Paciente</title>
 </head>
@@ -26,9 +40,7 @@ include '../ChamarBoostrap.php';
           <li class="nav-item">
 	          <a class="nav-link active" href="#paciente">Escolha um Horário</a>
 	        </li>
-	        <li class="nav-item">
-	          <a class="nav-link active" aria-current="page" href="#calendario">Pré-cadastro</a>
-	        </li>
+	       
 	        <li class="nav-item">
 	          <a class="nav-link active" href="#agenda">Confirmação</a>
 	        </li>
@@ -43,7 +55,10 @@ include '../ChamarBoostrap.php';
 		  <ul class="navbar-nav ml-auto">
 
 		  <li class="nav-item ml-auto">
-				<button class="btn btn-outline-secondary navbar-brand">Olá! Sr (Nome Paciente) </button>
+				<button class="btn btn-outline-secondary navbar-brand">Olá! Sr <?php echo $NomePaciente ;?> </button>
+		  </li>
+		  <li class="nav-item ml-auto">
+		  <a class="btn btn-danger navbar-brand" href="../controller/DesfazerLogin.php" > Sair </a>
 		  </li>
 		  </ul>
 

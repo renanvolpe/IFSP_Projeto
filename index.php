@@ -226,7 +226,7 @@ include 'View/nav.php';
 </div>
 <br>
 <!-- COMEÇA FORMULARIO CONTATO -->
-<div class="container">
+<div class="container" id= "contatos">
     <div style="text-align:center">
         <h2 class="ml-4 text-lg leading-7 font-semibold text-gray-900 dark:text-white">Contatos</h2>
         <p>Visite-nos ou deixe seu recado:</p>

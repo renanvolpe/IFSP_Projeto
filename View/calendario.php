@@ -1,5 +1,10 @@
 <?php
 session_start();
+if( empty($_SESSION['clinica']) == true ){
+	header("location: login.php");
+}
+
+
 include '../conexao.php';
 ?>
 
@@ -24,14 +29,16 @@ include '../conexao.php';
     </head>
     <body>
         <?php
-        include 'NavMedico.php';
+        include 'NavPaciente.php';
 
         if (isset($_SESSION['msg'])) {
             echo $_SESSION['msg'];
             unset($_SESSION['msg']);
         }
         ?>
+        
         <div id='calendar'></div>
+
 
         <div class="modal fade" id="visualizar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
