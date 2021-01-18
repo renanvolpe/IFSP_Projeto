@@ -29,7 +29,7 @@ include_once ('../config.php');
   <title>Área Paciente</title>
 </head>
 <body>
-<nav class="navbar  navbar-expand-lg navbar-dark bg-primary" style="border-bottom: 1px solid black">
+<nav class="navbar  navbar-expand-lg navbar-dark bg-primary" style="border-bottom: 1px solid black" role="tablist">
   <div class="container-fluid">
 	    <a class="navbar-brand" aria-current="page" href="ListarPaciente.php">Home</a>
 	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
