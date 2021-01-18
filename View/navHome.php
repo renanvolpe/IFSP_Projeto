@@ -68,9 +68,6 @@
         <a class="nav-link" href="#apresentacao">Apresentação</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#sintomas">Sintomas</a>
-      </li>
-      <li class="nav-item">
         <a class="nav-link" href="#sabia">Você Sabia?</a>
       </li>
       <li class="nav-item">

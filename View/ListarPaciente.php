@@ -1,18 +1,64 @@
 <?php
 session_start();
-include 'NavPaciente.php';
+if( empty($_SESSION['clinica']) == true ){
+	header("location: login.php");
+}
+
+include 'NavMedico.php';
 include '../ChamarBoostrap.php';
 ?>
 
+<?php
+
+        
+/* PARTE DO RENAN, NAO MEXA
+        $userData    =    $db->getAllRecords('login','*',"",'');
+        
+
+
+        
+        $quantidade = $db->getQueryCount('login', 'idLogin','');
+        
+        
+		
+		if(count($quantidade)>0){
+		  $s    =    '';
+		  foreach($quantidade as $qtd){
+			$s++;
+            }
+          echo $quantidePaciente = $qtd['total'];
+		
+          }
+          
+            $i = 0;
+          for($i=1; $i++; $i== $quantidePaciente){
+
+            $condition = 'AND idLogin LIKE "'.$i .'"';
+
+
+            
+
+            $userData    =    $db->getAllRecords('login','*',"",'AND idLogin LIKE "'.$i.'"');
+            if(count($userData)>0){
+                foreach($userData as $valorID){
+                    $s++;
+                    }
+                   
+
+            }
+          }
+          */
+
+?>
 
 <!DOCTYPE html>
 <html>
     <head>
     <meta charset="utf-8">
+
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Atualizar Paciente</title>
     </head>
-        <script type='text/javascript'> //<!-- nao apagar, precisa para funcionar o botão IMPRIMIR -->
+        <script type='text/javascript'>// <!-- nao apagar, precisa para funcionar o botão IMPRIMIR -->
         ///<![CDATA[ /* inicio configuracao head para IMPRESSAO/PRINT da pagina */ ATENÇÃO: acrescentar antes de <h2> Listagem de Pacientes</h2>
         //-->faz referencia str=document.getElementById('main-content').innerHTML <----
         //depois da <div id="centralpacientes">
@@ -50,174 +96,125 @@ include '../ChamarBoostrap.php';
 <br>
 </head>
 <body>
-<div class="container">
-    <h1>Bem-Vindo, caro Paciente! Aqui é sua área restrita. Caso precise, atualize seus dados</h1>
-     <div class="jumbotorn bg-primary" style=" margin-top:40px;  border-radius: 10px;">
 
-        <div class="text-center">
+
+        <div class="container form-group tab-pane active" id = "pacientes">
+        <h2>Filtro de Pesquisa:</h2>
+        <p>
+        *Digite algo no campo de entrada para pesquisar: nome, cpf, sexo, tipo sanguineo, cidade, bairro, etc...</p>
+        <input class="form-control" id="myInput" type="text" placeholder="Digite aqui para pesquisar...">
+        <br>
         <div id='main-content'> <!-- nao apagar, precisa para funcionar o botão IMPRIMIR , lembrar de fechar DIV no final antes da DIV do container-->
-            <h2 style="color: white; padding: 20px;"> Dados Pessoais: </h2>
+            <div class="header clearfix">
 
-		      <div class="bg-light" style="margin:2px; padding:10px 10px" >
+                <h3 class="text-muted">Listagem de Pacientes</h3>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="table-responsive" >
+                            <table class="table cabecalho table-striped table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th class="cabecalho">Id</th>
+                                            <th class="cabecalho">Nome Completo</th>
+                                            <th class="cabecalho">Tipo Sanguineo</th>
+                                            <th class="cabecalho">Telefone</th>
+                                            <th class="cabecalho">Celular Principal</th>
+                                            <th class="cabecalho">Celular Secundário</th>
+                                            <th class="cabecalho">CPF</th>
+                                            <th class="cabecalho">Data Nascimento</th>
+                                            <th class="cabecalho">Sexo</th>
+                                            <th class="cabecalho">Rua</th>
+                                            <th class="cabecalho">Número</th>
+                                            <th class="cabecalho">Estado</th>
+                                            <th class="cabecalho">Bairro</th>
+                                            <th class="cabecalho">CEP</th>
+                                            <th class="cabecalho">Cidade</th>
+                                            <th class="cabecalho">Complemento</th>
+                                        </tr>
+                                    </thead>
 
-					<hr> <!-- após arrumar o BD retirar o que estiver dentro de value="1233-2131" e deixa values="" -->
 
-					<form method="post">
-					<div class="row form-group"  >
-							<div class="col-md-9 "  >
-							<div class="form-group">
-							<label for="nome">Nome Completo:</label>
-							<input type="text" class="form-control" id="nome"  placeholder="Nome Completo" name="nome" autofocus required value="Tadeu Espindola Palermo">
+                                        <tbody id="myTable">  <!--importante: <tbody id="myTable"> faz a PESQUISA  -->
+                                            <tr>
+                                                <td>1</td>
+                                                <td>Amanda Espindola Palermo</td>
+                                                <td>B-</td>
+                                                <td>(61) 9 8647-3913</td>
+                                                <td>(61) 9 8647-3913</td>
+                                                <td>(61) 9 8647-3913</td>
+                                                <td>045.448.379-10</td>
+                                                <td>1985-09-16</td>
+                                                <td>Feminino</td></td>
+                                                <td>Rua Especial</td>
+                                                <td>178</td>
+                                                <td>SP</td>
+                                                <td>Centro</td>
+                                                <td>12430-000</td>
+                                                <td>Jacareí</td>
+                                                <td> Ed. Bello Oeste Lotes 01/03 - Apto. 415 </td>
+                                            </tr>
+                                            </tbody>
 
-							</div>
-							</div>
-							<div class="col-md-3 control-label">
-								<div class="form-group">
-									<label for="tipoSanguineo">Tipo Sanguíneo:</label>
-									<select class="form-control" id="tipoSanguineo" name='tipoSanguineo' required>
-										<option value="Na" selected>Não sei</option>
-										<option value="A+">A+</option>
-										<option value="A-">A-</option>
-										<option value="B+">B+</option>
-										<option value="B-">B-</option>
-										<option value="O+">O+</option>
-										<option value="O-">O-</option>
-										<option value="AB+">AB+</option>
-										<option value="AB-">AB-</option>
-									</select>
-								</div>
-							</div>
+                                        <tbody id="myTable">  <!--importante: <tbody id="myTable"> faz a PESQUISA  -->
+                                        <tr>
+                                                <td>2</td>
+                                                <td>Gustava Guanabara</td>
+                                                <td>O-</td>
+                                                <td>(61) 9 8647-3913</td>
+                                                <td>(61) 9 8654-3913</td>
+                                                <td>(61) 9 8657-3913</td>
+                                                <td>044.448.449-10</td>
+                                                <td>1985-09-16</td>
+                                                <td>Masculino</td>
+                                                <td>Rua de Baixo</td>
+                                                <td>78</td>
+                                                <td>RJ</td>
+                                                <td>Bairro Poço Fundo</td>
+                                                <td>12430-000</td>
+                                                <td>Rio de Janeiro</td>
+                                                <td> 01/03 - Apto. 4 </td>
 
-							<div class="col-md-3">
-								<div class="form-floating">
-								<label for="tel1">Telefone Principal:</label>
-								<input type="text" class="form-control" id="tel1" placeholder="xxxx-xxxx" value="" name="tel1">
-
-								</div>
-							</div>
-
-							<div class="col-md-3">
-								<div class="form-floating">
-								<label for="tel2">Telefone Segundario:</label>
-								<input type="text" class="form-control" id="tel2" placeholder="xxxx-xxxx" value="" name="tel2" >
-
-								</div>
-							</div>
-
-							<div class="col-md-3">
-								<div class="form-floating">
-								<label for="cel1">Celular Principal:</label>
-								<input type="text" class="form-control" id="cel1" placeholder="xxxxx-xxxx" value="1233-2131" name="cel1" >
-
-								</div>
-							</div>
-
-							<div class="col-md-3">
-								<div class="form-floating">
-								<label for="cel2">Celular Segundario:</label>
-								<input type="text" class="form-control" id="cel2" placeholder="xxxxx-xxxx" value="1233-2131" name="cel2" "">
-
-								</div>
-							</div>
-
-							<div class="col-md-4">
-								<div class="form-floating">
-								<label for="cpf">CPF:</label>
-								<input type="text" class="form-control" id="cpf" placeholder="CPF" value="045.448.379-10" name="cpf" r>
-
-								</div>
-							</div>
-
-							<div class="col-md-4 ">
-								<div class="form-floating">
-								<label for="dataNascimento">Data nascimento:</label>
-								<input type="date" class="form-control" id="dataNascimento" placeholder="<?php echo "date"; ?>" value="" name="dataNascimento" >
-
-								</div>
-							</div>
-
-							<div class="col-md-4 control-label">
-								<div class="form-group">
-									<label for="sexo">Sexo:</label>
-									<select class="form-control" id="sexo" name='sexo'>
-										<option value="X" selected>Prefiro não dizer</option>
-										<option value="F">F</option>
-										<option value="M">M</option>
-									</select>
-								</div>
-							</div>
-					</div>
-
-					<h3> Endereço: </h3>
-							<hr>
-							<div class="row form-group">
-
-							<div class="col-md-6">
-								<div class="form-group">
-								<label for="rua">Rua:</label>
-								<input type="Text" class="form-control" id="rua"  placeholder="Rua" name="rua" value="Rua Cinco de Maio">
-								</div>
-							</div>
-
-							<div class="col-md-2">
-							<div class="form-group">
-							<label for="complemento">Complemento:</label>
-							<input type="Text" class="form-control" id="complemento"  placeholder="Complemento" name="complemento">
-								</div>
-							</div>
-
-							<div class="col-md-2">
-							<div class="form-group">
-							<label for="numero">Número:</label>
-							<input type="Text" class="form-control" id="numero"  placeholder="Número" name="numero" value="123">
-								</div>
-							</div>
-
-							<div class="col-md-2">
-							<div class="form-group">
-							<label for="estado">Estado:</label>
-							<input type="Text" class="form-control" id="estado"  placeholder="Estado" name="estado" value="SP">
-								</div>
-							</div>
-
-							<div class="col-md-4">
-							<div class="form-group">
-							<label for="bairro">Bairro:</label>
-							<input type="Text" class="form-control" id="bairro"  placeholder="Bairro" name="bairro" value="Centro">
-								</div>
-							</div>
-
-							<div class="col-md-4">
-							<div class="form-group">
-							<label for="cep">CEP:</label>
-							<input type="Text" class="form-control" id="cep"  placeholder="CEP" name="cep" value="12.432.321-32">
-								</div>
-							</div>
-
-							<div class="col-md-4">
-							<div class="form-group">
-							<label for="cidade">Cidade:</label>
-							<input type="Text" class="form-control" id="cidade"  placeholder="Cidade" name="cidade" value="Jacarei">
-								</div>
-					</div>
-			</div>
-         <div><form> <!-- nao apagar, precisa para funcionar o botão IMPRIMIR -->
-	   <input onclick="javascript:void(printContent());" type="button" value="Imprimir" class="btn btn-info" />
- </form>
-  <td><a aria-current="page" href="NavListarPaciente.php" class="btn btn-success">Editar</a></td>
-	   <!-- nao apagar, precisa para funcionar o botão IMPRIMIR -->
-	</div>  </div>
+                                            </tr>
+                                        </tbody>
+                                        </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p>Visualize as informações da sua pesquisa logo acima.</p>
+            <form> <!-- nao apagar, precisa para funcionar o botão IMPRIMIR -->
+            <input onclick="javascript:void(printContent());" type="button" value="Imprimir" class="btn btn-info" />
+            </form> <!-- nao apagar, precisa para funcionar o botão IMPRIMIR -->
         </div>
-</div>
+        <script>// <!-- nao apagar, precisa para funcionar a PESQUISA -->
+        $(document).ready(function(){
+        $("#myInput").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#myTable tr").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+        });/***faz a pesquisa no conteudo***/
+        </script>  <!-- nao apagar, precisa para funcionar a PESQUISA -->
+
+        <br>
+
+                <div id="footer">
+                    <a href="#top" class="topo">Ir para o topo</a>
+                </div>
+                <br>
+        		</div>
+
+
+        
 
 
 
 
-    </div>		<hr>
-							<div class="text-center">
-
-							<button type="submit" name="submit" value="submit" id="submit" class="btn btn-primary btn-lg btn-block">Atualizar Dados </button>
-            </form>
-<br>
-         </body>
+    </body>
 </html>
