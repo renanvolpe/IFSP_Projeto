@@ -282,7 +282,7 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 
 							<div class="col-md-3">
 								<div class="form-floating">
-								<label for="tel2">Telefone Segundario:</label>
+								<label for="tel2">Telefone Secundario:</label>
 								<input type="text" class="form-control" id="tel2" placeholder="xxxx-xxxx" value="" name="tel2">
 
 								</div>
@@ -298,7 +298,7 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 
 							<div class="col-md-3">
 								<div class="form-floating">
-								<label for="cel2">Celular Segundario:</label>
+								<label for="cel2">Celular Secundario:</label>
 								<input type="text" class="form-control" id="cel2" placeholder="xxxxx-xxxx" value="" name="cel2">
 
 								</div>

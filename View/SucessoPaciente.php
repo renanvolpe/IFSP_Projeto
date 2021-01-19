@@ -9,7 +9,7 @@ session_start();
     include '../ChamarBoostrap.php';
     include 'NavPaciente.php';
  ?>
-  <title>SUSCESSO</title>
+  <title>SUCESSO</title>
 </head>
 <body>
         <h1>SUCESSO</h1>
