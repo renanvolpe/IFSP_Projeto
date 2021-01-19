@@ -7,7 +7,7 @@ include_once ('../config.php');
 
 
  <?php
- /*
+ 
 	$idLogin = $_SESSION['clinica'];
 
 		$condition = 'AND login_idLogin LIKE "'.$idLogin .'"';
@@ -22,7 +22,7 @@ include_once ('../config.php');
 		}else{
 
 		}
-		*/
+	
  ?> 
 <!DOCTYPE html>
 <html>
@@ -69,34 +69,30 @@ include_once ('../config.php');
 </nav>-->
 
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary border rounded p-2 mb-2">
-  <a class="navbar-brand" href="index.php">Home</a>
+  <a class="navbar-brand" href="../index.php">Home</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Alterna navegação">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="#apresentacao">Apresentação</a>
+        <a class="nav-link" href="calendario.php">Escolha um Horário</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#sabia">Você Sabia?</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#especialidades">Especialidades</a>
+        <a class="nav-link" href="AtualizarPaciente.php">Editar Perfil</a>
       </li>
 	  <li class="nav-item">
-        <a class="nav-link disabled" href="#tratamento">Tratamentos</a>
-      </li>
-	  <li class="nav-item">
-        <a class="nav-link disabled" href="#contatos">Contatos</a>
+        <a class="nav-link" href="SuscessoPaciente.php">TESTE SUCESSO</a>
       </li>
     </ul>
 	<ul class="navbar-nav ml-auto">
-
-		  <li class="nav-item ml-auto">
-				<a href="View/Login.php" class="btn btn-outline-info navbar-brand bg-dark" > SUA CONSULTA AQUI </a>
-		  </li>
-	 </ul>
+		<li class="nav-item ml-auto">
+			<button class="btn btn-outline-secondary navbar-brand">Olá! Sr <?php echo $NomePaciente ;?> </button>
+		</li>
+		<li class="nav-item ml-auto">
+		<a class="btn btn-danger navbar-brand" href="../controller/DesfazerLogin.php" > Sair </a>
+		</li>
+	</ul>
   </div>
 </nav>
 

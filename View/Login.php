@@ -63,7 +63,7 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 			if($privilegio=='paciente')
 				echo "<script>alert('Login realizado com Sucesso!');location.href=\"calendario.php\";</script>";
 			elseif($privilegio=='medico')
-				echo "<script>alert('Login do medico realizado com Sucesso!');location.href=\"ListarPacienteMedico.php\";</script>";
+				echo "<script>alert('Login do medico realizado com Sucesso!');location.href=\"ListarPaciente.php\";</script>";
 			else{
 				header('location:'.$_SERVER['PHP_SELF'].'?msg=dsd'); //privilegio nao encontrado
 				exit;
