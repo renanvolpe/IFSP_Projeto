@@ -1,18 +1,20 @@
 <?php
 //Página incial
-include '../ConexaoBanco.php';
+//include '../ConexaoBanco.php';
 include '../ChamarBoostrap.php';
 include_once ('../config.php');
-
+function retira_mascara($v){
+ 	return str_replace(['(', ')', '.', '-', ' '], '', $v);
+}
 
 if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 	extract($_REQUEST);
 
 		$privilegio="paciente";
-		if($login==""){ //se o campo login estiver vazio...
+		if($login=="" or ($login != $confLogin)){ //se o campo login estiver vazio...
 			header('location:'.$_SERVER['PHP_SELF'].'?msg=login'); //irá exibir isso no final da URL
 			exit;
-		}elseif($senha==""){
+		}elseif($senha=="" or ($senha != $confSenha)){
 			header('location:'.$_SERVER['PHP_SELF'].'?msg=senha');
 			exit;
 		}else{
@@ -44,17 +46,8 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 				if($tel1==''){//se o campo telefone principal estiver vazio...
 					header('location:'.$_SERVER['PHP_SELF'].'?msg=telP'); //irá exibir isso no final da URL
 					exit;
-				}
-				elseif($tel2==''){
-					header('location:'.$_SERVER['PHP_SELF'].'?msg=telS');
-					exit;
-				}
-				elseif($cel1==''){
+				}elseif($cel1==''){
 					header('location:'.$_SERVER['PHP_SELF'].'?msg=celP');
-					exit;
-				}
-				elseif($cel2==''){
-					header('location:'.$_SERVER['PHP_SELF'].'?msg=celS');
 					exit;
 				}else{
 					//O telefone estava aqui
@@ -105,7 +98,7 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 											'cidade'=>$cidade,
 											'estado'=>$estado,
 											'numero'=>$numero,
-											'cep'=>$cep,
+											'cep'=>retira_mascara($cep),
 										);
 							$insert	=	$db->insert('endereco',$data);
 							$endereco_IdEndereco = $db->lastInsertId(); //retorna o ultimo id inserido em endereço
@@ -113,10 +106,10 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 							//inserindo o telefone
 							$userCount	=	$db->getQueryCount('telefone','idTelefone');
 							$data	=	array(
-											'tel1'=>$tel1,
-											'tel2'=>$tel2,
-											'cel1'=>$cel1,
-											'cel2'=>$cel2,
+											'tel1'=>retira_mascara($tel1),
+											'tel2'=>retira_mascara($tel2),
+											'cel1'=>retira_mascara($cel1),
+											'cel2'=>retira_mascara($cel2),
 										);
 							$insert	=	$db->insert('telefone',$data);
 							$telefone_IdTelefone = $db->lastInsertId(); //retorna o ultimo id inserido em telefone
@@ -124,7 +117,7 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 							//inserindo a pessoa
 							$userCount	=	$db->getQueryCount('pessoa','idPessoa');
 							$data	=	array(
-											'cpf'=>$cpf,
+											'cpf'=>retira_mascara($cpf),
 											'nome'=>$nome,
 											'endereco_IdEndereco'=>$endereco_IdEndereco,
 											'telefone_IdTelefone'=>$telefone_IdTelefone,
@@ -155,7 +148,7 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 
 			if($insert){
 
-				echo "<script>alert('Login realizado com Sucesso!');location.href=\"Login.php\";</script>";
+				echo "<script>alert('Cadastro realizado com Sucesso!');location.href=\"Login.php\";</script>";
 				//header('location:Login.php'); //adicionado com sucesso
 				exit;
 			}else{
@@ -168,6 +161,17 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 
 
 ?>
+<!--Colocando javascript para colocar as mascaras-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+<script type="text/javascript">
+	$("#tel1").mask("(00) 00000-0009")
+	$("#cel1").mask("(00) 00000-0009")
+	$("#tel2").mask("(00) 00000-0009")
+	$("#cel2").mask("(00) 00000-0009")
+	$("#cpf").mask("000.000.000-00")
+	$("#cep").mask("00000-000")
+</script>
 
 <!DOCTYPE html>
 <html>
@@ -175,6 +179,8 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
   <title>Registro Usuário</title>
 </head>
 <body>
+
+
 <nav class="navbar  navbar-expand-lg navbar-dark bg-primary">
   <div class="container-fluid ">
 	    <a class="navbar-brand" href="../index.php">Home</a>
@@ -396,8 +402,8 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 
 							<div class="col-md-6">
 							<div class="form-group">
-							<label for="confEmail">Confirmar Email:</label>
-							<input type="email" class="form-control" id="confEmail" name="confEmail" placeholder="Confirmar Email" >
+							<label for="confLogin">Confirmar Email:</label>
+							<input type="email" class="form-control" id="confLogin" name="confLogin" placeholder="Confirmar Email" >
 								</div>
 							</div>
 
