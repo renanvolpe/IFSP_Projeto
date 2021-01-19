@@ -1,5 +1,5 @@
 <?php
-include 'ConexaoBanco.php';
+include_once ('config.php');
 include 'ChamarBoostrap.php';
 
 include 'View/navHome.php';

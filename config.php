@@ -26,17 +26,17 @@ try {
 	
 		$senha = 'root';
 		
-		$pdo	=	"";
+		
 	
-		$pdo = new PDO($dsn, SS_DB_USER, SS_DB_PASSWORD);
+		$pdo = new PDO($dsn, SS_DB_USER, $senha);
 	}catch (PDOException $e) {
 		try {
 	
 			$senha = 'simsenha123';
 			
-			$pdo	=	"";
+			
 		
-			$pdo = new PDO($dsn, SS_DB_USER, SS_DB_PASSWORD);
+			$pdo = new PDO($dsn, SS_DB_USER, $senha);
 		}catch (PDOException $e) {
 			
 			echo "deu rui, tenta de novo";
