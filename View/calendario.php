@@ -4,7 +4,7 @@ if( empty($_SESSION['clinica']) == true ){
 	header("location: login.php");
 }
 
-
+include '../ChamarBoostrap.php';//chamando o boostrap no calendario,não sei se isso pode bug
 include_once ('../config.php');
 ?>
 

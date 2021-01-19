@@ -1,5 +1,6 @@
 <?php
 //Página incial
+	include '../ChamarBoostrap.php';
 ?>
 <!DOCTYPE html>
 <html>

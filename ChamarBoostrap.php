@@ -4,3 +4,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
+<!--  Colocando o no Chamar boostrap a iplementação do utf-8,pois o projeto inteiro chama esse arquivo -->
+<!DOCTYPE html>
+<html><head>
+        <!-- HTML 4 -->
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <!-- HTML5 -->
+        <meta charset="utf-8"/>
+<head></html>
+<!---->
