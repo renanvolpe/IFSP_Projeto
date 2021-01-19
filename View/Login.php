@@ -45,17 +45,7 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 			$s++;}
 
 
-			$senhaBanco = $val['senha'];
-			$senhaSubmit = $_REQUEST['senha'];
-
-			if( $val['login'] == $_REQUEST['login']) {
-
-				if($senhaBanco == $senhaSubmit)
-					echo "<script>alert('Login realizado com Sucesso!');location.href=\"calendario.php\";</script>";
-				else
-					echo "<script>alert('Deu ruim na senha!');</script>";
-
-				exit;
+			
 
 
 			$privilegio = $val['privilegio'];
@@ -69,14 +59,11 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 				exit;
 			}
 
-		  }else{
-			header('location:'.$_SERVER['PHP_SELF'].'?msg=rna'); //usuario incorreto
-			exit;
 		  }
 		}
 
 
-		  }
+		  
 
 
 ?>

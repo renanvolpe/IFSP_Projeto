@@ -5,7 +5,7 @@ if( empty($_SESSION['clinica']) == true ){
 }
 
 
-include '../conexao.php';
+include_once ('../config.php');
 ?>
 
 
