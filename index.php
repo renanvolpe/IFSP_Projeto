@@ -19,7 +19,7 @@ include 'ChamarBoostrap.php';
 <header class="masthead">
     <div class="row h-100 align-items-center justify-content-center text-center">
                     <div class="col-lg-18 align-self-end">
-                        <h1 class="text-uppercase text-white font-weight-bold">Seja Bem Vindo Ao Consutorio Medico</h1>
+                        <h1 class="text-uppercase text-white font-weight-bold">Seja Bem Vindo Ao Consultório Medico</h1>
                         <hr class="divider my-4" />
                     </div>
                     <div class="col-lg-8 align-self-baseline">
@@ -33,7 +33,7 @@ include 'ChamarBoostrap.php';
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-8 text-center">
-                        <h1 class="text-white mt-0">Agende Seu Horario Já</h1>
+                        <h1 class="text-white mt-0">Agende Seu Horário Já</h1>
                         <hr class="divider light my-4" />
                         <h3 class="text-white mb-4">Login para agendar sua consulta com o Dr. Katsuki Bakugou</h3>
                         <a class="btn btn-light btn-xl js-scroll-trigger" href="View/Login.php">Agendar</a>
@@ -61,7 +61,7 @@ include 'ChamarBoostrap.php';
 <!--Sobre Especialidade-->
 <section class="page-section bg-primary" id="SobEspec">
             <div class="container text-center">
-                <h1 class="text-white mt-0"> Sobre o Especialidade</h1>
+                <h1 class="text-white mt-0"> Sobre a Especialidade</h1>
                 <hr class="divider light mb-4" />
                 <h3 class="text-white mb-4">
                 Sed id semper eros. Morbi ultricies sit amet ipsum eu porta. Fusce non rhoncus tellus. Suspendisse tempus iaculis condimentum. Nullam dictum libero vel est suscipit, ut egestas elit iaculis.
@@ -83,7 +83,7 @@ include 'ChamarBoostrap.php';
                     <div class="col-xl-8 col-lg-7"><img class="img-fluid mb-3 mb-lg-0" src="Images/consultoriosIndex.jpg" alt="" /></div>
                     <div class="col-xl-4 col-lg-5">
                         <div class="featured-text text-center text-lg-left">
-                            <h4 class="text-white mb-4">Sobre Consutorio</h4>
+                            <h4 class="text-white mb-4">Sobre o Consultório</h4>
                             <p class="text-white mb-4">lacus fermentum eu. Interdum et malesuada f.sed nibh fermentum, tincidunt nulla eu, commodo quam. Quisque at hendrerit diam Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla augue ligula, euismod eu massa a, convallis elementum neque. Vivamus eget tristique nisl. Etiam vel neque scelerisque, suscipit nisi at, posuere nibh. Sed dignissim sem et sem convallis ultricies.
                 Integer mauris tortor, egestas ut dictum ut, dapibus eu dolor. Integer in luctus massa</p>
                         </div>
@@ -96,8 +96,8 @@ include 'ChamarBoostrap.php';
                         <div class="bg-black text-center h-100 project">
                             <div class="d-flex h-100">
                                 <div class="project-text w-100 my-auto text-center text-lg-left">
-                                    <h4 class="text-white mb-4">Recepição</h4>
-                                    <p class="text-white mb-4">Nossa Recepição e Agadavel para nosso Pacientes.</p>
+                                    <h4 class="text-white mb-4">Recepção</h4>
+                                    <p class="text-white mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ut ex finibus, euismod metus nec, placerat nisl. Nullam tempus ligula et erat pellentesque vestibulum. Mauris in vestibulum magna, eget tristique risus. Morbi molestie semper lorem, sodales tempor ex aliquet sed. Ut id leo vitae leo facilisis aliquet. Pellentesque non enim lacinia, pellentesque felis ut, ornare eros. Ut egestas tincidunt elit, quis ultrices est egestas et.</p>
                                     <hr class="d-none d-lg-block mb-0 ml-0" />
                                 </div>
                             </div>
@@ -111,8 +111,8 @@ include 'ChamarBoostrap.php';
                         <div class="bg-black text-center h-100 project">
                             <div class="d-flex h-100">
                                 <div class="project-text w-100 my-auto text-center text-lg-right">
-                                    <h4 class="text-white mb-4" >Localidade</h4>
-                                    <p class="text-white mb-4">Uma otima Localidade</p>
+                                    <h4 class="text-white mb-4" >Otima Localização</h4>
+                                    <p class="text-white mb-4"> Ut sodales augue a gravida vehicula. Integer sit amet libero consequat, varius tellus quis, porttitor nisl. Nulla vel nisi eget diam varius feugiat. Integer sodales nulla a tortor porttitor cursus. Quisque vehicula nisl nisl, in faucibus lacus vestibulum vitae. Sed a iaculis lectus. Cras dignissim, justo et accumsan ornare, lectus est euismod risus, quis eleifend felis libero vitae est.</p>
                                     <hr class="d-none d-lg-block mb-0 mr-0" />
                                 </div>
                             </div>
