@@ -82,7 +82,7 @@ include_once ('../config.php');
         <a class="nav-link" href="AtualizarPaciente.php">Editar Perfil</a>
       </li>
 	  <li class="nav-item">
-        <a class="nav-link" href="SuscessoPaciente.php">TESTE SUCESSO</a>
+        <a class="nav-link" href="SucessoPaciente.php">Sucesso</a>
       </li>
     </ul>
 	<ul class="navbar-nav ml-auto">
