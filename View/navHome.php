@@ -18,7 +18,7 @@
 						<li class="nav-item"><a class="nav-link js-scroll-trigger" href="View/Login.php">Agendar</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#SobMedico">Sobre o Médico</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#SobEspec">Sobre a Especialidade</a></li>
-						<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#sobreClin">Sobre Consultório</a></li>
+						<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#sobreClin">Sobre o Consultório</a></li>
 						<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#vantagens">Vantagens</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Local">Localização</a></li>
                     </ul>
