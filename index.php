@@ -19,7 +19,7 @@ include 'ChamarBoostrap.php';
 <header class="masthead">
     <div class="row h-100 align-items-center justify-content-center text-center">
                     <div class="col-lg-18 align-self-end">
-                        <h1 class="text-uppercase text-white font-weight-bold">Seja Bem Vindo Ao Consultório Medico</h1>
+                        <h1 class="text-uppercase text-white font-weight-bold">Seja Bem Vindo Ao Consultório Médico</h1>
                         <hr class="divider my-4" />
                     </div>
                     <div class="col-lg-8 align-self-baseline">
@@ -44,7 +44,7 @@ include 'ChamarBoostrap.php';
 <!--Sobre Medico-->
 <section class="SobMedicoCla " id="SobMedico">
             <div class="container text-center">
-                <h1 class="text-white mb-4">Sobre o Dr.Katsuki Bakugou</h1>
+                <h1 class="text-white mb-4">Sobre o Dr. Katsuki Bakugou</h1>
                 <hr class="divider my-4" />
                 <h3 class="text-white mb-4">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec metus sollicitudin, tincidunt massa sit amet, sagittis quam.
@@ -111,7 +111,7 @@ include 'ChamarBoostrap.php';
                         <div class="bg-black text-center h-100 project">
                             <div class="d-flex h-100">
                                 <div class="project-text w-100 my-auto text-center text-lg-right">
-                                    <h4 class="text-white mb-4" >Otima Localização</h4>
+                                    <h4 class="text-white mb-4" >Ótima Localização</h4>
                                     <p class="text-white mb-4"> Ut sodales augue a gravida vehicula. Integer sit amet libero consequat, varius tellus quis, porttitor nisl. Nulla vel nisi eget diam varius feugiat. Integer sodales nulla a tortor porttitor cursus. Quisque vehicula nisl nisl, in faucibus lacus vestibulum vitae. Sed a iaculis lectus. Cras dignissim, justo et accumsan ornare, lectus est euismod risus, quis eleifend felis libero vitae est.</p>
                                     <hr class="d-none d-lg-block mb-0 mr-0" />
                                 </div>
