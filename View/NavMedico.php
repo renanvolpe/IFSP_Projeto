@@ -24,7 +24,7 @@ include_once ('../config.php');
  ?>
 
 <!DOCTYPE html>
-<html>
+<html lang=”pt-br”>
 
 <head>
     <title>Área Médico</title>
