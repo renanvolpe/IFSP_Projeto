@@ -9986,7 +9986,7 @@ html {
 hr.divider {
   max-width: 3.25rem;
   border-width: 0.2rem;
-  border-color: #f4623a;
+  border-color: #3a75f4;
 }
 
 hr.light {
@@ -10108,7 +10108,7 @@ header.masthead h1 {
 section.SobMedicoCla {
   padding-top: 10rem;
   padding-bottom: calc(10rem - 4.5rem);
-  background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("../Images/medicoBakugou.jpg");
+  background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("../Images/medico.png");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
@@ -10118,7 +10118,7 @@ section.SobMedicoCla {
 section.vant {
   padding-top: 10rem;
   padding-bottom: calc(10rem - 4.5rem);
-  background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("../Images/medicoBakugou.jpg");
+  background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("../Images/medicinasi.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
