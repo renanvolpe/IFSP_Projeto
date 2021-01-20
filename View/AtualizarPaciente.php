@@ -1,7 +1,6 @@
 <?php
 session_start();
 include '../ChamarBoostrap.php';
-include_once("../conexao.php");
 include_once('../config.php');
 
 /**
@@ -15,10 +14,11 @@ include_once('../config.php');
  //Select esta ok
 $idLogin = $_SESSION['clinica']; //esse eh o idlogin
 
-$condition = 'AND login_idLogin LIKE "'.$idLogin .'"'; //identifica em pessoa quem tem aquele login
-$condition = 'AND pessoa.endereco_idEndereco LIKE endereco.idEndereco'; //identifica em pessoa quem tem aquele endereco
-$condition = 'AND pessoa.telefone_idTelefone LIKE telefone.idTelefone'; //identifica em pessoa quem tem aquele telefone
-$condition = 'AND paciente.pessoa_idPessoa LIKE pessoa.idPessoa'; //identifica em paciente quem tem aquele idPessoa
+//cuidado com sintaxe:   condition.=   para concatenar e   espaço antes de AND
+$condition .= ' AND login_idLogin LIKE "'.$idLogin .'"'; //identifica em pessoa quem tem aquele login
+$condition .= ' AND pessoa.endereco_idEndereco LIKE endereco.idEndereco'; //identifica em pessoa quem tem aquele endereco
+$condition .= ' AND pessoa.telefone_idTelefone LIKE telefone.idTelefone'; //identifica em pessoa quem tem aquele telefone
+$condition .= ' AND paciente.pessoa_idPessoa LIKE pessoa.idPessoa'; //identifica em paciente quem tem aquele idPessoa
 $userData    =    $db->getAllRecords('pessoa, endereco, telefone, paciente','*',$condition,''); //puxa todos os dados daquela pessoa
 if(count($userData)>0){
 	$s    =    '';
@@ -31,6 +31,7 @@ if(count($userData)>0){
 	$PessoaEndereco = $pessoa['endereco_idEndereco'];
 	$PessoaTelefone = $pessoa['telefone_idTelefone'];
 
+	$PacienteId = $pessoa['idPaciente'];
 	$PacienteTipoSanguineo = $pessoa['tipoSanguineo'];
 	$PacienteSexo = $pessoa['sexo'];
 	$PacienteDataNascimento = $pessoa['dataNascimento'];
@@ -40,6 +41,7 @@ if(count($userData)>0){
 	$TelefoneCel1 = $pessoa['cel1'];
 	$TelefoneCel2 = $pessoa['cel2'];
 
+	$EnderecoId = $pessoa['idEndereco'];
 	$EnderecoRua = $pessoa['rua'];
 	$EnderecoBairro = $pessoa['bairro'];
 	$EnderecoComplemento = $pessoa['complemento'];
@@ -56,48 +58,22 @@ if(count($userData)>0){
 			  * telefone: tudo
  */
 
-/*
-$idPaciente=filter_input(INPUT_GET,'idPaciente' ,FILTER_SANITIZE_NUMBER_INT);
-$result_usuario="SELECT * FROM paciente WHERE idPaciente='$idPaciente'";
-$resultado_usuario=mysqli_query($conn, $result_usuario);
-echo '<span></span>'.$resultado_usuario;
-$row_usuario=mysqli_fetch_assoc($resultado_usuario);
-
-
-
-
-
-if(isset($_REQUEST['editId']) and $_REQUEST['editId']!=""){
-	header('location: atualizarpaciente.php?msg=semedit'); #<!-- nao teve alteracao -->
-}
-
-	if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
+if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 	extract($_REQUEST);
+
 	//paciente
     if($tipoSanguineo==""){
       header('location:'.$_SERVER['PHP_SELF'].'?msg=un'); //msg campo obrigatorio
       exit;
     }
-    $data	=	array(
-        'idPaciente'=> $idPaciente, //colunas    
+    $data	=	array(   
 		'tipoSanguineo'=>$tipoSanguineo,
       );
-    $update	=	$db->update('paciente',$data,array('idPaciente'=>$editId));
-    if($update){
-      header('location: sucessoPaciente.php?msg=rus'); #<!-- success -->
-      exit;
-    }else{
-      header('location: atualizarpaciente.php?msg=rnu'); #<!-- nao teve alteracao -->
-      exit;
-	}
-	
-	/*endereco
-	if($tipoSanguineo==""){
-		header('location:'.$_SERVER['PHP_SELF'].'?msg=un'); //msg campo obrigatorio
-		exit;
-	  }
-	  $data	=	array(
-		  'idEndereco'=> $idEndereco, //colunas    
+      $update1	=	$db->update('paciente',$data,array('idPaciente'=>$PacienteId));
+    
+
+	//endereco
+	$data	=	array(   
 		  'rua'=>$rua,
 		  'bairro'=>$bairro,
 		  'complemento'=>$complemento,
@@ -106,43 +82,44 @@ if(isset($_REQUEST['editId']) and $_REQUEST['editId']!=""){
 		  'numero'=>$numero,
 		  'cep'=>$cep,
 		);
-	  $update	=	$db->update('endereco',$data,array('idEndereco'=>$idEndereco));
-	  if($update){
-		header('location: sucessoPaciente.php?msg=rus2'); #<!-- success -->
-		exit;
-	  }else{
-		header('location: atualizarpaciente.php?msg=rnu2'); #<!-- nao teve alteracao -->
-		exit;
-	  }
-  }*/
-/*
-  if(isset($_REQUEST['editId']) and $_REQUEST['editId']!=""){
-    $row= $db->getAllRecords('pessoa, paciente, endereco, telefone','pessoa.*,paciente.*, endereco.*, telefone.*',' AND idPaciente="'.$_REQUEST['editId'].'"');
-  }
+	  $update2	=	$db->update('endereco',$data,array('idEndereco'=>$PessoaEndereco));
+	  
 
-  if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
-    extract($_REQUEST);
-    if($tipoSanguineo==""){
-      header('location:'.$_SERVER['PHP_SELF'].'?msg=un'); //msg campo obrigatorio
-      exit;
-    }
-
-    $data	=	array(
-        'idPaciente'=> $idPaciente, //colunas    
-		'tipoSanguineo'=>$tipoSanguineo,
-		'endereco_idEndereco'=>$endereco_idEndereco,
-		'telefone_idTelefone'=>$telefone_idTelefone,
-      );
-    $update	=	$db->update('paciente',$data,array('idPaciente'=>$idPaciente));
-    if($update){
-      header('location: sucessoPaciente.php?msg=rus'); #<!-- success -->
-      exit;
-    }else{
-      header('location: atualizarpaciente.php?msg=rnu'); #<!-- nao teve alteracao -->
-      exit;
-    }
-  }
-  */
+	//telefone
+	$data	=	array(
+		  'tel1'=>$tel1,
+		  'tel2'=>$tel2,
+		  'cel1'=>$cel1,
+		  'cel2'=>$cel2,
+		);
+	  $update3	=	$db->update('telefone',$data,array('idTelefone'=>$PessoaTelefone));
+	
+	if($update1 && $update2 && $update3){
+		header('location: sucessoPaciente.php?msg=up123'); #<!-- success -->
+		exit;
+    }elseif($update2 && $update3){
+		header('location: sucessoPaciente.php?msg=up23');
+		exit;
+	}elseif($update1 && $update3){
+		header('location: sucessoPaciente.php?msg=up13');
+		exit;
+	}elseif($update1 && $update2){
+		header('location: sucessoPaciente.php?msg=up12');
+		exit;
+	}elseif($update3){
+		header('location: sucessoPaciente.php?msg=up3'); 
+		exit;
+	}elseif($update2){
+		header('location: sucessoPaciente.php?msg=up2'); 
+		exit;
+	}elseif($update1){
+		header('location: sucessoPaciente.php?msg=up1'); 
+		exit;
+	}else{
+		header('location: sucessoPaciente.php?msg=up0'); #<!-- nao teve alteracao -->
+		exit;
+	}
+}
 ?>
 
 
@@ -236,7 +213,7 @@ include 'NavPaciente.php';
 								<div class="form-group">
 									<label for="tipoSanguineo">Tipo Sanguíneo:</label>
 									<select class="form-control" id="tipoSanguineo" name='tipoSanguineo'>
-										<option value="Na" selected>Não sei</option>
+										<option value="<?php echo $PacienteTipoSanguineo; ?>"><?php echo $PacienteTipoSanguineo; ?></option>
 										<option value="A+">A+</option>
 										<option value="A-">A-</option>
 										<option value="B+">B+</option>
@@ -255,7 +232,7 @@ include 'NavPaciente.php';
 							<div class="col-md-3">
 								<div class="form-floating">
 								<label for="tel1">Telefone Principal:</label>
-								<input type="text" class="form-control" id="tel1" placeholder="<?php echo $TelefoneTel1; ?>" value="" name="tel1" autofocus>
+								<input type="text" class="form-control" id="tel1" placeholder="<?php echo $TelefoneTel1; ?>" value="<?php echo $TelefoneTel1; ?>" name="tel1" autofocus>
 
 								</div>
 							</div>
@@ -264,7 +241,7 @@ include 'NavPaciente.php';
 							<div class="col-md-3">
 								<div class="form-floating">
 								<label for="tel2">Telefone Secundario:</label>
-								<input type="text" class="form-control" id="tel2" placeholder="<?php echo $TelefoneTel2; ?>" value="" name="tel2">
+								<input type="text" class="form-control" id="tel2" placeholder="<?php echo $TelefoneTel2; ?>" value="<?php echo $TelefoneTel2; ?>" name="tel2">
 
 								</div>
 							</div>
@@ -273,7 +250,7 @@ include 'NavPaciente.php';
 							<div class="col-md-3">
 								<div class="form-floating">
 								<label for="cel1">Celular Principal:</label>
-								<input type="text" class="form-control" id="cel1" placeholder="<?php echo $TelefoneCel1; ?>" value="" name="cel1">
+								<input type="text" class="form-control" id="cel1" placeholder="<?php echo $TelefoneCel1; ?>" value="<?php echo $TelefoneCel1; ?>" name="cel1">
 
 								</div>
 							</div>
@@ -282,7 +259,7 @@ include 'NavPaciente.php';
 							<div class="col-md-3">
 								<div class="form-floating">
 								<label for="cel2">Celular Secundario:</label>
-								<input type="text" class="form-control" id="cel2" placeholder="<?php echo $TelefoneCel2; ?>" value="" name="cel2">
+								<input type="text" class="form-control" id="cel2" placeholder="<?php echo $TelefoneCel2; ?>" value="<?php echo $TelefoneCel2; ?>" name="cel2">
 
 								</div>
 							</div>
@@ -322,7 +299,7 @@ include 'NavPaciente.php';
 							<div class="col-md-8">
 								<div class="form-group">
 								<label for="rua">Rua:</label>
-								<input type="Text" class="form-control" id="rua"  placeholder="<?php echo $EnderecoRua; ?>" name="rua">
+								<input type="Text" class="form-control" id="rua" value="<?php echo $EnderecoRua;?>" placeholder="<?php echo $EnderecoRua; ?>" name="rua">
 								</div>
 							</div>
 
@@ -330,7 +307,7 @@ include 'NavPaciente.php';
 							<div class="col-md-2">
 							<div class="form-group">
 							<label for="numero">Número:</label>
-							<input type="Text" class="form-control" id="numero"  placeholder="<?php echo $EnderecoNumero; ?>" name="numero">
+							<input type="Text" class="form-control" id="numero" value="<?php echo $EnderecoNumero;?>" placeholder="<?php echo $EnderecoNumero; ?>" name="numero">
 								</div>
 							</div>
 
@@ -338,7 +315,7 @@ include 'NavPaciente.php';
 							<div class="col-md-2">
 							<div class="form-group">
 							<label for="estado">Estado:</label>
-							<input type="Text" class="form-control" id="estado"  placeholder="<?php echo $EnderecoEstado; ?>" name="estado">
+							<input type="Text" class="form-control" id="estado" value="<?php echo $EnderecoEstado;?>" placeholder="<?php echo $EnderecoEstado; ?>" name="estado">
 								</div>
 							</div>
 
@@ -346,7 +323,7 @@ include 'NavPaciente.php';
 							<div class="col-md-4">
 							<div class="form-group">
 							<label for="bairro">Bairro:</label>
-							<input type="Text" class="form-control" id="bairro"  placeholder="<?php echo $EnderecoBairro; ?>" name="bairro">
+							<input type="Text" class="form-control" id="bairro" value="<?php echo $EnderecoBairro;?>" placeholder="<?php echo $EnderecoBairro; ?>" name="bairro">
 								</div>
 							</div>
 
@@ -354,7 +331,7 @@ include 'NavPaciente.php';
 							<div class="col-md-4">
 							<div class="form-group">
 							<label for="cep">CEP:</label>
-							<input type="Text" class="form-control" id="cep"  placeholder="<?php echo $EnderecoCep; ?>" name="cep">
+							<input type="Text" class="form-control" id="cep" value="<?php echo $EnderecoCep;?>" placeholder="<?php echo $EnderecoCep; ?>" name="cep">
 								</div>
 							</div>
 
@@ -362,7 +339,7 @@ include 'NavPaciente.php';
 							<div class="col-md-4">
 							<div class="form-group">
 							<label for="cidade">Cidade:</label>
-							<input type="Text" class="form-control" id="cidade"  placeholder="<?php echo $EnderecoCidade; ?>" name="cidade">
+							<input type="Text" class="form-control" id="cidade" value="<?php echo $EnderecoCidade;?>" placeholder="<?php echo $EnderecoCidade; ?>" name="cidade">
 								</div>
 							</div>
 
@@ -370,7 +347,7 @@ include 'NavPaciente.php';
 							<div class="col-md-12">
 							<div class="form-group">
 							<label for="complemento">Complemento:</label>
-							<input type="Text" class="form-control" id="complemento"  placeholder="<?php echo $EnderecoComplemento; ?>" name="complemento">
+							<input type="Text" class="form-control" id="complemento" value="<?php echo $EnderecoComplemento;?>" placeholder="<?php echo $EnderecoComplemento; ?>" name="complemento">
 								</div>
 							</div>
 
@@ -379,11 +356,10 @@ include 'NavPaciente.php';
 							<hr>
 							<div class="text-center">
 							
-	   						<!-- nao apagar, precisa para funcionar o botão IMPRIMIR -->
+	   						<!-- depois testar se echo não faz diferença com pacienteid -->
 							<div class="row">
-								<input type="hidden" name="editId" id="editId" value="<?php echo $_REQUEST['editId']?>">
+								<input type="hidden" name="editId" id="editId" value="<?php echo $idLogin; ?>">
 								<button type="submit" name="submit" value="submit" id="submit" class="btn btn-primary btn-lg btn-block">Editar</button>
-								<!--a href="teste.php?idPessoa=" . <?php //echo $pessoa['idPessoa']; ?>. class='btn btn-primary btn-sm'  role='button' aria-pressed='true'>EDITAR</a-->
 							</div>
 							</div>
 					</form>
