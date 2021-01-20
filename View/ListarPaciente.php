@@ -1,7 +1,14 @@
 <?php
 session_start();
-if( empty($_SESSION['clinica']) == true ){
-	header("location: login.php");
+
+if( empty($_SESSION['clinica']) == false ){
+	if($_SESSION['privilegio'] == 'paciente'){
+		header("location: calendario.php");
+	}elseif($_SESSION['privilegio'] == 'medico'){
+		
+	}
+	
+	
 }
 
 include 'NavMedico.php';

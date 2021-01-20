@@ -1,5 +1,15 @@
 <?php
 session_start();
+
+if( empty($_SESSION['clinica']) == false ){
+	if($_SESSION['privilegio'] == 'medico'){
+		header("location: calendarioMedico.php");
+	}elseif($_SESSION['privilegio'] == 'paciente'){
+        
+    }
+	
+	
+}
 ?>
 <!DOCTYPE html>
 

@@ -1,7 +1,14 @@
 <?php
 session_start();
+
 if( empty($_SESSION['clinica']) == false ){
-	header("location: calendario.php");
+	if($_SESSION['privilegio'] == 'paciente'){
+		header("location: calendario.php");
+	}elseif($_SESSION['privilegio'] == 'medico'){
+		header("location: calendarioMedico.php");
+	}
+	
+	
 }
 
 //Página incial
@@ -50,10 +57,16 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 
 			$privilegio = $val['privilegio'];
 
-			if($privilegio=='paciente')
+			if($privilegio=='paciente'){
+				$_SESSION['privilegio'] = $privilegio; 
 				echo "<script>alert('Login realizado com Sucesso!');location.href=\"calendario.php\";</script>";
-			elseif($privilegio=='medico')
+
+			}
+			elseif($privilegio=='medico'){
+				$_SESSION['privilegio'] = $privilegio;
 				echo "<script>alert('Login do medico realizado com Sucesso!');location.href=\"ListarPaciente.php\";</script>";
+
+			}
 			else{
 				header('location:'.$_SERVER['PHP_SELF'].'?msg=dsd'); //privilegio nao encontrado
 				exit;
