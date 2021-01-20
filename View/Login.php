@@ -1,14 +1,12 @@
 <?php
 session_start();
 
-if( empty($_SESSION['clinica']) == false ){
-	if($_SESSION['privilegio'] == 'paciente'){
+if( empty($_SESSION['clinica']) ){
+	if(isset($_SESSION['privilegio']) && $_SESSION['privilegio'] == 'paciente'){
 		header("location: calendario.php");
-	}elseif($_SESSION['privilegio'] == 'medico'){
+	}elseif(isset($_SESSION['privilegio']) && $_SESSION['privilegio'] == 'medico'){
 		header("location: calendarioMedico.php");
 	}
-	
-	
 }
 
 //Página incial
