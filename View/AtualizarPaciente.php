@@ -1,8 +1,18 @@
 <?php
 session_start();
+
 include '../ChamarBoostrap.php';
 include_once('../config.php');
 
+if( empty($_SESSION['clinica'])){
+	if($_SESSION['privilegio'] == 'medico'){
+		header("location: calendarioMedico.php");
+	}elseif($_SESSION['privilegio'] == 'paciente'){
+        echo "teste";
+    }
+	
+	
+}
 /**
  * Dados que usuario podera atualizar:
 			  * paciente: tipo sanguineo
@@ -12,10 +22,12 @@ include_once('../config.php');
 
 
  //Select esta ok
-$idLogin = $_SESSION['clinica']; //esse eh o idlogin
 
+$idLogin = $_SESSION['clinica']; //esse eh o idlogin
+$condition = "";
 //cuidado com sintaxe:   condition.=   para concatenar e   espaço antes de AND
-$condition .= ' AND login_idLogin LIKE "'.$idLogin .'"'; //identifica em pessoa quem tem aquele login
+$condition .= ' AND login_idLogin LIKE "'.$idLogin.'"'; 
+//identifica em pessoa quem tem aquele login
 $condition .= ' AND pessoa.endereco_idEndereco LIKE endereco.idEndereco'; //identifica em pessoa quem tem aquele endereco
 $condition .= ' AND pessoa.telefone_idTelefone LIKE telefone.idTelefone'; //identifica em pessoa quem tem aquele telefone
 $condition .= ' AND paciente.pessoa_idPessoa LIKE pessoa.idPessoa'; //identifica em paciente quem tem aquele idPessoa
@@ -165,7 +177,7 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
         // e lembrar de fechar div </div> apos o fechar o codigo php
     </script> <!-- nao apagar, precisa para funcionar o botão IMPRIMIR -->
 
-<br>
+
 </head>
 <body>
 <?php
@@ -359,7 +371,7 @@ include 'NavPaciente.php';
 	   						<!-- depois testar se echo não faz diferença com pacienteid -->
 							<div class="row">
 								<input type="hidden" name="editId" id="editId" value="<?php echo $idLogin; ?>">
-								<button type="submit" name="submit" value="submit" id="submit" class="btn btn-primary btn-lg btn-block">Editar</button>
+								<button type="submit" name="submit" value="submit" id="submit" class="btn btn-primary btn-lg btn-block">Confirmar</button>
 							</div>
 							</div>
 					</form>

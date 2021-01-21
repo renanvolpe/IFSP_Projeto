@@ -3,9 +3,36 @@ session_start();
 
 if( empty($_SESSION['clinica']) ){
 	if(isset($_SESSION['privilegio']) && $_SESSION['privilegio'] == 'paciente'){
+		echo "teste1";
 		header("location: calendario.php");
 	}elseif(isset($_SESSION['privilegio']) && $_SESSION['privilegio'] == 'medico'){
 		header("location: calendarioMedico.php");
+	}elseif(isset($_SESSION['privilegio']) && $_SESSION['privilegio'] == 'admim'){
+		echo "teste3";
+
+		/*?>
+		<div class="modal" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Onde o Sr(a) quer visitar?</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+			<a herf = calendarioMedico.php class="btn btn-primary" data-dismiss="modal">Medico</button>
+				&nbsp 
+			<a href="calendario.php" class="btn btn-primary" data-dismiss="modal">Paciente</button>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			</div>
+			</div>
+		</div>
+		</div>
+
+		<?php*/
 	}
 }
 

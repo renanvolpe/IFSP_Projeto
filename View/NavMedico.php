@@ -77,20 +77,15 @@ include_once ('../config.php');
   <div class="collapse navbar-collapse" id="navbarNav">
                  <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link " aria-current="page" href="ListarPaciente.php">Pacientes</a>
+                        <a class="nav-link active" aria-current="page" href="ListarPaciente.php">Pacientes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link "  href="calendarioMedico.php"> Calendário</a>
+                        <a class="nav-link active"  href="calendarioMedico.php"> Calendário</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="#avaliacao">Avaliações</a>
+                        <a class="nav-link active" href="#avaliacao">Avaliações</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link " aria-current="page" href="#agenda">Agenda</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " aria-current="page" href="#noti">Notificações</a>
-                    </li>
+                   
                 </ul>
                 
                 <ul class="navbar-nav ml-auto">

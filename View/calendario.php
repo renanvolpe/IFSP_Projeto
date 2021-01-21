@@ -1,6 +1,15 @@
 <?php
 session_start();
 
+if( empty($_SESSION['clinica']) == false ){
+	if($_SESSION['privilegio'] == 'medico'){
+		header("location: calendarioMedico.php");
+	}elseif($_SESSION['privilegio'] == 'paciente'){
+        
+    }
+	
+	
+}
 
 //include '../ChamarBoostrap.php';chamando o boostrap no calendario,não sei se isso pode bug
 include_once ('../config.php');

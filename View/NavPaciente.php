@@ -78,10 +78,10 @@ include_once ('../config.php');
       <li class="nav-item active">
         <a class="nav-link" href="calendario.php">Escolha um Horário</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="AtualizarPaciente.php">Editar Perfil</a>
+      <li class="nav-item active">
+        <a class="nav-link" href="AtualizarPaciente.php">Confirmar Dados</a>
       </li>
-	  <li class="nav-item">
+	  <li class="nav-item  active">
         <a class="nav-link" href="SucessoPaciente.php">Sucesso</a>
       </li>
     </ul>
