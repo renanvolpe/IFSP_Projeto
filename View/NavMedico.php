@@ -7,6 +7,9 @@ include_once ('../config.php');
 
 
  <?php
+ if($_SESSION['privilegio'] == 'medico'){
+
+ 
 	$idLogin = $_SESSION['clinica'];
 
 		$condition = 'AND login_idLogin LIKE "'.$idLogin .'"';
@@ -21,7 +24,10 @@ include_once ('../config.php');
 		}else{
 
 		}
- ?>
+
+    }elseif($_SESSION['privilegio'] == 'admim')
+             $NomeMedico = 'Administrador';
+?>
 
 <!DOCTYPE html>
 <html lang=”pt-br”>
@@ -89,6 +95,18 @@ include_once ('../config.php');
                 </ul>
                 
                 <ul class="navbar-nav ml-auto">
+                    <?php
+                        if($_SESSION['privilegio'] = 'admim'){
+                            ?>
+                                <li class="nav-item ">
+                                  <a href="Admin.php" class="btn btn-success navbar-brand"> Adminstração </a>
+                                 </li>
+                            <?php
+                        }
+
+                    ?>
+
+
                     <li class="nav-item ml-auto">
                         <button class="btn btn-outline-secondary navbar-brand">Olá! Dr <?php echo $NomeMedico ;?> </button>
                     </li>

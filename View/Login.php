@@ -1,46 +1,29 @@
 <?php
 session_start();
 
-if( empty($_SESSION['clinica']) ){
+include '../ChamarBoostrap.php';
+include_once ('../config.php');
+
+?>
+
+<script rel="stylesheet" href="../sweetalert/sweetalert.js"> 
+</script>
+
+<?php
+if( empty($_SESSION['clinica']) == false){
 	if(isset($_SESSION['privilegio']) && $_SESSION['privilegio'] == 'paciente'){
 		echo "teste1";
 		header("location: calendario.php");
 	}elseif(isset($_SESSION['privilegio']) && $_SESSION['privilegio'] == 'medico'){
 		header("location: calendarioMedico.php");
 	}elseif(isset($_SESSION['privilegio']) && $_SESSION['privilegio'] == 'admim'){
-		echo "teste3";
-
-		/*?>
-		<div class="modal" tabindex="-1" role="dialog">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title">Onde o Sr(a) quer visitar?</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			<div class="modal-body">
-			<a herf = calendarioMedico.php class="btn btn-primary" data-dismiss="modal">Medico</button>
-				&nbsp 
-			<a href="calendario.php" class="btn btn-primary" data-dismiss="modal">Paciente</button>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-			</div>
-			</div>
-		</div>
-		</div>
-
-		<?php*/
+		header("location: Admin.php");
 	}
 }
 
 //Página incial
 
 
-include '../ChamarBoostrap.php';
-include_once ('../config.php');
 
 
 $condition    =    '';
@@ -73,26 +56,17 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 				//$_SESSION['idPaciente'] = $val['id'];
 
 			$_SESSION['clinica'] =	$val['idLogin'];
-
-			$s++;}
-
-
 			
+			$s++;}
 
 
 			$privilegio = $val['privilegio'];
 
-			if($privilegio=='paciente'){
+			if($privilegio){
 				$_SESSION['privilegio'] = $privilegio; 
-				echo "<script>alert('Login realizado com Sucesso!');location.href=\"calendario.php\";</script>";
-
-			}
-			elseif($privilegio=='medico'){
-				$_SESSION['privilegio'] = $privilegio;
-				echo "<script>alert('Login do medico realizado com Sucesso!');location.href=\"ListarPaciente.php\";</script>";
-
-			}
-			else{
+				
+				echo "<script>swal('Login realizado com Sucesso!');location.href=\"calendario.php\";</script>";
+			}else{
 				header('location:'.$_SERVER['PHP_SELF'].'?msg=dsd'); //privilegio nao encontrado
 				exit;
 			}

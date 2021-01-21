@@ -7,7 +7,7 @@ include_once('../config.php');
 if( empty($_SESSION['clinica'])){
 	if($_SESSION['privilegio'] == 'medico'){
 		header("location: calendarioMedico.php");
-	}elseif($_SESSION['privilegio'] == 'paciente'){
+	}elseif($_SESSION['privilegio'] == 'paciente' || "admim"){
         echo "teste";
     }
 	
@@ -22,116 +22,136 @@ if( empty($_SESSION['clinica'])){
 
 
  //Select esta ok
+	if($_SESSION['privilegio'] == 'paciente'){
+		$idLogin = $_SESSION['clinica']; //esse eh o idlogin
+		$condition = "";
+		//cuidado com sintaxe:   condition.=   para concatenar e   espaço antes de AND
+		$condition .= ' AND login_idLogin LIKE "'.$idLogin.'"'; 
+		//identifica em pessoa quem tem aquele login
+		$condition .= ' AND pessoa.endereco_idEndereco LIKE endereco.idEndereco'; //identifica em pessoa quem tem aquele endereco
+		$condition .= ' AND pessoa.telefone_idTelefone LIKE telefone.idTelefone'; //identifica em pessoa quem tem aquele telefone
+		$condition .= ' AND paciente.pessoa_idPessoa LIKE pessoa.idPessoa'; //identifica em paciente quem tem aquele idPessoa
+		$userData    =    $db->getAllRecords('pessoa, endereco, telefone, paciente','*',$condition,''); //puxa todos os dados daquela pessoa
+		if(count($userData)>0){
+			$s    =    '';
+			foreach($userData as $pessoa){
+				$s++;
+			}
+			$PessoaId = $pessoa['idPessoa'];
+			$PessoaNome = $pessoa['nome'];
+			$PessoaCpf = $pessoa['cpf'];
+			$PessoaEndereco = $pessoa['endereco_idEndereco'];
+			$PessoaTelefone = $pessoa['telefone_idTelefone'];
 
-$idLogin = $_SESSION['clinica']; //esse eh o idlogin
-$condition = "";
-//cuidado com sintaxe:   condition.=   para concatenar e   espaço antes de AND
-$condition .= ' AND login_idLogin LIKE "'.$idLogin.'"'; 
-//identifica em pessoa quem tem aquele login
-$condition .= ' AND pessoa.endereco_idEndereco LIKE endereco.idEndereco'; //identifica em pessoa quem tem aquele endereco
-$condition .= ' AND pessoa.telefone_idTelefone LIKE telefone.idTelefone'; //identifica em pessoa quem tem aquele telefone
-$condition .= ' AND paciente.pessoa_idPessoa LIKE pessoa.idPessoa'; //identifica em paciente quem tem aquele idPessoa
-$userData    =    $db->getAllRecords('pessoa, endereco, telefone, paciente','*',$condition,''); //puxa todos os dados daquela pessoa
-if(count($userData)>0){
-	$s    =    '';
-	foreach($userData as $pessoa){
-		$s++;
-	}
-	$PessoaId = $pessoa['idPessoa'];
-	$PessoaNome = $pessoa['nome'];
-	$PessoaCpf = $pessoa['cpf'];
-	$PessoaEndereco = $pessoa['endereco_idEndereco'];
-	$PessoaTelefone = $pessoa['telefone_idTelefone'];
+			$PacienteId = $pessoa['idPaciente'];
+			$PacienteTipoSanguineo = $pessoa['tipoSanguineo'];
+			$PacienteSexo = $pessoa['sexo'];
+			$PacienteDataNascimento = $pessoa['dataNascimento'];
+			
+			$TelefoneTel1 = $pessoa['tel1'];
+			$TelefoneTel2 = $pessoa['tel2'];
+			$TelefoneCel1 = $pessoa['cel1'];
+			$TelefoneCel2 = $pessoa['cel2'];
 
-	$PacienteId = $pessoa['idPaciente'];
-	$PacienteTipoSanguineo = $pessoa['tipoSanguineo'];
-	$PacienteSexo = $pessoa['sexo'];
-	$PacienteDataNascimento = $pessoa['dataNascimento'];
-	
-	$TelefoneTel1 = $pessoa['tel1'];
-	$TelefoneTel2 = $pessoa['tel2'];
-	$TelefoneCel1 = $pessoa['cel1'];
-	$TelefoneCel2 = $pessoa['cel2'];
+			$EnderecoId = $pessoa['idEndereco'];
+			$EnderecoRua = $pessoa['rua'];
+			$EnderecoBairro = $pessoa['bairro'];
+			$EnderecoComplemento = $pessoa['complemento'];
+			$EnderecoCidade = $pessoa['cidade'];
+			$EnderecoEstado = $pessoa['estado'];
+			$EnderecoNumero = $pessoa['numero'];
+			$EnderecoCep = $pessoa['cep'];
+		}
 
-	$EnderecoId = $pessoa['idEndereco'];
-	$EnderecoRua = $pessoa['rua'];
-	$EnderecoBairro = $pessoa['bairro'];
-	$EnderecoComplemento = $pessoa['complemento'];
-	$EnderecoCidade = $pessoa['cidade'];
-	$EnderecoEstado = $pessoa['estado'];
-	$EnderecoNumero = $pessoa['numero'];
-	$EnderecoCep = $pessoa['cep'];
-}
+		/**
+		 * Dados que usuario podera atualizar:
+					 * paciente: tipo sanguineo
+					* endereco: tudo
+					* telefone: tudo
+		*/
 
-/**
- * Dados que usuario podera atualizar:
-			  * paciente: tipo sanguineo
-			  * endereco: tudo
-			  * telefone: tudo
- */
+		if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
+			extract($_REQUEST);
 
-if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
-	extract($_REQUEST);
+			//paciente
+			if($tipoSanguineo==""){
+			header('location:'.$_SERVER['PHP_SELF'].'?msg=un'); //msg campo obrigatorio
+			exit;
+			}
+			$data	=	array(   
+				'tipoSanguineo'=>$tipoSanguineo,
+			);
+			$update1	=	$db->update('paciente',$data,array('idPaciente'=>$PacienteId));
+			
 
-	//paciente
-    if($tipoSanguineo==""){
-      header('location:'.$_SERVER['PHP_SELF'].'?msg=un'); //msg campo obrigatorio
-      exit;
-    }
-    $data	=	array(   
-		'tipoSanguineo'=>$tipoSanguineo,
-      );
-      $update1	=	$db->update('paciente',$data,array('idPaciente'=>$PacienteId));
-    
+			//endereco
+			$data	=	array(   
+				'rua'=>$rua,
+				'bairro'=>$bairro,
+				'complemento'=>$complemento,
+				'cidade'=>$cidade,
+				'estado'=>$estado,
+				'numero'=>$numero,
+				'cep'=>$cep,
+				);
+			$update2	=	$db->update('endereco',$data,array('idEndereco'=>$PessoaEndereco));
+			
 
-	//endereco
-	$data	=	array(   
-		  'rua'=>$rua,
-		  'bairro'=>$bairro,
-		  'complemento'=>$complemento,
-		  'cidade'=>$cidade,
-		  'estado'=>$estado,
-		  'numero'=>$numero,
-		  'cep'=>$cep,
-		);
-	  $update2	=	$db->update('endereco',$data,array('idEndereco'=>$PessoaEndereco));
-	  
-
-	//telefone
-	$data	=	array(
-		  'tel1'=>$tel1,
-		  'tel2'=>$tel2,
-		  'cel1'=>$cel1,
-		  'cel2'=>$cel2,
-		);
-	  $update3	=	$db->update('telefone',$data,array('idTelefone'=>$PessoaTelefone));
-	
-	if($update1 && $update2 && $update3){
-		header('location: sucessoPaciente.php?msg=up123'); #<!-- success -->
-		exit;
-    }elseif($update2 && $update3){
-		header('location: sucessoPaciente.php?msg=up23');
-		exit;
-	}elseif($update1 && $update3){
-		header('location: sucessoPaciente.php?msg=up13');
-		exit;
-	}elseif($update1 && $update2){
-		header('location: sucessoPaciente.php?msg=up12');
-		exit;
-	}elseif($update3){
-		header('location: sucessoPaciente.php?msg=up3'); 
-		exit;
-	}elseif($update2){
-		header('location: sucessoPaciente.php?msg=up2'); 
-		exit;
-	}elseif($update1){
-		header('location: sucessoPaciente.php?msg=up1'); 
-		exit;
-	}else{
-		header('location: sucessoPaciente.php?msg=up0'); #<!-- nao teve alteracao -->
-		exit;
-	}
-}
+			//telefone
+			$data	=	array(
+				'tel1'=>$tel1,
+				'tel2'=>$tel2,
+				'cel1'=>$cel1,
+				'cel2'=>$cel2,
+				);
+			$update3	=	$db->update('telefone',$data,array('idTelefone'=>$PessoaTelefone));
+			
+			if($update1 && $update2 && $update3){
+				header('location: sucessoPaciente.php?msg=up123'); #<!-- success -->
+				exit;
+			}elseif($update2 && $update3){
+				header('location: sucessoPaciente.php?msg=up23');
+				exit;
+			}elseif($update1 && $update3){
+				header('location: sucessoPaciente.php?msg=up13');
+				exit;
+			}elseif($update1 && $update2){
+				header('location: sucessoPaciente.php?msg=up12');
+				exit;
+			}elseif($update3){
+				header('location: sucessoPaciente.php?msg=up3'); 
+				exit;
+			}elseif($update2){
+				header('location: sucessoPaciente.php?msg=up2'); 
+				exit;
+			}elseif($update1){
+				header('location: sucessoPaciente.php?msg=up1'); 
+				exit;
+			}else{
+				header('location: sucessoPaciente.php?msg=up0'); #<!-- nao teve alteracao -->
+				exit;
+			}
+		}
+	}elseif($_SESSION['privilegio'] == 'admim') {
+		$PessoaNome = '';
+		$PacienteTipoSanguineo ='';
+		$TelefoneTel1 = '';
+		$TelefoneTel2 = '';
+		$TelefoneCel1 = '';
+		$TelefoneCel2 = '';
+		$PessoaCpf ='';
+		$PacienteDataNascimento ='';
+		$PacienteSexo ='';
+		$EnderecoRua ='';
+		$EnderecoNumero = '';
+		$EnderecoEstado = '';
+		$EnderecoBairro='';
+		$EnderecoCep ='';
+		$EnderecoCidade = '';
+		$EnderecoComplemento = ''; 
+		$idLogin = '';
+		
+ 	}
 ?>
 
 
@@ -182,6 +202,9 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 <body>
 <?php
 include 'NavPaciente.php';
+
+
+
 ?>
 <div class="container border rounded p-3 mb-2">
      <div class="jumbotorn bg-primary" style=" margin-top:40px;  border-radius: 10px;">
@@ -292,7 +315,7 @@ include 'NavPaciente.php';
 								</div>
 							</div>
 
-							<div class="col-md-4 control-label">
+							<div class="col-md-4 control-label"> 
 								<div class="form-group">
 									<label for="sexo">Sexo:</label>
 									<select readonly class="form-control-plaintext" id="sexo" name='sexo'>
@@ -309,7 +332,7 @@ include 'NavPaciente.php';
 
 							<!--endereco: rua-->
 							<div class="col-md-8">
-								<div class="form-group">
+								<div class="form-group"> 
 								<label for="rua">Rua:</label>
 								<input type="Text" class="form-control" id="rua" value="<?php echo $EnderecoRua;?>" placeholder="<?php echo $EnderecoRua; ?>" name="rua">
 								</div>
@@ -318,7 +341,7 @@ include 'NavPaciente.php';
 							<!--endereco: numero-->
 							<div class="col-md-2">
 							<div class="form-group">
-							<label for="numero">Número:</label>
+							<label for="numero">Número:</label> 
 							<input type="Text" class="form-control" id="numero" value="<?php echo $EnderecoNumero;?>" placeholder="<?php echo $EnderecoNumero; ?>" name="numero">
 								</div>
 							</div>
@@ -326,7 +349,7 @@ include 'NavPaciente.php';
 							<!--endereco: estado-->
 							<div class="col-md-2">
 							<div class="form-group">
-							<label for="estado">Estado:</label>
+							<label for="estado">Estado:</label> 
 							<input type="Text" class="form-control" id="estado" value="<?php echo $EnderecoEstado;?>" placeholder="<?php echo $EnderecoEstado; ?>" name="estado">
 								</div>
 							</div>
@@ -337,7 +360,7 @@ include 'NavPaciente.php';
 							<label for="bairro">Bairro:</label>
 							<input type="Text" class="form-control" id="bairro" value="<?php echo $EnderecoBairro;?>" placeholder="<?php echo $EnderecoBairro; ?>" name="bairro">
 								</div>
-							</div>
+							</div>$
 
 							<!--endereco: cep-->
 							<div class="col-md-4">
@@ -356,7 +379,7 @@ include 'NavPaciente.php';
 							</div>
 
 							<!--endereco: complemento-->
-							<div class="col-md-12">
+							<div class="col-md-12"> 
 							<div class="form-group">
 							<label for="complemento">Complemento:</label>
 							<input type="Text" class="form-control" id="complemento" value="<?php echo $EnderecoComplemento;?>" placeholder="<?php echo $EnderecoComplemento; ?>" name="complemento">
