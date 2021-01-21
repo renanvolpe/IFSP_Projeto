@@ -83,11 +83,9 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 <!DOCTYPE html>
 <html>
 <head>
-
-
-
-
+	<link href="../css/estlioPaginaPrincipal.css" rel="stylesheet"/>
   <title>Clinica médica</title>
+
 </head>
 <body>
 
@@ -96,6 +94,7 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 <body>
 
 <!-- login HTML -->
+
 <nav class="navbar  navbar-expand-lg navbar-dark bg-primary">
   <div class="container-fluid">
 	    <a class="navbar-brand" href="../index.php">Home</a>
@@ -166,12 +165,8 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 			</p>
 			<div class="row align-items-center">
 				<div class="col">
-					<button type="submit" name="submit" value="submit" id="submit" class="btn btn-primary">Login</button>
+					<button type="submit" name="submit" value="submit" id="submit" class="btn bg-primary">Login</button>
 					&nbsp
-					<a href="#"> Esqueceu a senha?</a>
-					&nbsp
-
-
 				</div>
 			</div>
 
