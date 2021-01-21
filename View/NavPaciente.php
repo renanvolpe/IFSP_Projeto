@@ -36,7 +36,7 @@ include_once ('config.php');
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary border rounded p-2 mb-2">
-  <a class="navbar-brand" href="../index.php">Home</a>
+  <a class="navbar-brand" href="index2.php">Home</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Alterna navegação">
     <span class="navbar-toggler-icon"></span>
   </button>

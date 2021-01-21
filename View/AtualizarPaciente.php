@@ -153,18 +153,9 @@ if( empty($_SESSION['clinica'])){
 		$idLogin = '';
 		
  	}
-?>
-
-
-<?php
-
-include 'ChamarBoostrap.php';
-include_once ('config.php');
-?>
 
 
 
- <?php
  if($_SESSION['privilegio'] == 'paciente'){
 	 $idLogin = $_SESSION['clinica'];
 
@@ -232,14 +223,14 @@ include_once ('config.php');
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary border rounded p-2 mb-2">
-  <a class="navbar-brand" href="../index.php">Home</a>
+  <a class="navbar-brand" href="../index2.php">Home</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Alterna navegação">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="index.php">Escolha um Horário</a>
+        <a class="nav-link" href="../index.php">Escolha um Horário</a>
       </li>
       <li class="nav-item active">
         <a class="nav-link" href="AtualizarPaciente.php">Confirmar Dados</a>
@@ -264,17 +255,12 @@ include_once ('config.php');
 			<button class="btn btn-outline-secondary navbar-brand">Olá! Sr <?php echo $NomePaciente ;?> </button>
 		</li>
 		<li class="nav-item ml-auto">
-		<a class="btn btn-danger navbar-brand" href="controller/DesfazerLogin.php" > Sair </a>
+		<a class="btn btn-danger navbar-brand" href="../controller/DesfazerLogin.php" > Sair </a>
 		</li>
 	</ul>
   </div>
 </nav>
-<?php
-include 'NavPaciente.php';
 
-
-
-?>
 <div class="container border rounded p-3 mb-2">
      <div class="jumbotorn bg-primary" style=" margin-top:40px;  border-radius: 10px;">
 

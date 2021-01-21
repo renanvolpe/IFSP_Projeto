@@ -4,9 +4,9 @@ session_start();
 if( empty($_SESSION['clinica']) == false ){
 	if($_SESSION['privilegio'] == 'medico'){
                 //header("location: calendarioMedico.php");
-                echo 'medico';
+                //echo 'medico';
 	}elseif($_SESSION['privilegio'] == 'paciente'){
-                echo 'paciente';
+                //echo 'paciente';
         
     }
 	
@@ -14,13 +14,9 @@ if( empty($_SESSION['clinica']) == false ){
 }
 
 
-include 'ChamarBoostrap.php';
-include_once ('config.php');
-?>
+include '../ChamarBoostrap.php';
+include_once ('../config.php');
 
-
-
- <?php
  if($_SESSION['privilegio'] == 'paciente'){
 	 $idLogin = $_SESSION['clinica'];
 
@@ -82,7 +78,7 @@ include_once ('config.php');
 			<button class="btn btn-outline-secondary navbar-brand">Olá! Sr <?php echo $NomePaciente ;?> </button>
 		</li>
 		<li class="nav-item ml-auto">
-		<a class="btn btn-danger navbar-brand" href="controller/DesfazerLogin.php" > Sair </a>
+		<a class="btn btn-danger navbar-brand" href="../controller/DesfazerLogin.php" > Sair </a>
 		</li>
 	</ul>
   </div>
