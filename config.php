@@ -1,11 +1,11 @@
 <?php
 
-$clinica = 'clinicamedica';
+$clinica = 'celke';
 $user = 'root';
 $senha = '';
 $localhost = 'localhost';  
 include_once('include/Database.php');
-define('SS_DB_NAME', 'clinicamedica');
+define('SS_DB_NAME', 'celke');
 define('SS_DB_USER', 'root');
 define('SS_DB_PASSWORD', '');//ESSE AQUI E PARA GERAL FUNCINAR
 //define('SS_DB_PASSWORD', 'root');//ESSE AQUI E PARA GERAL

@@ -7,28 +7,24 @@ document.addEventListener('DOMContentLoaded', function () {
         //defaultDate: '2019-04-12',
         editable: true,
         eventLimit: true,
-        events: '../controller/list_eventos.php',
+        events: 'list_eventos.php',
         extraParams: function () {
             return {
                 cachebuster: new Date().valueOf()
             };
         },
         eventClick: function (info) {
-            $("#apagar_evento").attr("href", "../controller/proc_apagar_evento.php?idAgenda=" + info.event.idAgenda);
+            $("#apagar_evento").attr("href", "proc_apagar_evento.php?id=" + info.event.id);
             info.jsEvent.preventDefault(); // don't let the browser navigate
             console.log(info.event);
-            $('#visualizar #idAgenda').text(info.event.idAgenda);
-            $('#visualizar #idAgenda').val(info.event.idAgenda);
+            $('#visualizar #id').text(info.event.id);
+            $('#visualizar #id').val(info.event.id);
             $('#visualizar #title').text(info.event.title);
             $('#visualizar #title').val(info.event.title);
             $('#visualizar #start').text(info.event.start.toLocaleString());
             $('#visualizar #start').val(info.event.start.toLocaleString());
             $('#visualizar #end').text(info.event.end.toLocaleString());
             $('#visualizar #end').val(info.event.end.toLocaleString());
-            $('#visualizar #paciente_idPaciente').text(info.event.paciente_idPaciente);
-            $('#visualizar #paciente_idPaciente').val(info.event.paciente_idPaciente);
-            $('#visualizar #medico_idMedico').text(info.event.medico_idMedico);
-            $('#visualizar #medico_idMedico').val(info.event.medico_idMedico);
             $('#visualizar #color').val(info.event.backgroundColor);
             $('#visualizar').modal('show');
         },
@@ -82,7 +78,7 @@ $(document).ready(function () {
         event.preventDefault();
        $.ajax({
             method: "POST",
-            url: "../controller/cad_event.php",
+            url: "cad_event.php",
             data: new FormData(this),
             contentType: false,
             processData: false,
@@ -111,7 +107,7 @@ $(document).ready(function () {
         event.preventDefault();
        $.ajax({
             method: "POST",
-            url: "../controller/edit_event.php",
+            url: "edit_event.php",
             data: new FormData(this),
             contentType: false,
             processData: false,
