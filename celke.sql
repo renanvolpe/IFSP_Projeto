@@ -54,6 +54,118 @@ INSERT INTO `events` (`id`, `title`, `color`, `start`, `end`) VALUES
 (9, 'Tutorial', '#228B22', '2019-09-12 00:00:00', '2019-09-13 00:00:00'),
 (10, 'Tutorial 2', '#FF4500', '2019-09-13 15:10:10', '2019-09-13 17:15:15'),
 (11, 'ReuniÃ£o 15', '#436EEE', '2019-10-09 15:30:00', '2019-10-09 17:00:00');
+
+
+--
+-- Estrutura da tabela `consulta`
+--
+
+DROP TABLE IF EXISTS `consulta`;
+CREATE TABLE IF NOT EXISTS `consulta` (
+  `idConsulta` int(11) NOT NULL AUTO_INCREMENT,
+  `realizada` tinyint(1) NOT NULL,
+  `sintoma` varchar(245) DEFAULT NULL,
+  `tratamento` varchar(245) DEFAULT NULL,
+  `observacao` varchar(245) DEFAULT NULL,
+  `events_id` int(11) NOT NULL,
+  PRIMARY KEY (`idConsulta`,`events_id`),
+  KEY `fk_consulta_events1_idx` (`events_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `endereco`
+--
+
+DROP TABLE IF EXISTS `endereco`;
+CREATE TABLE IF NOT EXISTS `endereco` (
+  `idEndereco` int(11) NOT NULL AUTO_INCREMENT,
+  `rua` varchar(45) NOT NULL,
+  `bairro` varchar(45) NOT NULL,
+  `complemento` varchar(45) DEFAULT NULL,
+  `cidade` varchar(20) NOT NULL,
+  `estado` varchar(20) NOT NULL,
+  `numero` varchar(10) NOT NULL,
+  `cep` varchar(8) NOT NULL,
+  PRIMARY KEY (`idEndereco`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+--
+-- Estrutura da tabela `login`
+--
+
+DROP TABLE IF EXISTS `login`;
+CREATE TABLE IF NOT EXISTS `login` (
+  `idLogin` int(11) NOT NULL AUTO_INCREMENT,
+  `login` varchar(20) NOT NULL,
+  `senha` varchar(20) NOT NULL,
+  `privilegio` varchar(25) NOT NULL,
+  PRIMARY KEY (`idLogin`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+
+--
+-- Estrutura da tabela `medico`
+--
+
+DROP TABLE IF EXISTS `medico`;
+CREATE TABLE IF NOT EXISTS `medico` (
+  `idMedico` int(11) NOT NULL AUTO_INCREMENT,
+  `crm` varchar(10) NOT NULL,
+  `especialidade` varchar(45) NOT NULL,
+  `pessoa_idPessoa` int(11) NOT NULL,
+  PRIMARY KEY (`idMedico`),
+  KEY `fk_medico_pessoa1_idx` (`pessoa_idPessoa`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Estrutura da tabela `paciente`
+--
+
+DROP TABLE IF EXISTS `paciente`;
+CREATE TABLE IF NOT EXISTS `paciente` (
+  `tipoSanguineo` varchar(3) NOT NULL,
+  `sexo` varchar(1) NOT NULL,
+  `dataNascimento` datetime NOT NULL,
+  `idPaciente` int(11) NOT NULL AUTO_INCREMENT,
+  `pessoa_idPessoa` int(11) NOT NULL,
+  PRIMARY KEY (`idPaciente`),
+  KEY `fk_paciente_pessoa1_idx` (`pessoa_idPessoa`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+--
+-- Estrutura da tabela `pessoa`
+--
+
+DROP TABLE IF EXISTS `pessoa`;
+CREATE TABLE IF NOT EXISTS `pessoa` (
+  `idPessoa` int(11) NOT NULL AUTO_INCREMENT,
+  `cpf` varchar(11) NOT NULL,
+  `nome` varchar(150) NOT NULL,
+  `endereco_idEndereco` int(11) NOT NULL,
+  `telefone_idTelefone` int(11) NOT NULL,
+  `login_idLogin` int(11) NOT NULL,
+  PRIMARY KEY (`idPessoa`,`login_idLogin`),
+  KEY `fk_pessoa_endereco1_idx` (`endereco_idEndereco`),
+  KEY `fk_pessoa_telefone1_idx` (`telefone_idTelefone`),
+  KEY `fk_pessoa_login1_idx` (`login_idLogin`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+--
+-- Estrutura da tabela `telefone`
+--
+
+DROP TABLE IF EXISTS `telefone`;
+CREATE TABLE IF NOT EXISTS `telefone` (
+  `idTelefone` int(11) NOT NULL AUTO_INCREMENT,
+  `tel1` varchar(11) NOT NULL,
+  `tel2` varchar(11) DEFAULT NULL,
+  `cel1` varchar(11) NOT NULL,
+  `cel2` varchar(11) DEFAULT NULL,
+  PRIMARY KEY (`idTelefone`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

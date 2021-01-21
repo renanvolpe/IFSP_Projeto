@@ -7,6 +7,8 @@ if( !empty($_SESSION['clinica']) ){
         //header('Location: '.$_SERVER['PHP_SELF']);
         //echo'<span>paciente</span>';
 	}elseif(isset($_SESSION['privilegio']) && $_SESSION['privilegio'] == 'medico'){
+        include 'View/NavMedico.php';
+
         //include 'view/navmedico.php';
 		//header("location: calendarioMedico.php");
         echo'<span>medico</span>';

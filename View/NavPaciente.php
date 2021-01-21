@@ -10,7 +10,7 @@ include_once ('config.php');
  if($_SESSION['privilegio'] == 'paciente'){
 	 $idLogin = $_SESSION['clinica'];
 
-		$condition = 'AND login_idLogin LIKE "'.$idLogin .'"';
+		$condition = ' AND login_idLogin LIKE "'.$idLogin .'"';
 		$userData    =    $db->getAllRecords('pessoa','*',$condition,'');
 		if(count($userData)>0){
 		  $s    =    '';
@@ -18,9 +18,10 @@ include_once ('config.php');
 			$s++;
 			}
 
-			$NomePaciente = $pessoa['nome'];
+      $NomePaciente = $pessoa['nome'];
+      
 		}else{
-
+        echo 'aonde que eu to, jesus';
 		}
  } elseif($_SESSION['privilegio'] == 'admim')
  		$NomePaciente = 'Administrador';
