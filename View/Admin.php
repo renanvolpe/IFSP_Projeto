@@ -33,12 +33,12 @@ if( !empty($_SESSION['clinica']) ){
             <div class="row">
                     <div class="col-md-6 text-center">
                              <p class="lead ">Aqui você será guiado para o Médico</p>
-                             <a class="btn btn-warning btn-lg " href="index.php" role="button">Médico</a>
+                             <a class="btn btn-warning btn-lg " href="../index.php" role="button">Médico</a>
                     </div>
 
                     <div class="col-md-6 text-center">
                           <p class="lead ">Aqui você será guiado para o Paciente</p>
-                          <a class="btn btn-success btn-lg " href="index.php" role="button">Paciente</a>
+                          <a class="btn btn-success btn-lg " href="../index.php" role="button">Paciente</a>
                     
                     </div>
                     
@@ -49,7 +49,7 @@ if( !empty($_SESSION['clinica']) ){
                     
 
                     <div class=" text-center">
-                          <p class="lead ">Aqui você será guiado para o Paciente</p>
+                          <p class="lead ">Sair do sistema</p>
                           <a class="btn btn-danger btn-lg " href="../controller/DesfazerLogin.php" role="button">Sair do WebSite</a>
                     
                     </div>

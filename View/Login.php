@@ -14,7 +14,7 @@ if( !empty($_SESSION['clinica']) ){
 		echo "teste1";
 		//header("location: index.php");
 	}elseif(isset($_SESSION['privilegio']) && $_SESSION['privilegio'] == 'medico'){
-		header("location: index.php");
+		header("location: ../index.php");
 	}elseif(isset($_SESSION['privilegio']) && $_SESSION['privilegio'] == 'admim'){
 		header("location: Admin.php");
 	}else{

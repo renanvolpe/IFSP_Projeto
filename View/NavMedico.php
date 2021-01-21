@@ -1,7 +1,7 @@
 <?php
 
-include '../ChamarBoostrap.php';
-include_once ('../config.php');
+include 'ChamarBoostrap.php';
+include_once ('config.php');
 
  if($_SESSION['privilegio'] == 'medico'){
 	$idLogin = $_SESSION['clinica'];
@@ -68,7 +68,7 @@ include_once ('../config.php');
                         <button class="btn btn-outline-secondary navbar-brand">Olá! Dr <?php echo $NomeMedico ;?> </button>
                     </li>
                     <li class="nav-item ml-auto">
-		                <a class="btn btn-danger navbar-brand" href="../controller/DesfazerLogin.php" > Sair </a>
+		                <a class="btn btn-danger navbar-brand" href="controller/DesfazerLogin.php" > Sair </a>
 		            </li>
                 </ul>
                 
