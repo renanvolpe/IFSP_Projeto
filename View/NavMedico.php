@@ -2,11 +2,8 @@
 
 include '../ChamarBoostrap.php';
 include_once ('../config.php');
-?>
- <?php
- if($_SESSION['privilegio'] == 'medico'){
 
- 
+ if($_SESSION['privilegio'] == 'medico'){
 	$idLogin = $_SESSION['clinica'];
 
 		$condition = 'AND login_idLogin LIKE "'.$idLogin .'"';
