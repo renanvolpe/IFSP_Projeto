@@ -6,11 +6,10 @@ include_once ('../config.php');
 
 ?>
 
-<script rel="stylesheet" href="../sweetalert/sweetalert.js"> 
-</script>
+
 
 <?php
-if( empty($_SESSION['clinica']) == false){
+if( !empty($_SESSION['clinica']) ){
 	if(isset($_SESSION['privilegio']) && $_SESSION['privilegio'] == 'paciente'){
 		echo "teste1";
 		header("location: calendario.php");
@@ -65,7 +64,7 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 			if($privilegio){
 				$_SESSION['privilegio'] = $privilegio; 
 				
-				echo "<script>swal('Login realizado com Sucesso!');location.href=\"calendario.php\";</script>";
+				header("location: Admin.php");
 			}else{
 				header('location:'.$_SERVER['PHP_SELF'].'?msg=dsd'); //privilegio nao encontrado
 				exit;

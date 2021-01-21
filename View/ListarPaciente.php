@@ -1,8 +1,19 @@
 <?php
 session_start();
+
 include '../ChamarBoostrap.php';
 include_once('../config.php');
 include 'NavMedico.php';
+
+if( !empty($_SESSION['clinica'])){
+	if($_SESSION['privilegio'] == 'paciente'){
+		header("location: calendario.php");
+	}elseif($_SESSION['privilegio'] == 'medico' || "admim"){
+		
+	}
+	
+	
+}
 /*Deligando por quanto
 if( empty($_SESSION['clinica']) == false ){
 	if($_SESSION['privilegio'] == 'paciente'){

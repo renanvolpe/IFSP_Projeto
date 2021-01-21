@@ -1,6 +1,18 @@
 <?php
 session_start();
 
+if( !empty($_SESSION['clinica']) ){
+	if(isset($_SESSION['privilegio']) && $_SESSION['privilegio'] == 'paciente'){
+		
+		header("location: calendario.php");
+	}elseif(isset($_SESSION['privilegio']) && $_SESSION['privilegio'] == 'medico'){
+		header("location: calendarioMedico.php");
+	}elseif(isset($_SESSION['privilegio']) && $_SESSION['privilegio'] == 'admim'){
+            
+            
+	}
+}
+
     include '../ChamarBoostrap.php';
     
  

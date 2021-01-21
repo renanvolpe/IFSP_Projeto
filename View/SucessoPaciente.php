@@ -48,7 +48,7 @@ if( empty($_SESSION['clinica']) == false ){
                         <hr class="my-4">
                         <p>Afredecemos a preferência.</p>
                         <p class="lead">
-                        <a class="btn btn-primary btn-lg" href="../controller/DesfazerLogin.php" role="button">Voltar para Tela incial</a>
+                        <a class="btn btn-info btn-lg" href="../controller/DesfazerLogin.php" role="button">Voltar para Tela incial</a>
                 </p>
                 </div>
         </div>

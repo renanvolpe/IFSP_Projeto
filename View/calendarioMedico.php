@@ -1,6 +1,6 @@
 <?php
 session_start();
-if( empty($_SESSION['clinica']) == false ){
+if( !empty($_SESSION['clinica'])){
 	if($_SESSION['privilegio'] == 'paciente'){
 		header("location: calendario.php");
 	}elseif($_SESSION['privilegio'] == 'medico' || "admim"){
