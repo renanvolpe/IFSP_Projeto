@@ -46,10 +46,10 @@ include_once ('config.php');
         <a class="nav-link" href="index.php">Escolha um Horário</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="AtualizarPaciente.php">Confirmar Dados</a>
+        <a class="nav-link" href="View/AtualizarPaciente.php">Confirmar Dados</a>
       </li>
 	  <li class="nav-item  active">
-        <a class="nav-link" href="SucessoPaciente.php">Sucesso</a>
+        <a class="nav-link" href="View/SucessoPaciente.php">Sucesso</a>
       </li>
     </ul>
 	<ul class="navbar-nav ml-auto">
