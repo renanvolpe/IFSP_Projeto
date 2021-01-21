@@ -1,18 +1,10 @@
 <?php
 session_start();
 
-if( empty($_SESSION['clinica']) == false ){
-	if($_SESSION['privilegio'] == 'medico'){
-		header("location: calendarioMedico.php");
-	}elseif($_SESSION['privilegio'] == 'paciente'){
-        
-    }
-	
-	
-}
 
-include '../ChamarBoostrap.php';//chamando o boostrap no calendario,não sei se isso pode bug
+//include '../ChamarBoostrap.php';chamando o boostrap no calendario,não sei se isso pode bug
 include_once ('../config.php');
+include_once ('../conexao.php');
 ?>
 
 
@@ -78,6 +70,9 @@ include_once ('../config.php');
                             <span id="msg-edit"></span>
                             <form id="editevent" method="POST" enctype="multipart/form-data">
                                 <input type="hidden" name="idAgenda" id="idAgenda" >
+                                <input type="hidden" name="paciente_idPaciente" id="paciente_idPaciente" value=1 >
+                                <input type="hidden" name="medico_idMedico" id="medico_idMedico" value=1 >
+
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Título</label>
                                     <div class="col-sm-10">
@@ -140,6 +135,8 @@ include_once ('../config.php');
                     <div class="modal-body">
                         <span id="msg-cad"></span>
                         <form id="addevent" method="POST" enctype="multipart/form-data">
+                        <input type="hidden" name="paciente_idPaciente" id="paciente_idPaciente" value=1 >
+                                <input type="hidden" name="medico_idMedico" id="medico_idMedico" value=1>
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Título</label>
                                 <div class="col-sm-10">
