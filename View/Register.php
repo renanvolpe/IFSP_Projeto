@@ -177,6 +177,7 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 <html>
 <head>
   <title>Registro Usuário</title>
+  <link href="../css/estlioPaginaPrincipal.css" rel="stylesheet"/>
 </head>
 <body>
 
@@ -426,7 +427,7 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 							</div>
 							<hr>
 							<div class="text-center">
-							<button type="submit" name="submit" value="submit" id="submit" class="btn btn-primary btn-lg btn-block"> Enviar cadastro </button>
+							<button type="submit" name="submit" value="submit" id="submit" class="btn bg-primary btn-lg btn-block"> Enviar cadastro </button>
 							</div>
 					</form>
 				</div>
