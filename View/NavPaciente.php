@@ -58,7 +58,7 @@ include_once ('config.php');
             if($_SESSION['privilegio'] == 'admim'){
                 ?>
                     <li class="nav-item ">
-                      <a href="Admin.php" class="btn btn-success navbar-brand"> Adminstração </a>
+                      <a href="view/Admin.php" class="btn btn-success navbar-brand"> Adminstração </a>
                       </li>
                 <?php
             }
