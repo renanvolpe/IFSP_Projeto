@@ -150,6 +150,16 @@ class Database{
         $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $rows;
     }
+    public function getAllRecords2($tableName, $fields='*', $cond='', $orderBy='', $limit='')
+    {
+        //echo "SELECT  $tableName.$fields FROM $tableName WHERE ".$cond." ".$orderBy." ".$limit;
+        //print "<br>SELECT $fields FROM $tableName WHERE 1 ".$cond." ".$orderBy." ".$limit;
+        $stmt = $this->pdo->prepare("SELECT $fields FROM $tableName WHERE ".$cond." ".$orderBy." ".$limit);
+        //print "SELECT $fields FROM $tableName WHERE 1 ".$cond." ".$orderBy." " ;
+        $stmt->execute();
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $rows;
+    }
      
     public function getRecFrmQry($query)
     {

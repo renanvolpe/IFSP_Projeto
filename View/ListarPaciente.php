@@ -1,61 +1,37 @@
 <?php
 session_start();
-
+include '../ChamarBoostrap.php';
+include_once('../config.php');
+include 'NavMedico.php';
+/*Deligando por quanto
 if( empty($_SESSION['clinica']) == false ){
 	if($_SESSION['privilegio'] == 'paciente'){
 		header("location: calendario.php");
-	}elseif($_SESSION['privilegio'] == 'medico'){
-		
+	}elseif($_SESSION['privilegio'] == 'medico'){	
 	}
-	
-	
 }
-
-include 'NavMedico.php';
-include '../ChamarBoostrap.php';
-?>
-
-<?php
-
-        
+*/    
 /* PARTE DO RENAN, NAO MEXA
         $userData    =    $db->getAllRecords('login','*',"",'');
-        
-
-
-        
-        $quantidade = $db->getQueryCount('login', 'idLogin','');
-        
-        
-		
+        $quantidade = $db->getQueryCount('login', 'idLogin','');  
 		if(count($quantidade)>0){
 		  $s    =    '';
 		  foreach($quantidade as $qtd){
 			$s++;
             }
           echo $quantidePaciente = $qtd['total'];
-		
           }
-          
             $i = 0;
           for($i=1; $i++; $i== $quantidePaciente){
-
             $condition = 'AND idLogin LIKE "'.$i .'"';
-
-
-            
-
             $userData    =    $db->getAllRecords('login','*',"",'AND idLogin LIKE "'.$i.'"');
             if(count($userData)>0){
                 foreach($userData as $valorID){
                     $s++;
                     }
-                   
-
             }
           }
-          */
-
+*/
 ?>
 
 <!DOCTYPE html>
@@ -104,7 +80,37 @@ include '../ChamarBoostrap.php';
 </head>
 <body>
 
-
+        <?php
+            /*Teste da Banco da Listagem
+            $dadosapegar.='pessoa.cpf,pessoa.nome,';
+            $dadosapegar.='endereco.rua,endereco.numero,endereco.cidade,endereco.estado,';
+            $dadosapegar.='pessoa.cpf,pessoa.nome,';
+            $dadosapegar.='telefone.tel1,telefone.cel1,';
+            $dadosapegar.='paciente.tipoSanguineo,paciente.sexo,paciente.dataNacimento';
+            */
+            /*
+            $condition .= ' AND pessoa.endereco_idEndereco LIKE endereco.idEndereco'; //identifica em pessoa quem tem aquele endereco
+            $condition .= ' AND pessoa.telefone_idTelefone LIKE telefone.idTelefone'; //identifica em pessoa quem tem aquele telefone
+            $condition .= ' AND paciente.pessoa_idPessoa LIKE pessoa.idPessoa'; //identifica em paciente quem tem aquele idPessoa
+            
+            $condition .= ' AND pessoa.endereco_idEndereco = endereco.idEndereco'; //identifica em pessoa quem tem aquele endereco
+            $condition .= ' AND pessoa.telefone_idTelefone = telefone.idTelefone'; //identifica em pessoa quem tem aquele telefone
+            $condition .= ' AND paciente.pessoa_idPessoa = pessoa.idPessoa';
+            $userData	=	$db->getAllRecords2('escola, modalidadeensino',
+		  'escola.NomeEscola, escola.idEscola, modalidadeensino.NomeModalidadeEnsino, modalidadeensino.idModalidadeEnsino',
+		  'escola.ModalidaEnsino_idModalidadeEnsino = modalidadeensino.idModalidadeEnsino','ORDER BY idEscola DESC');
+            */
+           
+            $userData= $db->getAllRecords2('pessoa, endereco, telefone, paciente','*','pessoa.endereco_idEndereco = endereco.idEndereco and pessoa.telefone_idTelefone = telefone.idTelefone and pessoa.idPessoa = paciente.pessoa_idPessoa'); //puxa todos os dados daquela pessoa
+                
+            //print "<br>SELECT $fields FROM $tableName WHERE 1 ".$cond." ".$orderBy." ".$limit;
+            /*
+                $userDataPessoa = $db->getAllRecords2('idPessoa,cpf,nome,endereco_idEndereco,telefone_idTelefone','pessoa');
+                $userDataEndereco=$db->getAllRecords2('idEndereco,rua,numero,cidade,estado','endereco');
+                $userDataTelefone=$db->getAllRecords2('idTelefone,tel1,cel1','telefone');
+                $userDataPaciente=$db->getAllRecords2('idPaciente,tipoSanguineo,sexo,dataNacimento,pessoa_idPessoa','paciente');
+            */
+        ?>
         <div class="container form-group tab-pane active" id = "pacientes">
         <h2>Filtro de Pesquisa:</h2>
         <p>
@@ -125,69 +131,64 @@ include '../ChamarBoostrap.php';
                             <table class="table cabecalho table-striped table-bordered">
                                         <thead>
                                         <tr>
-                                            <th class="cabecalho">Id</th>
                                             <th class="cabecalho">Nome Completo</th>
+                                            <th class="cabecalho">Sexo</th>
+                                            <th class="cabecalho">Data De Nacimento</th>
+                                            <th class="cabecalho">CPF</th>
                                             <th class="cabecalho">Tipo Sanguineo</th>
                                             <th class="cabecalho">Telefone</th>
                                             <th class="cabecalho">Celular Principal</th>
-                                            <th class="cabecalho">Celular Secundário</th>
-                                            <th class="cabecalho">CPF</th>
-                                            <th class="cabecalho">Data Nascimento</th>
-                                            <th class="cabecalho">Sexo</th>
                                             <th class="cabecalho">Rua</th>
                                             <th class="cabecalho">Número</th>
-                                            <th class="cabecalho">Estado</th>
-                                            <th class="cabecalho">Bairro</th>
-                                            <th class="cabecalho">CEP</th>
                                             <th class="cabecalho">Cidade</th>
-                                            <th class="cabecalho">Complemento</th>
+                                            <th class="cabecalho">Estado</th>
                                         </tr>
                                     </thead>
 
 
-                                        <tbody id="myTable">  <!--importante: <tbody id="myTable"> faz a PESQUISA  -->
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Amanda Espindola Palermo</td>
-                                                <td>B-</td>
-                                                <td>(61) 9 8647-3913</td>
-                                                <td>(61) 9 8647-3913</td>
-                                                <td>(61) 9 8647-3913</td>
-                                                <td>045.448.379-10</td>
-                                                <td>1985-09-16</td>
-                                                <td>Feminino</td></td>
-                                                <td>Rua Especial</td>
-                                                <td>178</td>
-                                                <td>SP</td>
-                                                <td>Centro</td>
-                                                <td>12430-000</td>
-                                                <td>Jacareí</td>
-                                                <td> Ed. Bello Oeste Lotes 01/03 - Apto. 415 </td>
-                                            </tr>
-                                            </tbody>
 
                                         <tbody id="myTable">  <!--importante: <tbody id="myTable"> faz a PESQUISA  -->
-                                        <tr>
-                                                <td>2</td>
-                                                <td>Gustava Guanabara</td>
-                                                <td>O-</td>
-                                                <td>(61) 9 8647-3913</td>
-                                                <td>(61) 9 8654-3913</td>
-                                                <td>(61) 9 8657-3913</td>
-                                                <td>044.448.449-10</td>
-                                                <td>1985-09-16</td>
-                                                <td>Masculino</td>
-                                                <td>Rua de Baixo</td>
-                                                <td>78</td>
-                                                <td>RJ</td>
-                                                <td>Bairro Poço Fundo</td>
-                                                <td>12430-000</td>
-                                                <td>Rio de Janeiro</td>
-                                                <td> 01/03 - Apto. 4 </td>
-
-                                            </tr>
+                                            <?php 
+                                                if(count($userData)>0){
+                                                    $s	=	'';
+                                                    foreach($userData as $val){
+                                                    $s++;
+                                            ?>
+                                                <tr>
+                                                <td><?php echo $val['nome']; ?></td>
+                                                    <td><?php echo $val['sexo']; ?></td>
+                                                    <td><?php echo $val['dataNascimento'];?></td>
+                                                    <td><?php echo $val['cpf'];?></td>
+                                                    <td><?php echo $val['tipoSanguineo'];?></td>
+                                                    <td><?php echo $val['tel1'];?></td>
+                                                    <td><?php echo $val['cel1'];?></td>
+                                                    <td><?php echo $val['rua'];?></td>
+                                                    <td><?php echo $val['numero'];?></td>
+                                                    <td><?php echo $val['cidade'];?></td>
+                                                    <td><?php echo $val['estado'];?></td>
+                        
+                                                <!---
+                                                    <td><?php// echo $PessoaNome; ?></td>
+                                                    <td><?php// echo $PacienteSexo; ?></td>
+                                                    <td><?php// echo $PacienteDataNascimento?></td>
+                                                    <td><?php// echo $PessoaCpf?></td>
+                                                    <td><?php// echo $PacienteTipoSanguineo?></td>
+                                                    <td><?php// echo $TelefoneTel1?></td>
+                                                    <td><?php// echo $TelefoneCel1?></td>
+                                                    <td><?php// echo $EnderecoRua?></td>
+                                                    <td><?php// echo $EnderecoNumero?></td>
+                                                    <td><?php// echo $EnderecoCidade?></td>
+                                                    <td><?php// echo $EnderecoEstado?></td>
+                                                  -->      
+                                                </tr>
+                                                <?php 
+                                                        }
+                                                    }else{}
+                                                ?>
                                         </tbody>
-                                        </table>
+
+                                        
+                                </table>
                             </div>
                         </div>
                     </div>
