@@ -54,7 +54,7 @@ include_once ('../config.php');
 	<ul class="navbar-nav ml-auto">
 
 					<?php
-                        if($_SESSION['privilegio'] = 'admim'){
+                        if($_SESSION['privilegio'] == 'admim'){
                             ?>
                                 <li class="nav-item ">
                                   <a href="Admin.php" class="btn btn-success navbar-brand"> Adminstração </a>
