@@ -25,6 +25,10 @@ document.addEventListener('DOMContentLoaded', function () {
             $('#visualizar #start').val(info.event.start.toLocaleString());
             $('#visualizar #end').text(info.event.end.toLocaleString());
             $('#visualizar #end').val(info.event.end.toLocaleString());
+            $('#visualizar #paciente_idPaciente').text(info.event.paciente_idPaciente);
+            $('#visualizar #paciente_idPaciente').val(info.event.paciente_idPaciente);
+            $('#visualizar #medico_idMedico').text(info.event.medico_idMedico);
+            $('#visualizar #medico_idMedico').val(info.event.medico_idMedico);
             $('#visualizar #color').val(info.event.backgroundColor);
             $('#visualizar').modal('show');
         },

@@ -2,7 +2,7 @@
 
 include '../conexao.php';
 
-$query_events = "SELECT idAgenda, title, color, start, end FROM agenda";
+$query_events = "SELECT idAgenda, title, color, start, end, paciente_idPaciente, medico_idMedico FROM agenda";
 $resultado_events = $conn->prepare($query_events);
 $resultado_events->execute();
 
@@ -14,6 +14,8 @@ while($row_events = $resultado_events->fetch(PDO::FETCH_ASSOC)){
     $color = $row_events['color'];
     $start = $row_events['start'];
     $end = $row_events['end'];
+    $paciente_idPaciente = $row_events['paciente_idPaciente'];
+    $medico_idMedico = $row_events['medico_idMedico'];
     
     $eventos[] = [
         'idAgenda' => $idAgenda, 
@@ -21,6 +23,8 @@ while($row_events = $resultado_events->fetch(PDO::FETCH_ASSOC)){
         'color' => $color, 
         'start' => $start, 
         'end' => $end, 
+        'paciente_idPaciente' => $paciente_idPaciente, 
+        'medico_idMedico' => $medico_idMedico, 
         ];
 }
 
