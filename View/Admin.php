@@ -3,14 +3,21 @@ session_start();
 
 if( !empty($_SESSION['clinica']) ){
 	if(isset($_SESSION['privilegio']) && $_SESSION['privilegio'] == 'paciente'){
+            //echo 'paciente';
 		
-		header("location: calendario.php");
+		header("location: ../index.php");
 	}elseif(isset($_SESSION['privilegio']) && $_SESSION['privilegio'] == 'medico'){
-		header("location: calendarioMedico.php");
+            //echo 'medico';
+            //header("location: calendarioMedico.php");
+		header("location: ../index.php");
+            
 	}elseif(isset($_SESSION['privilegio']) && $_SESSION['privilegio'] == 'admim'){
             
             
 	}
+}else{
+		header("location: index2.php?msg=semLogin");
+
 }
 
     include '../ChamarBoostrap.php';
@@ -26,12 +33,12 @@ if( !empty($_SESSION['clinica']) ){
             <div class="row">
                     <div class="col-md-6 text-center">
                              <p class="lead ">Aqui você será guiado para o Médico</p>
-                             <a class="btn btn-warning btn-lg " href="calendarioMedico.php" role="button">Médico</a>
+                             <a class="btn btn-warning btn-lg " href="index.php" role="button">Médico</a>
                     </div>
 
                     <div class="col-md-6 text-center">
                           <p class="lead ">Aqui você será guiado para o Paciente</p>
-                          <a class="btn btn-success btn-lg " href="calendario.php" role="button">Paciente</a>
+                          <a class="btn btn-success btn-lg " href="index.php" role="button">Paciente</a>
                     
                     </div>
                     

@@ -12,23 +12,22 @@ include_once ('../config.php');
 if( !empty($_SESSION['clinica']) ){
 	if(isset($_SESSION['privilegio']) && $_SESSION['privilegio'] == 'paciente'){
 		echo "teste1";
-		header("location: calendario.php");
+		//header("location: index.php");
 	}elseif(isset($_SESSION['privilegio']) && $_SESSION['privilegio'] == 'medico'){
-		header("location: calendarioMedico.php");
+		header("location: index.php");
 	}elseif(isset($_SESSION['privilegio']) && $_SESSION['privilegio'] == 'admim'){
 		header("location: Admin.php");
+	}else{
+		echo 'olha, entramos onde nao era pra entrar';
 	}
+}else{
+	///echo 'sem login';
 }
 
 //Página incial
-
-
-
-
 $condition    =    '';
 if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 	extract($_REQUEST);
-
 
 	if($login==""){ //se o campo login estiver vazio...
 		header('location:'.$_SERVER['PHP_SELF'].'?msg=login'); //irá exibir isso no final da URL
@@ -36,33 +35,29 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 	}elseif($senha==""){
 		header('location:'.$_SERVER['PHP_SELF'].'?msg=senha');
 		exit;
-	}
-	else{ // aqui vai se tudo tiver preenchido
+	}else{ // aqui vai se tudo tiver preenchido
 
 		$condition .=    ' AND login LIKE "'.$_REQUEST['login'].'" ';
 		$condition .=    ' AND senha LIKE "'.$_REQUEST['senha'].'" ';
 
 		$userData    =    $db->getAllRecords('login','*',$condition,'ORDER BY idLogin');
 
-
-
 		if(count($userData)>0){
 		  $s    =    '';
 		  foreach($userData as $val){
-
 			$s++;
 		    }
-				//$_SESSION['idPaciente'] = $val['id'];
-
+			//$_SESSION['idPaciente'] = $val['id'];
 			$_SESSION['clinica'] =	$val['idLogin'];
-			
-			$s++;}
+			$s++;
+		}
 
 
 			$privilegio = $val['privilegio'];
 
 			if($privilegio){
 				$_SESSION['privilegio'] = $privilegio; 
+                //echo 'chegamo aqui';
 				
 				header("location: Admin.php");
 			}else{

@@ -46,7 +46,7 @@ include_once ('../config.php');
                         <a class="nav-link active" aria-current="page" href="ListarPaciente.php">Pacientes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active"  href="calendarioMedico.php"> Calendário</a>
+                        <a class="nav-link active"  href="index.php"> Calendário</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="#avaliacao">Avaliações</a>

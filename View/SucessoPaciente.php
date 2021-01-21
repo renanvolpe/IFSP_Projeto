@@ -3,8 +3,10 @@ session_start();
 
 if( empty($_SESSION['clinica']) == false ){
 	if($_SESSION['privilegio'] == 'medico'){
-		header("location: calendarioMedico.php");
+                //header("location: calendarioMedico.php");
+                echo 'medico';
 	}elseif($_SESSION['privilegio'] == 'paciente'){
+                echo 'paciente';
         
     }
 	

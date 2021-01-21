@@ -1,10 +1,11 @@
 <?php
 session_start();
+
 if( !empty($_SESSION['clinica']) ){
 	if(isset($_SESSION['privilegio']) && $_SESSION['privilegio'] == 'paciente'){
-        //include 'view/navpaciente.php';
+        include 'View/NavPaciente.php';
         //header('Location: '.$_SERVER['PHP_SELF']);
-        echo'<span>paciente</span>';
+        //echo'<span>paciente</span>';
 	}elseif(isset($_SESSION['privilegio']) && $_SESSION['privilegio'] == 'medico'){
         //include 'view/navmedico.php';
 		//header("location: calendarioMedico.php");

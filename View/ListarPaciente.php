@@ -7,7 +7,8 @@ include 'NavMedico.php';
 
 if( !empty($_SESSION['clinica'])){
 	if($_SESSION['privilegio'] == 'paciente'){
-		header("location: calendario.php");
+                echo 'medico';
+                //header("location: calendario.php");
 	}elseif($_SESSION['privilegio'] == 'medico' || "admim"){
 		
 	}

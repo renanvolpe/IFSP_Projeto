@@ -1,7 +1,7 @@
 <?php
 
-include '../ChamarBoostrap.php';
-include_once ('../config.php');
+include 'ChamarBoostrap.php';
+include_once ('config.php');
 ?>
 
 
@@ -42,7 +42,7 @@ include_once ('../config.php');
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="calendario.php">Escolha um Horário</a>
+        <a class="nav-link" href="index.php">Escolha um Horário</a>
       </li>
       <li class="nav-item active">
         <a class="nav-link" href="AtualizarPaciente.php">Confirmar Dados</a>
@@ -54,20 +54,20 @@ include_once ('../config.php');
 	<ul class="navbar-nav ml-auto">
 
 					<?php
-                        if($_SESSION['privilegio'] == 'admim'){
-                            ?>
-                                <li class="nav-item ">
-                                  <a href="Admin.php" class="btn btn-success navbar-brand"> Adminstração </a>
-                                 </li>
-                            <?php
-                        }
+            if($_SESSION['privilegio'] == 'admim'){
+                ?>
+                    <li class="nav-item ">
+                      <a href="Admin.php" class="btn btn-success navbar-brand"> Adminstração </a>
+                      </li>
+                <?php
+            }
 
-                    ?>
+        ?>
 		<li class="nav-item ml-auto">
 			<button class="btn btn-outline-secondary navbar-brand">Olá! Sr <?php echo $NomePaciente ;?> </button>
 		</li>
 		<li class="nav-item ml-auto">
-		<a class="btn btn-danger navbar-brand" href="../controller/DesfazerLogin.php" > Sair </a>
+		<a class="btn btn-danger navbar-brand" href="controller/DesfazerLogin.php" > Sair </a>
 		</li>
 	</ul>
   </div>
