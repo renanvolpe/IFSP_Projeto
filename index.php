@@ -15,7 +15,12 @@ if( !empty($_SESSION['clinica']) ){
     }elseif(isset($_SESSION['privilegio']) && $_SESSION['privilegio'] == 'admim'){
         //include 'view/navpaciente.php';
         //header("location: index2.php");
-        echo'<span>admin</span>';
+        if(isset($_REQUEST['msg']) and $_REQUEST['msg']=="medic"){
+            include 'View/NavMedico.php';
+
+        }elseif(isset($_REQUEST['msg']) and $_REQUEST['msg']=="paci"){
+        include 'View/NavPaciente.php';
+        }
     }
 }else{
 		header("location: index2.php");
